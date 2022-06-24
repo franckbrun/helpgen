@@ -7,7 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D50EB169286450BB00B075AA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB168286450BB00B075AA /* main.swift */; };
+		D50EB169286450BB00B075AA /* HelpGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB168286450BB00B075AA /* HelpGen.swift */; };
+		D50EB1792864530C00B075AA /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = D50EB1782864530C00B075AA /* ArgumentParser */; };
+		D50EB17B2864540700B075AA /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB17A2864540700B075AA /* Lexer.swift */; };
+		D50EB17D2864541400B075AA /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB17C2864541400B075AA /* Token.swift */; };
+		D50EB17F286454F000B075AA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB17E286454F000B075AA /* Project.swift */; };
+		D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB18428645EF800B075AA /* HelpSourceLexer.swift */; };
+		D50EB1892864601700B075AA /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1882864601700B075AA /* Build.swift */; };
+		D50EB18C2864654700B075AA /* SystemPackage in Frameworks */ = {isa = PBXBuildFile; productRef = D50EB18B2864654700B075AA /* SystemPackage */; };
+		D50EB18E286465E600B075AA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB18D286465E600B075AA /* Logger.swift */; };
+		D50EB19128646B3400B075AA /* WhiteSpacesListTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB19028646B3400B075AA /* WhiteSpacesListTokenGenerator.swift */; };
+		D50EB19328646BD900B075AA /* TokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB19228646BD900B075AA /* TokenGenerator.swift */; };
+		D50EB1952864754C00B075AA /* PropertiesSectionTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1942864754C00B075AA /* PropertiesSectionTokenGenerator.swift */; };
+		D50EB19828648C8800B075AA /* HelpSourceParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB19728648C8800B075AA /* HelpSourceParser.swift */; };
+		D50EB1A42864901F00B075AA /* HelpSourceLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1A32864901F00B075AA /* HelpSourceLexerTests.swift */; };
+		D50EB1A82864910200B075AA /* TokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB19228646BD900B075AA /* TokenGenerator.swift */; };
+		D50EB1A92864910200B075AA /* WhiteSpacesListTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB19028646B3400B075AA /* WhiteSpacesListTokenGenerator.swift */; };
+		D50EB1AA2864910200B075AA /* PropertiesSectionTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1942864754C00B075AA /* PropertiesSectionTokenGenerator.swift */; };
+		D50EB1AC2864910200B075AA /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB17A2864540700B075AA /* Lexer.swift */; };
+		D50EB1AD2864910200B075AA /* HelpSourceLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB18428645EF800B075AA /* HelpSourceLexer.swift */; };
+		D50EB1AE2864910200B075AA /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB17C2864541400B075AA /* Token.swift */; };
+		D50EB1B12864961400B075AA /* PropertyTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B02864961400B075AA /* PropertyTokenGenerator.swift */; };
+		D50EB1B328649CEE00B075AA /* ValueTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B228649CEE00B075AA /* ValueTokenGenerator.swift */; };
+		D50EB1B42864A04600B075AA /* PropertyTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B02864961400B075AA /* PropertyTokenGenerator.swift */; };
+		D50EB1B52864A04600B075AA /* ValueTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B228649CEE00B075AA /* ValueTokenGenerator.swift */; };
+		D50EB1B72864A0DF00B075AA /* OperatorTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B62864A0DF00B075AA /* OperatorTokenGenerator.swift */; };
+		D50EB1B82864A8AF00B075AA /* OperatorTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B62864A0DF00B075AA /* OperatorTokenGenerator.swift */; };
+		D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B92864AD7C00B075AA /* ElementTokenGenerator.swift */; };
+		D50EB1BB2864C8C900B075AA /* ElementTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1B92864AD7C00B075AA /* ElementTokenGenerator.swift */; };
+		D50EB1BD2864CE2500B075AA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1BC2864CE2500B075AA /* Parser.swift */; };
+		D50EB1C02864D26100B075AA /* ExprNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1BF2864D26100B075AA /* ExprNode.swift */; };
+		D50EB1C22864D32800B075AA /* PropertyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1C12864D32800B075AA /* PropertyNode.swift */; };
+		D50EB1C42864D3A000B075AA /* ElementNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1C32864D3A000B075AA /* ElementNode.swift */; };
+		D50EB1C62865B5C800B075AA /* PropertiesNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1C52865B5C800B075AA /* PropertiesNode.swift */; };
+		D50EB1C92865CE4700B075AA /* HelpSourceParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1C82865CE4700B075AA /* HelpSourceParserTests.swift */; };
+		D50EB1CA2865CE8900B075AA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1BC2864CE2500B075AA /* Parser.swift */; };
+		D50EB1CB2865CE8900B075AA /* HelpSourceParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB19728648C8800B075AA /* HelpSourceParser.swift */; };
+		D50EB1CC2865CECB00B075AA /* ExprNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1BF2864D26100B075AA /* ExprNode.swift */; };
+		D50EB1CD2865CECB00B075AA /* PropertiesNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1C52865B5C800B075AA /* PropertiesNode.swift */; };
+		D50EB1CE2865CECB00B075AA /* PropertyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1C12864D32800B075AA /* PropertyNode.swift */; };
+		D50EB1CF2865CECB00B075AA /* ElementNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1C32864D3A000B075AA /* ElementNode.swift */; };
+		D50EB1D12865DA0D00B075AA /* HelpSourceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */; };
+		D50EB1D22865DC4000B075AA /* HelpSourceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */; };
+		D50EB1D42865E37D00B075AA /* TestFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D32865E37D00B075AA /* TestFiles.swift */; };
+		D50EB1D92865F26200B075AA /* HelpSourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D82865F26200B075AA /* HelpSourceFile.swift */; };
+		D50EB1DC2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */; };
+		D50EB1DE2865F99B00B075AA /* ParseHelpSourceFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */; };
+		D50EB1E02865FB4300B075AA /* GenerateHelpFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */; };
+		D50EB1E22865FB8C00B075AA /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E12865FB8C00B075AA /* BuildStep.swift */; };
+		D50EB1E52865FF6200B075AA /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E42865FF6200B075AA /* Generator.swift */; };
+		D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E62865FF8F00B075AA /* Generatable.swift */; };
+		D50EB1EC2866035100B075AA /* HTMLHelpGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1EB2866035100B075AA /* HTMLHelpGenerator.swift */; };
+		D50EB1EE286605C900B075AA /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1ED286605C900B075AA /* SourceFile.swift */; };
+		D50EB1F228660F2100B075AA /* PropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1F128660F2100B075AA /* PropertyQueryable.swift */; };
+		D50EB1F5286616E900B075AA /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D50EB1F4286616E900B075AA /* SwiftSoup */; };
+		D50EB1F7286618CD00B075AA /* HTMLHelpGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1F6286618CD00B075AA /* HTMLHelpGeneratorTests.swift */; };
+		D50EB1F8286618F100B075AA /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1ED286605C900B075AA /* SourceFile.swift */; };
+		D50EB1F9286618F100B075AA /* PropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1F128660F2100B075AA /* PropertyQueryable.swift */; };
+		D50EB1FA286618F100B075AA /* Generatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E62865FF8F00B075AA /* Generatable.swift */; };
+		D50EB1FB286618F100B075AA /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E42865FF6200B075AA /* Generator.swift */; };
+		D50EB1FC286618F100B075AA /* HTMLHelpGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1EB2866035100B075AA /* HTMLHelpGenerator.swift */; };
+		D50EB1FD28661C1200B075AA /* HelpSourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D82865F26200B075AA /* HelpSourceFile.swift */; };
+		D50EB1FE28661C7300B075AA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB17E286454F000B075AA /* Project.swift */; };
+		D50EB20128661CF900B075AA /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D50EB20028661CF900B075AA /* SwiftSoup */; };
+		D50EB20228661D2900B075AA /* ParseHelpSourceFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */; };
+		D50EB20328661D2900B075AA /* ApplyGlobalPropertiesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */; };
+		D50EB20428661D2900B075AA /* GenerateHelpFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */; };
+		D50EB20528661D2900B075AA /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E12865FB8C00B075AA /* BuildStep.swift */; };
+		D50EB20628661D7500B075AA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB18D286465E600B075AA /* Logger.swift */; };
+		D50EB20828661D8B00B075AA /* SystemPackage in Frameworks */ = {isa = PBXBuildFile; productRef = D50EB20728661D8B00B075AA /* SystemPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +92,42 @@
 
 /* Begin PBXFileReference section */
 		D50EB165286450BB00B075AA /* helpgen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = helpgen; sourceTree = BUILT_PRODUCTS_DIR; };
-		D50EB168286450BB00B075AA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D50EB168286450BB00B075AA /* HelpGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpGen.swift; sourceTree = "<group>"; };
+		D50EB17A2864540700B075AA /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		D50EB17C2864541400B075AA /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		D50EB17E286454F000B075AA /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		D50EB18428645EF800B075AA /* HelpSourceLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceLexer.swift; sourceTree = "<group>"; };
+		D50EB1882864601700B075AA /* Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build.swift; sourceTree = "<group>"; };
+		D50EB18D286465E600B075AA /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D50EB19028646B3400B075AA /* WhiteSpacesListTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteSpacesListTokenGenerator.swift; sourceTree = "<group>"; };
+		D50EB19228646BD900B075AA /* TokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenGenerator.swift; sourceTree = "<group>"; };
+		D50EB1942864754C00B075AA /* PropertiesSectionTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesSectionTokenGenerator.swift; sourceTree = "<group>"; };
+		D50EB19728648C8800B075AA /* HelpSourceParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceParser.swift; sourceTree = "<group>"; };
+		D50EB1A12864901F00B075AA /* helpgen-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "helpgen-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D50EB1A32864901F00B075AA /* HelpSourceLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceLexerTests.swift; sourceTree = "<group>"; };
+		D50EB1B02864961400B075AA /* PropertyTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyTokenGenerator.swift; sourceTree = "<group>"; };
+		D50EB1B228649CEE00B075AA /* ValueTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTokenGenerator.swift; sourceTree = "<group>"; };
+		D50EB1B62864A0DF00B075AA /* OperatorTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTokenGenerator.swift; sourceTree = "<group>"; };
+		D50EB1B92864AD7C00B075AA /* ElementTokenGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementTokenGenerator.swift; sourceTree = "<group>"; };
+		D50EB1BC2864CE2500B075AA /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		D50EB1BF2864D26100B075AA /* ExprNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExprNode.swift; sourceTree = "<group>"; };
+		D50EB1C12864D32800B075AA /* PropertyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyNode.swift; sourceTree = "<group>"; };
+		D50EB1C32864D3A000B075AA /* ElementNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementNode.swift; sourceTree = "<group>"; };
+		D50EB1C52865B5C800B075AA /* PropertiesNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesNode.swift; sourceTree = "<group>"; };
+		D50EB1C82865CE4700B075AA /* HelpSourceParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceParserTests.swift; sourceTree = "<group>"; };
+		D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceNode.swift; sourceTree = "<group>"; };
+		D50EB1D32865E37D00B075AA /* TestFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFiles.swift; sourceTree = "<group>"; };
+		D50EB1D82865F26200B075AA /* HelpSourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceFile.swift; sourceTree = "<group>"; };
+		D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyGlobalPropertiesStep.swift; sourceTree = "<group>"; };
+		D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseHelpSourceFileStep.swift; sourceTree = "<group>"; };
+		D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateHelpFileStep.swift; sourceTree = "<group>"; };
+		D50EB1E12865FB8C00B075AA /* BuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildStep.swift; sourceTree = "<group>"; };
+		D50EB1E42865FF6200B075AA /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		D50EB1E62865FF8F00B075AA /* Generatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generatable.swift; sourceTree = "<group>"; };
+		D50EB1EB2866035100B075AA /* HTMLHelpGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLHelpGenerator.swift; sourceTree = "<group>"; };
+		D50EB1ED286605C900B075AA /* SourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
+		D50EB1F128660F2100B075AA /* PropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyQueryable.swift; sourceTree = "<group>"; };
+		D50EB1F6286618CD00B075AA /* HTMLHelpGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLHelpGeneratorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +135,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50EB18C2864654700B075AA /* SystemPackage in Frameworks */,
+				D50EB1792864530C00B075AA /* ArgumentParser in Frameworks */,
+				D50EB1F5286616E900B075AA /* SwiftSoup in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D50EB19E2864901F00B075AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D50EB20828661D8B00B075AA /* SystemPackage in Frameworks */,
+				D50EB20128661CF900B075AA /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,14 +157,19 @@
 			isa = PBXGroup;
 			children = (
 				D50EB167286450BB00B075AA /* helpgen */,
+				D50EB1A22864901F00B075AA /* helpgen-tests */,
 				D50EB166286450BB00B075AA /* Products */,
+				D50EB1FF28661CF900B075AA /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		D50EB166286450BB00B075AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				D50EB165286450BB00B075AA /* helpgen */,
+				D50EB1A12864901F00B075AA /* helpgen-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +177,153 @@
 		D50EB167286450BB00B075AA /* helpgen */ = {
 			isa = PBXGroup;
 			children = (
-				D50EB168286450BB00B075AA /* main.swift */,
+				D50EB1D62865F1F400B075AA /* Logger */,
+				D50EB1D52865F1CA00B075AA /* Tokens */,
+				D50EB18628645F1D00B075AA /* Lexers */,
+				D50EB19628648C7300B075AA /* Parsers */,
+				D50EB1BE2864D24800B075AA /* Nodes */,
+				D50EB1D72865F24000B075AA /* Project */,
+				D50EB1872864600700B075AA /* Commands */,
+				D50EB168286450BB00B075AA /* HelpGen.swift */,
 			);
 			path = helpgen;
+			sourceTree = "<group>";
+		};
+		D50EB18628645F1D00B075AA /* Lexers */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB17A2864540700B075AA /* Lexer.swift */,
+				D50EB18428645EF800B075AA /* HelpSourceLexer.swift */,
+			);
+			path = Lexers;
+			sourceTree = "<group>";
+		};
+		D50EB1872864600700B075AA /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1882864601700B075AA /* Build.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		D50EB18F28646A8200B075AA /* TokenGenerators */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB19228646BD900B075AA /* TokenGenerator.swift */,
+				D50EB19028646B3400B075AA /* WhiteSpacesListTokenGenerator.swift */,
+				D50EB1942864754C00B075AA /* PropertiesSectionTokenGenerator.swift */,
+				D50EB1B02864961400B075AA /* PropertyTokenGenerator.swift */,
+				D50EB1B92864AD7C00B075AA /* ElementTokenGenerator.swift */,
+				D50EB1B228649CEE00B075AA /* ValueTokenGenerator.swift */,
+				D50EB1B62864A0DF00B075AA /* OperatorTokenGenerator.swift */,
+			);
+			path = TokenGenerators;
+			sourceTree = "<group>";
+		};
+		D50EB19628648C7300B075AA /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1BC2864CE2500B075AA /* Parser.swift */,
+				D50EB19728648C8800B075AA /* HelpSourceParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		D50EB1A22864901F00B075AA /* helpgen-tests */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1D32865E37D00B075AA /* TestFiles.swift */,
+				D50EB1A32864901F00B075AA /* HelpSourceLexerTests.swift */,
+				D50EB1C82865CE4700B075AA /* HelpSourceParserTests.swift */,
+				D50EB1F6286618CD00B075AA /* HTMLHelpGeneratorTests.swift */,
+			);
+			path = "helpgen-tests";
+			sourceTree = "<group>";
+		};
+		D50EB1BE2864D24800B075AA /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1BF2864D26100B075AA /* ExprNode.swift */,
+				D50EB1C52865B5C800B075AA /* PropertiesNode.swift */,
+				D50EB1C12864D32800B075AA /* PropertyNode.swift */,
+				D50EB1C32864D3A000B075AA /* ElementNode.swift */,
+				D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		D50EB1D52865F1CA00B075AA /* Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB18F28646A8200B075AA /* TokenGenerators */,
+				D50EB17C2864541400B075AA /* Token.swift */,
+			);
+			path = Tokens;
+			sourceTree = "<group>";
+		};
+		D50EB1D62865F1F400B075AA /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB18D286465E600B075AA /* Logger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		D50EB1D72865F24000B075AA /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1F028660E9200B075AA /* Protocols */,
+				D50EB1EF28660CC500B075AA /* Models */,
+				D50EB1E32865FF3300B075AA /* Generator */,
+				D50EB1DA2865F77E00B075AA /* BuildSteps */,
+				D50EB17E286454F000B075AA /* Project.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		D50EB1DA2865F77E00B075AA /* BuildSteps */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1E12865FB8C00B075AA /* BuildStep.swift */,
+				D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */,
+				D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */,
+				D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */,
+			);
+			path = BuildSteps;
+			sourceTree = "<group>";
+		};
+		D50EB1E32865FF3300B075AA /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1E62865FF8F00B075AA /* Generatable.swift */,
+				D50EB1E42865FF6200B075AA /* Generator.swift */,
+				D50EB1EB2866035100B075AA /* HTMLHelpGenerator.swift */,
+			);
+			path = Generator;
+			sourceTree = "<group>";
+		};
+		D50EB1EF28660CC500B075AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1D82865F26200B075AA /* HelpSourceFile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D50EB1F028660E9200B075AA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1ED286605C900B075AA /* SourceFile.swift */,
+				D50EB1F128660F2100B075AA /* PropertyQueryable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D50EB1FF28661CF900B075AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,9 +342,35 @@
 			dependencies = (
 			);
 			name = helpgen;
+			packageProductDependencies = (
+				D50EB1782864530C00B075AA /* ArgumentParser */,
+				D50EB18B2864654700B075AA /* SystemPackage */,
+				D50EB1F4286616E900B075AA /* SwiftSoup */,
+			);
 			productName = helpgen;
 			productReference = D50EB165286450BB00B075AA /* helpgen */;
 			productType = "com.apple.product-type.tool";
+		};
+		D50EB1A02864901F00B075AA /* helpgen-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D50EB1A52864901F00B075AA /* Build configuration list for PBXNativeTarget "helpgen-tests" */;
+			buildPhases = (
+				D50EB19D2864901F00B075AA /* Sources */,
+				D50EB19E2864901F00B075AA /* Frameworks */,
+				D50EB19F2864901F00B075AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "helpgen-tests";
+			packageProductDependencies = (
+				D50EB20028661CF900B075AA /* SwiftSoup */,
+				D50EB20728661D8B00B075AA /* SystemPackage */,
+			);
+			productName = "helpgen-tests";
+			productReference = D50EB1A12864901F00B075AA /* helpgen-tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -95,6 +385,9 @@
 					D50EB164286450BB00B075AA = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
+					D50EB1A02864901F00B075AA = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 				};
 			};
 			buildConfigurationList = D50EB160286450BB00B075AA /* Build configuration list for PBXProject "helpgen" */;
@@ -106,21 +399,107 @@
 				Base,
 			);
 			mainGroup = D50EB15C286450BB00B075AA;
+			packageReferences = (
+				D50EB1772864530C00B075AA /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				D50EB18A2864654700B075AA /* XCRemoteSwiftPackageReference "swift-system" */,
+				D50EB1F3286616E900B075AA /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = D50EB166286450BB00B075AA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D50EB164286450BB00B075AA /* helpgen */,
+				D50EB1A02864901F00B075AA /* helpgen-tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D50EB19F2864901F00B075AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D50EB161286450BB00B075AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D50EB169286450BB00B075AA /* main.swift in Sources */,
+				D50EB17D2864541400B075AA /* Token.swift in Sources */,
+				D50EB1E02865FB4300B075AA /* GenerateHelpFileStep.swift in Sources */,
+				D50EB1D12865DA0D00B075AA /* HelpSourceNode.swift in Sources */,
+				D50EB1B328649CEE00B075AA /* ValueTokenGenerator.swift in Sources */,
+				D50EB1C42864D3A000B075AA /* ElementNode.swift in Sources */,
+				D50EB1C02864D26100B075AA /* ExprNode.swift in Sources */,
+				D50EB1EC2866035100B075AA /* HTMLHelpGenerator.swift in Sources */,
+				D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */,
+				D50EB1E52865FF6200B075AA /* Generator.swift in Sources */,
+				D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */,
+				D50EB17B2864540700B075AA /* Lexer.swift in Sources */,
+				D50EB18E286465E600B075AA /* Logger.swift in Sources */,
+				D50EB1B72864A0DF00B075AA /* OperatorTokenGenerator.swift in Sources */,
+				D50EB1DE2865F99B00B075AA /* ParseHelpSourceFileStep.swift in Sources */,
+				D50EB1D92865F26200B075AA /* HelpSourceFile.swift in Sources */,
+				D50EB19828648C8800B075AA /* HelpSourceParser.swift in Sources */,
+				D50EB169286450BB00B075AA /* HelpGen.swift in Sources */,
+				D50EB1892864601700B075AA /* Build.swift in Sources */,
+				D50EB1EE286605C900B075AA /* SourceFile.swift in Sources */,
+				D50EB17F286454F000B075AA /* Project.swift in Sources */,
+				D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */,
+				D50EB1B12864961400B075AA /* PropertyTokenGenerator.swift in Sources */,
+				D50EB1F228660F2100B075AA /* PropertyQueryable.swift in Sources */,
+				D50EB1C62865B5C800B075AA /* PropertiesNode.swift in Sources */,
+				D50EB1DC2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift in Sources */,
+				D50EB19328646BD900B075AA /* TokenGenerator.swift in Sources */,
+				D50EB1C22864D32800B075AA /* PropertyNode.swift in Sources */,
+				D50EB1E22865FB8C00B075AA /* BuildStep.swift in Sources */,
+				D50EB1BD2864CE2500B075AA /* Parser.swift in Sources */,
+				D50EB1952864754C00B075AA /* PropertiesSectionTokenGenerator.swift in Sources */,
+				D50EB19128646B3400B075AA /* WhiteSpacesListTokenGenerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D50EB19D2864901F00B075AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D50EB1F8286618F100B075AA /* SourceFile.swift in Sources */,
+				D50EB20628661D7500B075AA /* Logger.swift in Sources */,
+				D50EB1F9286618F100B075AA /* PropertyQueryable.swift in Sources */,
+				D50EB1FA286618F100B075AA /* Generatable.swift in Sources */,
+				D50EB1FB286618F100B075AA /* Generator.swift in Sources */,
+				D50EB1FC286618F100B075AA /* HTMLHelpGenerator.swift in Sources */,
+				D50EB1D22865DC4000B075AA /* HelpSourceNode.swift in Sources */,
+				D50EB1CC2865CECB00B075AA /* ExprNode.swift in Sources */,
+				D50EB1CD2865CECB00B075AA /* PropertiesNode.swift in Sources */,
+				D50EB1CE2865CECB00B075AA /* PropertyNode.swift in Sources */,
+				D50EB1CF2865CECB00B075AA /* ElementNode.swift in Sources */,
+				D50EB1CA2865CE8900B075AA /* Parser.swift in Sources */,
+				D50EB1CB2865CE8900B075AA /* HelpSourceParser.swift in Sources */,
+				D50EB1BB2864C8C900B075AA /* ElementTokenGenerator.swift in Sources */,
+				D50EB1B82864A8AF00B075AA /* OperatorTokenGenerator.swift in Sources */,
+				D50EB1FD28661C1200B075AA /* HelpSourceFile.swift in Sources */,
+				D50EB1B42864A04600B075AA /* PropertyTokenGenerator.swift in Sources */,
+				D50EB1F7286618CD00B075AA /* HTMLHelpGeneratorTests.swift in Sources */,
+				D50EB1B52864A04600B075AA /* ValueTokenGenerator.swift in Sources */,
+				D50EB1A82864910200B075AA /* TokenGenerator.swift in Sources */,
+				D50EB1FE28661C7300B075AA /* Project.swift in Sources */,
+				D50EB20328661D2900B075AA /* ApplyGlobalPropertiesStep.swift in Sources */,
+				D50EB1A92864910200B075AA /* WhiteSpacesListTokenGenerator.swift in Sources */,
+				D50EB20528661D2900B075AA /* BuildStep.swift in Sources */,
+				D50EB1AA2864910200B075AA /* PropertiesSectionTokenGenerator.swift in Sources */,
+				D50EB1AC2864910200B075AA /* Lexer.swift in Sources */,
+				D50EB1C92865CE4700B075AA /* HelpSourceParserTests.swift in Sources */,
+				D50EB20428661D2900B075AA /* GenerateHelpFileStep.swift in Sources */,
+				D50EB1D42865E37D00B075AA /* TestFiles.swift in Sources */,
+				D50EB1AD2864910200B075AA /* HelpSourceLexer.swift in Sources */,
+				D50EB20228661D2900B075AA /* ParseHelpSourceFileStep.swift in Sources */,
+				D50EB1AE2864910200B075AA /* Token.swift in Sources */,
+				D50EB1A42864901F00B075AA /* HelpSourceLexerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +641,36 @@
 			};
 			name = Release;
 		};
+		D50EB1A62864901F00B075AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 58S349FGKE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.moxadventu.helpgen-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D50EB1A72864901F00B075AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 58S349FGKE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.moxadventu.helpgen-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -283,7 +692,71 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D50EB1A52864901F00B075AA /* Build configuration list for PBXNativeTarget "helpgen-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D50EB1A62864901F00B075AA /* Debug */,
+				D50EB1A72864901F00B075AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D50EB1772864530C00B075AA /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		D50EB18A2864654700B075AA /* XCRemoteSwiftPackageReference "swift-system" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-system.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		D50EB1F3286616E900B075AA /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D50EB1782864530C00B075AA /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50EB1772864530C00B075AA /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		D50EB18B2864654700B075AA /* SystemPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50EB18A2864654700B075AA /* XCRemoteSwiftPackageReference "swift-system" */;
+			productName = SystemPackage;
+		};
+		D50EB1F4286616E900B075AA /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50EB1F3286616E900B075AA /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		D50EB20028661CF900B075AA /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50EB1F3286616E900B075AA /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		D50EB20728661D8B00B075AA /* SystemPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50EB18A2864654700B075AA /* XCRemoteSwiftPackageReference "swift-system" */;
+			productName = SystemPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D50EB15D286450BB00B075AA /* Project object */;
 }

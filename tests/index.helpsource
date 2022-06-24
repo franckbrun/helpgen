@@ -1,0 +1,18 @@
+---
+title: Simpura
+template: template/index.html
+filename: index.html
+---
+
+/a name:@bi.main
+
+/p name:entry lang:fr
+
+/p name:entry lang:en class:
+
+
+/i name:authorization lang:en source:images/auth.png
+
+/p name:anchors
+
+See [](@)
