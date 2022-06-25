@@ -9,6 +9,6 @@ import Foundation
 
 protocol PropertyQueryable {
 
-  subscript(propertyName: String) -> String? { get }
+  func property(named propertyName: String, language: String) -> String?
   
 }

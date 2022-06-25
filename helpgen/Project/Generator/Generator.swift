@@ -7,22 +7,23 @@
 
 import Foundation
 
-enum GeneratorError : Error {
-  case notImplemented(String)
-}
-
 class Generator<S: SourceFile> : Generatable {
   
   let project: Project
-  let sourceFile: S
+  let source: S
   
   init(project: Project, sourceFile: S) {
     self.project = project
-    self.sourceFile = sourceFile
+    self.source = sourceFile
+    internalInit()
   }
   
-  func generate() throws -> Result<Any?, Error> {
-    throw GeneratorError.notImplemented(#function)
+  func internalInit() {
+    
+  }
+  
+  func generate() throws -> Any? {
+    throw GenericError.notImplemented(#function)
   }
   
 }

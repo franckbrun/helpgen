@@ -13,6 +13,6 @@ struct HelpGen: ParsableCommand {
   static var configuration = CommandConfiguration(
     abstract: "Apple Help Book Genegator",
     version: "0.1",
-    subcommands: [Build.self],
-    defaultSubcommand: Build.self)
+    subcommands: [Build.self, Create.self],
+    defaultSubcommand: Build.self)  
 }

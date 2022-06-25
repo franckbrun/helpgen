@@ -11,5 +11,7 @@ import SystemPackage
 protocol SourceFile {
   
   var filePath: FilePath { get }
-  
+
+  var fileType: FileType { get }
+
 }

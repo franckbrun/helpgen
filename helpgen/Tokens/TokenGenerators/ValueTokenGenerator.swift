@@ -9,7 +9,7 @@ import Foundation
 
 class ValueTokenGenerator: TokenGenerator {
   
-  let expression = "(?<value>[a-zA-Z0-9_\\-\\/]*)"
+  let expression = "^(?<value>[a-zA-Z0-9_\\-\\/]*)"
   
   override func tokenise(str: String) -> Token? {
     if let matches = matches(expression: self.expression, str: str), matches.count > 0 {

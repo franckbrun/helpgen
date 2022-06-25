@@ -9,7 +9,7 @@ import Foundation
 
 class PropertyTokenGenerator: TokenGenerator {
   
-  let expression = "(?<propertyName>[a-zA-Z_][a-zA-Z0-9_]*):"
+  let expression = "^\(RegExprConstant.propertyName)"
   
   override func tokenise(str: String) -> Token? {
     if let matches = matches(expression: self.expression, str: str), matches.count > 0 {

@@ -6,49 +6,26 @@
 //
 
 import Foundation
-import SwiftSoup
 
 enum HTMLHelpError: Error {
   case general
+  case emptyTemplateFile
 }
 
-class HTMLHelpGenerator<S: SourceFile & PropertyQueryable> : Generator<S> {
+class HTMLHelpGenerator<S: SourceFile & PropertyQueryable> : Generator<S>, StringReplacers {
 
-  override func generate() throws -> Result<Any?, Error>  {
-    let contents = defaultHTMLHelpContents()
-    
-    let doc = try SwiftSoup.parse(contents)
-    let elements = try doc.getAllElements()
-    
-    for element in elements {
-      if let attributes = element.getAttributes() {
-        for attr in attributes {
-          logd(attr.getValue())
-        }
-      }      
-      logd(element.ownText())
+  var replacers = [StringReplacer<S>]()
+  
+  override func internalInit() {
+    self.replacers.append(contentsOf: [
+      DOMStringReplacer(project: project, source: source)
+    ])
+  }
+  
+  override func generate() throws -> Any?  {
+    guard let templateContents = project.template(for: source) else {
+      throw HTMLHelpError.emptyTemplateFile
     }
-    
-    return .success(try doc.html())
+    return try changeValue(in:templateContents);
   }
-
-  func defaultHTMLHelpContents() -> String {
-    // TODO: Add project.defaultHTMLFile
-    
-    return
-"""
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>%{property:title}%</title>
-    <meta name="AppleTitle" content="%{property:apple_title}%">
-  </head>
-  <body>
-    <a name="%apple_anchor%"></a>
-    <div>%{element:*}%</div>    
-  </body>
-</html>
-"""
-  }
-
 }

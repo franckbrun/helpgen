@@ -9,7 +9,7 @@ import Foundation
 
 class ElementTokenGenerator: TokenGenerator {
   
-  let expression = "\\/(?<elementName>[a-zA-Z][a-zA-Z0-9_]*)"
+  let expression = "^\\/(?<elementName>[a-zA-Z][a-zA-Z0-9_]*)"
   
   override func tokenise(str: String) -> Token? {
     if let matches = matches(expression: self.expression, str: str), matches.count > 0 {

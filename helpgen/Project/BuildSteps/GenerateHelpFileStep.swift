@@ -22,7 +22,7 @@ class GenerateHelpFileStep: BuildStep {
   
   func exec() throws {
     let generator = HTMLHelpGenerator<HelpSourceFile>(project: self.project, sourceFile: self.helpSourceFile)
-    if case let .success(result) = try generator.generate(), let contents = result as? String {
+    if let contents = try generator.generate() as? String {
       //try contents.write(toFile: output.string, atomically: true, encoding: .utf8)
     }
   }

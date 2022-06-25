@@ -9,7 +9,7 @@ import Foundation
 
 class WhiteSpacesListTokenGenerator: TokenGenerator {
   
-  let expression = "[ \t\n]*"
+  let expression = "^[ \t\n]*"
   
   override func tokenise(str: String) -> Token? {
     if let match = match(expression: self.expression, str: str) {

@@ -9,9 +9,8 @@ import Foundation
 
 enum ParserError: Error {
   case unexceptedToken(Token)
-  case unexceptedEnd
   case unknownElementType(Token)
-  case notImplemented(String)
+  case unexceptedEnd
 }
 
 extension ParserError: LocalizedError {
@@ -19,12 +18,10 @@ extension ParserError: LocalizedError {
     switch self {
     case .unexceptedToken(let token):
       return "unexcepted token \(token)"
-    case .unexceptedEnd:
-      return "unexcepted end"
     case .unknownElementType(let token):
       return "unknownElementType in \(token)"
-    case .notImplemented(let method):
-      return "\(method) is not implemented"
+    case .unexceptedEnd:
+      return "unexcepted end"
     }
   }
 }

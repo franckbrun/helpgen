@@ -16,6 +16,9 @@ class Project {
   // List of langages
   var languages = [String]()
   
+  // Current langage for the current build
+  var currentLanguage = ""
+  
   // Globals project properties
   var properties = [String : String]()
   
@@ -44,6 +47,14 @@ extension Project {
 
 extension Project {
   
+  func create(at: FilePath) throws {
+    throw GenericError.notImplemented(#function)
+  }
+  
+}
+
+extension Project {
+  
   enum BuildError: Error {
     case generalError
   }
@@ -65,4 +76,40 @@ extension Project {
     }
   }
 
+}
+
+extension Project {
+  
+  func template<S: SourceFile & PropertyQueryable>(for source: S) -> String? {
+    // TODO: Check template of source
+    if let templateFilename = source.property(named: Constants.TemplatePropertyKey, language: self.currentLanguage) {
+      logd("found template filename : \(templateFilename)")
+      // TODO: Load template
+    }
+    
+    switch source.fileType {
+    case .helpSource:
+      return defaultHTMLTemplate()
+    default:
+      return nil;
+    }
+  }
+  
+  func defaultHTMLTemplate() -> String {
+    return
+"""
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>%{property:title}%</title>
+    <meta name="AppleTitle" content="%{property:apple_title}%">
+  </head>
+  <body>
+    <a name="%apple_anchor%"></a>
+    <div>%{element:*}%</div>
+  </body>
+</html>
+"""
+  }
+  
 }

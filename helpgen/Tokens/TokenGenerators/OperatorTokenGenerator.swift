@@ -10,7 +10,7 @@ import Foundation
 class OperatorTokenGenerator: TokenGenerator {
   
   //let expression = "[+\\-\\*=\\/]{1}"
-  let expression = "[=:]{1}"
+  let expression = "^[=:]{1}"
   
   lazy var tokens: [String : Token] = {
     return [

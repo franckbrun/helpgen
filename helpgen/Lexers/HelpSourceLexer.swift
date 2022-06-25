@@ -24,10 +24,23 @@ class HelpSourceLexer: Lexer {
   }
 
   func setInitialLexer() {
+    primaryClassExceptedTokens()
+  }
+  
+  override func found(token: Token) {
+    
+  }
+    
+  func primaryClassExceptedTokens() {
+    clear()
     add(WhiteSpacesListTokenGenerator(discardable: options.contains(.discardWhiteSpace)))
     add(PropertiesSectionTokenGenerator())
     add(PropertyTokenGenerator())
     add(ElementTokenGenerator())
     add(ValueTokenGenerator())
+  }
+  
+  func stringClassExpectedTokens() {
+    
   }
 }

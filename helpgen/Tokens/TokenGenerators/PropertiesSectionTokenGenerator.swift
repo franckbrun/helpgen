@@ -9,7 +9,7 @@ import Foundation
 
 class PropertiesSectionTokenGenerator : TokenGenerator {
   
-  let expression = "---"
+  let expression = "^---"
   
   override func tokenise(str: String) -> Token? {
     if let match = match(expression: self.expression, str: str) {

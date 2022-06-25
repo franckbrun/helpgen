@@ -8,6 +8,23 @@
 import XCTest
 import SystemPackage
 
+class MockSourceFile: SourceFile, PropertyQueryable {
+  var filePath = FilePath("MockSourceFile")
+  
+  var fileType = FileType.helpSource
+  
+  subscript(propertyName: String) -> String? {
+    switch propertyName {
+    case "title":
+      return "The Title of the page"
+    case "apple_title":
+      return "Apple Title"
+    default:
+      return nil
+    }
+  }
+}
+
 class HTMLHelpGeneratorTests: XCTestCase {
   
   override func setUpWithError() throws {
@@ -20,12 +37,15 @@ class HTMLHelpGeneratorTests: XCTestCase {
     Logger.currentLevel = .all
     
     let project = Project("test_project")
-    let sourceFile = HelpSourceFile(path: FilePath("test.helpsource"))
-    let generator = HTMLHelpGenerator<HelpSourceFile>(project: project, sourceFile: sourceFile)
+    let source = MockSourceFile()
+    let generator = HTMLHelpGenerator<MockSourceFile>(project: project, sourceFile: source)
 
     do {
-      let result = try generator.generate()
-      
+      if let result = try generator.generate() {
+        print(result)
+      } else {
+        XCTFail("empty result")
+      }
     } catch let error {
       XCTFail(error.localizedDescription)
     }

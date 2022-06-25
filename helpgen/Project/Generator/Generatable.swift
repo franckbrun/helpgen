@@ -9,6 +9,6 @@ import Foundation
 
 protocol Generatable {
   
-  func generate() throws -> Result<Any?, Error>
+  func generate() throws -> Any?
   
 }
