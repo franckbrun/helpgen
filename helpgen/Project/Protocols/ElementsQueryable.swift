@@ -9,6 +9,6 @@ import Foundation
 
 protocol ElementQueryable {
   
-  func element(type: ElementType, named elementName: String, language: String) -> [ElementNode]
+  func element(type: ElementType, name: String, language: String) -> [ElementNode]
 
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StringReplacer<S: PropertyQueryable>: StringReplacable {
+class StringReplacer<S: Any>: StringReplacable {
 
   var project: Project
   var source: S

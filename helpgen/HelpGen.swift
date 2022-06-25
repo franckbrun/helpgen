@@ -14,5 +14,16 @@ struct HelpGen: ParsableCommand {
     abstract: "Apple Help Book Genegator",
     version: "0.1",
     subcommands: [Build.self, Create.self],
-    defaultSubcommand: Build.self)  
+    defaultSubcommand: Build.self)
+  
+  struct Options: ParsableArguments {
+    @Flag(name:[.customShort("v"), .long], help: "Verbose")
+    var verbose = false {
+      didSet {
+        Logger.currentLevel = .verbose
+      }
+    }
+  }
+  
+  @OptionGroup var options: Options
 }

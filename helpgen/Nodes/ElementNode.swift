@@ -7,9 +7,10 @@
 
 import Foundation
 
-enum ElementType: String {
+enum ElementType: String, CaseIterable {
   case text
   case image
+  case anchor
 }
 
 struct ElementNode: ExprNode {

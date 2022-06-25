@@ -16,19 +16,18 @@ enum BuildError: Error {
 struct Build: ParsableCommand {
   
   struct Options: ParsableArguments {
-    @Flag(help: "Verbose")
-    var verbose = false {
-      didSet {
-        Logger.currentLevel = .verbose
-      }
-    }
+//    @Flag(help: "Verbose")
+//    var verbose = false {
+//      didSet {
+//        Logger.currentLevel = .verbose
+//      }
+//    }
     
     @Argument(help: "Source folder")
     var sourceFolder: String
     
     @Argument(help: "Output folder")
     var outputFolder: String = ""
-
   }
   
   @OptionGroup var options: Options

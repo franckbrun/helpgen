@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PropertiesReplacer<S: PropertyQueryable>: StringReplacer<S> {
+class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
   
   let regExprCache = RegExprCache.shared
   

@@ -80,7 +80,7 @@ extension Project {
 
 extension Project {
   
-  func template<S: SourceFile & PropertyQueryable>(for source: S) -> String? {
+  func template<S: SourceFile & LocalizedPropertyQueryable>(for source: S) -> String? {
     // TODO: Check template of source
     if let templateFilename = source.property(named: Constants.TemplatePropertyKey, language: self.currentLanguage) {
       logd("found template filename : \(templateFilename)")

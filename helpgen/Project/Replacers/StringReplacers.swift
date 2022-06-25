@@ -8,7 +8,7 @@
 import Foundation
 
 protocol StringReplacers {
-  associatedtype S: PropertyQueryable
+  associatedtype S: Any
   
   var replacers: [StringReplacer<S>] { get }
   

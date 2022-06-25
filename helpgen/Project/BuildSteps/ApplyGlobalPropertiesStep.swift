@@ -19,7 +19,7 @@ class ApplyGlobalPropertiesStep<T: SourcePropertiesQueryable>: BuildStep {
   let project: Project
   let source: T
   
-  init(project: Project, source:T) {
+  init(project: Project, source: T) {
     self.project = project
     self.source = source
   }
