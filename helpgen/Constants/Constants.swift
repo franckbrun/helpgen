@@ -9,6 +9,7 @@ import Foundation
 
 struct Constants {
   
+  static let PropertyKey = "property"
   static let TemplatePropertyKey = "template"
   static let NamePropertyKey = "name"
   static let LanguagePropertyKey = "lang"

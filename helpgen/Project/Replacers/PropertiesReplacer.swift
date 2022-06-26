@@ -7,39 +7,56 @@
 
 import Foundation
 
+struct Property {
+  let name: String
+  let value: String
+}
+
 class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
   
   let regExprCache = RegExprCache.shared
   
-  let propertyNameValue = "property"
-  
-  let propertyRegExpr = "%\\{\(RegExprConstant.propertyName)\(RegExprConstant.propertyValue)\\}%"
+  var searchRegExpr: String {
+    "%\\{\(RegExprConstant.propertyNameRegExpr)\(RegExprConstant.propertyValueRegExpr)\\}%"
+  }
   
   override func replace(in sourceStr: String) throws -> String? {
-    if let matches = regExprCache.matches(expression: propertyRegExpr, str: sourceStr) {
+    if let matches = regExprCache.matches(expression: self.searchRegExpr, str: sourceStr) {
       logd(matches.debugDescription)
 
       var hasChanges = false
       var str = sourceStr
       
       for match in matches.reversed() {
-        if let propertyKey = match.string(for: RegExprConstant.propertyNameKey, in: sourceStr),
-           propertyKey == propertyNameValue,
-           let propertyName = match.string(for: RegExprConstant.propertyValueKey, in: sourceStr) {
-
-          // Search property in source properties
-          if let value = self.source.property(named: propertyName, language: project.currentLanguage) {
-            if let range = Range(match.range, in: str) {
-              str.replaceSubrange(range.lowerBound..<range.upperBound, with: value)
-              hasChanges = true
-            }
+        if let value = value(for: match, in: str) {
+          if let range = Range(match.range, in: str) {
+            str.replaceSubrange(range.lowerBound..<range.upperBound, with: value)
+            hasChanges = true
           }
-          
         }
       }
       return hasChanges ? str : nil
     }
     return nil
+  }
+  
+  func value(for match: NSTextCheckingResult, in str: String) -> String? {
+    if let propertyName = match.string(for: RegExprConstant.propertyNameKey, in: str),
+       let propertyValue = match.string(for: RegExprConstant.propertyValueKey, in: str) {
+
+      return value(for: Property(name: propertyName, value: propertyValue))
+    }
+    return nil
+  }
+  
+  /// search property value for type ("property:<name>")
+  func value(for property: Property) -> String? {
+    guard property.name == Constants.PropertyKey else {
+      return nil
+    }
+    
+    // Search property in source properties
+    return self.source.property(named: property.value, language: project.currentLanguage)
   }
   
 }

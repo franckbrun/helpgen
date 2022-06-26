@@ -112,6 +112,7 @@
 		D50EB24628674F1400B075AA /* ElementNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24328674BF400B075AA /* ElementNodeExtension.swift */; };
 		D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
 		D50EB24828674F1400B075AA /* ElementsQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementsQueryable.swift */; };
+		D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
 		D50EB24D286884AE00B075AA /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* Serializable.swift */; };
 		D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24E2868854600B075AA /* FileSerializer.swift */; };
 /* End PBXBuildFile section */
@@ -186,6 +187,7 @@
 		D50EB23F28674ADC00B075AA /* PropertiesNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesNodeExtension.swift; sourceTree = "<group>"; };
 		D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedPropertyQueryable.swift; sourceTree = "<group>"; };
 		D50EB24328674BF400B075AA /* ElementNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementNodeExtension.swift; sourceTree = "<group>"; };
+		D50EB24928684D9A00B075AA /* ElementsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsReplacer.swift; sourceTree = "<group>"; };
 		D50EB24C286884AE00B075AA /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		D50EB24E2868854600B075AA /* FileSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSerializer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -406,6 +408,7 @@
 				D50EB228286702F000B075AA /* StringReplacers.swift */,
 				D50EB20C2866E2D000B075AA /* StringReplacer.swift */,
 				D50EB2112866E5E000B075AA /* PropertiesReplacer.swift */,
+				D50EB24928684D9A00B075AA /* ElementsReplacer.swift */,
 				D50EB2212866FE9F00B075AA /* DOMStringReplacer.swift */,
 			);
 			path = Replacers;
@@ -604,6 +607,7 @@
 				D50EB24D286884AE00B075AA /* Serializable.swift in Sources */,
 				D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */,
 				D50EB17B2864540700B075AA /* Lexer.swift in Sources */,
+				D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */,
 				D50EB18E286465E600B075AA /* Logger.swift in Sources */,
 				D50EB1B72864A0DF00B075AA /* OperatorTokenGenerator.swift in Sources */,
 				D50EB1DE2865F99B00B075AA /* ParseHelpSourceFileStep.swift in Sources */,
