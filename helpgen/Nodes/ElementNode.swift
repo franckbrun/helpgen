@@ -8,6 +8,7 @@
 import Foundation
 
 enum ElementType: String, CaseIterable {
+  case elements
   case text
   case image
   case anchor

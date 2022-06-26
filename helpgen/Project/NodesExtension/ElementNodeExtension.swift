@@ -9,7 +9,7 @@ import Foundation
 
 extension ElementNode: PropertyQueryable {
   
-  func property(named propertyName: String) -> String? {
+  func property(named propertyName: String) -> Property? {
     return self.propertiesNode.property(named: propertyName)
   }
   

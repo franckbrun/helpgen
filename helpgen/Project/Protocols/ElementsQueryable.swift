@@ -11,4 +11,7 @@ protocol ElementQueryable {
   
   func element(type: ElementType, name: String, language: String) -> [ElementNode]
 
+  // TODO: Implement this
+  //func element(type: ElementType, with properties:[Property]) -> [ElementNode]
+  
 }

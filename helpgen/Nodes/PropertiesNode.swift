@@ -14,3 +14,10 @@ struct PropertiesNode: ExprNode {
     return "PropertiesNode{properties:\(properties)}"
   }
 }
+
+extension PropertiesNode: PropertyQueryable {
+  
+  func property(named propertyName: String) -> Property? {
+    return properties.find(propertyName: propertyName)
+  }
+}

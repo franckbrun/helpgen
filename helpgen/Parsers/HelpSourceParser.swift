@@ -75,7 +75,7 @@ class HelpSourceParser: Parser {
     let propertyValue = token.value
     try nextToken()
 
-    return PropertyNode(name: propertyName, value: propertyValue)
+    return PropertyNode(property: Property(name: propertyName, value: propertyValue))
   }
   
   /// element ::= /name properties

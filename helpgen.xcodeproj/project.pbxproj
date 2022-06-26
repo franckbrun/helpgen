@@ -105,16 +105,19 @@
 		D50EB23928670C1F00B075AA /* ElementsQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementsQueryable.swift */; };
 		D50EB23B28670C5900B075AA /* CreateFolderBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */; };
 		D50EB23D2867444600B075AA /* CopyFilesBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */; };
-		D50EB24028674ADC00B075AA /* PropertiesNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23F28674ADC00B075AA /* PropertiesNodeExtension.swift */; };
 		D50EB24228674BC900B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
 		D50EB24428674BF400B075AA /* ElementNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24328674BF400B075AA /* ElementNodeExtension.swift */; };
-		D50EB24528674F1400B075AA /* PropertiesNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23F28674ADC00B075AA /* PropertiesNodeExtension.swift */; };
 		D50EB24628674F1400B075AA /* ElementNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24328674BF400B075AA /* ElementNodeExtension.swift */; };
 		D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
 		D50EB24828674F1400B075AA /* ElementsQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementsQueryable.swift */; };
 		D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
 		D50EB24D286884AE00B075AA /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* Serializable.swift */; };
 		D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24E2868854600B075AA /* FileSerializer.swift */; };
+		D50EB25128688B4300B075AA /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25028688B4300B075AA /* Property.swift */; };
+		D50EB2532868901E00B075AA /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2522868901E00B075AA /* ArrayExtension.swift */; };
+		D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2522868901E00B075AA /* ArrayExtension.swift */; };
+		D50EB25528689AE300B075AA /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25028688B4300B075AA /* Property.swift */; };
+		D50EB25628689AE300B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -184,12 +187,13 @@
 		D50EB23828670C1F00B075AA /* ElementsQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsQueryable.swift; sourceTree = "<group>"; };
 		D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderBuildStep.swift; sourceTree = "<group>"; };
 		D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFilesBuildStep.swift; sourceTree = "<group>"; };
-		D50EB23F28674ADC00B075AA /* PropertiesNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesNodeExtension.swift; sourceTree = "<group>"; };
 		D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedPropertyQueryable.swift; sourceTree = "<group>"; };
 		D50EB24328674BF400B075AA /* ElementNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementNodeExtension.swift; sourceTree = "<group>"; };
 		D50EB24928684D9A00B075AA /* ElementsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsReplacer.swift; sourceTree = "<group>"; };
 		D50EB24C286884AE00B075AA /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		D50EB24E2868854600B075AA /* FileSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSerializer.swift; sourceTree = "<group>"; };
+		D50EB25028688B4300B075AA /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		D50EB2522868901E00B075AA /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +382,7 @@
 		D50EB1EF28660CC500B075AA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D50EB25028688B4300B075AA /* Property.swift */,
 				D50EB1D82865F26200B075AA /* HelpSourceFile.swift */,
 			);
 			path = Models;
@@ -453,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				D50EB21F2866F1DC00B075AA /* NSTextCheckingResultExtension.swift */,
+				D50EB2522868901E00B075AA /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -468,7 +474,6 @@
 		D50EB23E28674AAD00B075AA /* NodesExtension */ = {
 			isa = PBXGroup;
 			children = (
-				D50EB23F28674ADC00B075AA /* PropertiesNodeExtension.swift */,
 				D50EB24328674BF400B075AA /* ElementNodeExtension.swift */,
 			);
 			path = NodesExtension;
@@ -596,6 +601,7 @@
 				D50EB1B328649CEE00B075AA /* ValueTokenGenerator.swift in Sources */,
 				D50EB1C42864D3A000B075AA /* ElementNode.swift in Sources */,
 				D50EB2222866FE9F00B075AA /* DOMStringReplacer.swift in Sources */,
+				D50EB2532868901E00B075AA /* ArrayExtension.swift in Sources */,
 				D50EB22B2867056100B075AA /* Create.swift in Sources */,
 				D50EB1C02864D26100B075AA /* ExprNode.swift in Sources */,
 				D50EB2142866E6F800B075AA /* StringReplacable.swift in Sources */,
@@ -621,8 +627,8 @@
 				D50EB1892864601700B075AA /* Build.swift in Sources */,
 				D50EB20D2866E2D000B075AA /* StringReplacer.swift in Sources */,
 				D50EB1EE286605C900B075AA /* SourceFile.swift in Sources */,
+				D50EB25128688B4300B075AA /* Property.swift in Sources */,
 				D50EB17F286454F000B075AA /* Project.swift in Sources */,
-				D50EB24028674ADC00B075AA /* PropertiesNodeExtension.swift in Sources */,
 				D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */,
 				D50EB227286700CB00B075AA /* FileType.swift in Sources */,
 				D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */,
@@ -647,7 +653,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D50EB24528674F1400B075AA /* PropertiesNodeExtension.swift in Sources */,
+				D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */,
+				D50EB25528689AE300B075AA /* Property.swift in Sources */,
+				D50EB25628689AE300B075AA /* ElementsReplacer.swift in Sources */,
 				D50EB24628674F1400B075AA /* ElementNodeExtension.swift in Sources */,
 				D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */,
 				D50EB24828674F1400B075AA /* ElementsQueryable.swift in Sources */,

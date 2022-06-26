@@ -14,4 +14,6 @@ struct Constants {
   static let NamePropertyKey = "name"
   static let LanguagePropertyKey = "lang"
   
+  
+  static let AllElementsKey = ""
 }

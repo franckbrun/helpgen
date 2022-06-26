@@ -26,8 +26,8 @@ class ApplyGlobalPropertiesStep<T: SourcePropertiesQueryable>: BuildStep {
   
   func exec() throws {
     if let sourceProperties = source.globalProperties() {
-      for property in sourceProperties.properties {
-        project.properties[property.name] = property.value
+      for node in sourceProperties.properties {
+        project.properties[node.property.name] = node.property.value
       }
     }
   }

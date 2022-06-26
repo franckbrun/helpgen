@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct Property {
-  let name: String
-  let value: String
-}
-
 class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
   
   let regExprCache = RegExprCache.shared
@@ -28,7 +23,7 @@ class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
       var str = sourceStr
       
       for match in matches.reversed() {
-        if let value = value(for: match, in: str) {
+        if let value = try value(for: match, in: str) {
           if let range = Range(match.range, in: str) {
             str.replaceSubrange(range.lowerBound..<range.upperBound, with: value)
             hasChanges = true
@@ -40,9 +35,9 @@ class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
     return nil
   }
   
-  func value(for match: NSTextCheckingResult, in str: String) -> String? {
-    if let propertyName = match.string(for: RegExprConstant.propertyNameKey, in: str),
-       let propertyValue = match.string(for: RegExprConstant.propertyValueKey, in: str) {
+  func value(for match: NSTextCheckingResult, in str: String) throws -> String? {
+    if let propertyName = match.string(withRangeName: RegExprConstant.propertyNameKey, in: str),
+       let propertyValue = match.string(withRangeName: RegExprConstant.propertyValueKey, in: str) {
 
       return value(for: Property(name: propertyName, value: propertyValue))
     }
@@ -56,7 +51,7 @@ class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
     }
     
     // Search property in source properties
-    return self.source.property(named: property.value, language: project.currentLanguage)
+    return self.source.property(named: property.value, language: project.currentLanguage)?.value
   }
   
 }

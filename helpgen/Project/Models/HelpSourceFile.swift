@@ -42,13 +42,9 @@ extension HelpSourceFile: SourcePropertiesQueryable {
 
 extension HelpSourceFile: LocalizedPropertyQueryable {
   
-  func property(named propertyName: String, language lang: String) -> String? {
+  func property(named propertyName: String, language lang: String) -> Property? {
     // TODO: Take language in account
-    if let node = self.node, let propertiesNode = node.properties {
-      let property = propertiesNode.properties.first { $0.name == propertyName }
-      return property?.value
-    }
-    return nil
+    return self.node?.properties?.property(named: propertyName)
   }
     
 }
@@ -62,12 +58,12 @@ extension HelpSourceFile: ElementQueryable {
     
     let filteredElements = node.elements.filter { element in
       
-      if element.type != type {
+      if ![ElementType.elements, element.type].contains(type) {
         return false
       }
 
-      if name != "*" {
-        guard let elementName = element.property(named: Constants.NamePropertyKey) else {
+      if !name.isEmpty {
+        guard let elementName = element.property(named: Constants.NamePropertyKey)?.value else {
           return false
         }
         if elementName != name {
@@ -76,8 +72,8 @@ extension HelpSourceFile: ElementQueryable {
       }
       
       if !language.isEmpty {
-        guard let elementLangage = element.property(named: Constants.LanguagePropertyKey) else {
-          return false
+        guard let elementLangage = element.property(named: Constants.LanguagePropertyKey)?.value else {
+          return true
         }
         if elementLangage != language {
           return false

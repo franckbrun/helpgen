@@ -35,7 +35,7 @@ class CreateFolderBuildStep<S: Serializable>: BuildStep {
   
   func exec() throws {
     var isDir = false
-    let exists = try serializer.fileExists(at: folderPath, idDirectory: &isDir)
+    let exists = try serializer.fileExists(at: folderPath, isDirectory: &isDir)
     if exists {
       if !isDir {
         throw CreateFolderError.notADirectory

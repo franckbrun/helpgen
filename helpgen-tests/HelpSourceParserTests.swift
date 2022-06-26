@@ -42,7 +42,7 @@ class HelpSourceParserTests: XCTestCase {
     let parser = HelpSourceParser(tokens)
     let expectedNode = HelpSourceNode(properties:
                                         PropertiesNode(properties: [
-                                        PropertyNode(name: "property", value: "value")
+                                        PropertyNode(property: Property(name: "property", value: "value"))
                                         ]),
                                       elements: [])
     

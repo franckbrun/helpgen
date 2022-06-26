@@ -8,21 +8,26 @@
 import XCTest
 import SystemPackage
 
-class MockSourceFile: SourceFile, LocalizedPropertyQueryable {
+class MockSourceFile: SourceFile, LocalizedPropertyQueryable, ElementQueryable {
   var filePath = FilePath("MockSourceFile")
   
   var fileType = FileType.helpSource
   
-  func property(named propertyName: String, language lang: String) -> String? {
+  func property(named propertyName: String, language lang: String) -> Property? {
     switch propertyName {
     case "title":
-      return "The Title of the page"
+      return Property(name:"title", value:"The Title of the page")
     case "apple_title":
-      return "Apple Title"
+      return Property(name:"apple_title", value:"Apple Title")
     default:
       return nil
     }
   }
+  
+  func element(type: ElementType, name: String, language: String) -> [ElementNode] {
+    return [ElementNode]()
+  }
+  
 }
 
 class HTMLHelpGeneratorTests: XCTestCase {

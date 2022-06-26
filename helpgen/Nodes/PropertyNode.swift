@@ -8,10 +8,9 @@
 import Foundation
 
 struct PropertyNode: ExprNode {
-  let name: String
-  let value: String
+  let property: Property
   
   var description: String {
-    return "PropertyNode{name:\(name), value:\(value)}"
+    return "PropertyNode{name:\(property.name), value:\(property.value)}"
   }
 }

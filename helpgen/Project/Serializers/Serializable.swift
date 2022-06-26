@@ -14,6 +14,6 @@ protocol Serializable {
   
   func createFile(at path: FilePath, contents: Data?) throws
   
-  func fileExists(at path: FilePath, idDirectory: inout Bool) throws -> Bool
+  func fileExists(at path: FilePath, isDirectory: inout Bool) throws -> Bool
   
 }

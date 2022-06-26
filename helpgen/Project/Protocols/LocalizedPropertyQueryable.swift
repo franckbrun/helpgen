@@ -9,6 +9,6 @@ import Foundation
 
 protocol LocalizedPropertyQueryable {
 
-  func property(named propertyName: String, language lang: String) -> String?
+  func property(named propertyName: String, language lang: String) -> Property?
   
 }
