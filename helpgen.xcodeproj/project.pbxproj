@@ -112,6 +112,8 @@
 		D50EB24628674F1400B075AA /* ElementNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24328674BF400B075AA /* ElementNodeExtension.swift */; };
 		D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
 		D50EB24828674F1400B075AA /* ElementsQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementsQueryable.swift */; };
+		D50EB24D286884AE00B075AA /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* Serializable.swift */; };
+		D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24E2868854600B075AA /* FileSerializer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -184,6 +186,8 @@
 		D50EB23F28674ADC00B075AA /* PropertiesNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesNodeExtension.swift; sourceTree = "<group>"; };
 		D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedPropertyQueryable.swift; sourceTree = "<group>"; };
 		D50EB24328674BF400B075AA /* ElementNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementNodeExtension.swift; sourceTree = "<group>"; };
+		D50EB24C286884AE00B075AA /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		D50EB24E2868854600B075AA /* FileSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSerializer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,11 +336,12 @@
 		D50EB1D72865F24000B075AA /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				D50EB1EF28660CC500B075AA /* Models */,
+				D50EB24B2868847800B075AA /* Serializers */,
 				D50EB23E28674AAD00B075AA /* NodesExtension */,
 				D50EB225286700BF00B075AA /* Enums */,
 				D50EB20B2866E26A00B075AA /* Replacers */,
 				D50EB1F028660E9200B075AA /* Protocols */,
-				D50EB1EF28660CC500B075AA /* Models */,
 				D50EB1E32865FF3300B075AA /* Generator */,
 				D50EB1DA2865F77E00B075AA /* BuildSteps */,
 				D50EB17E286454F000B075AA /* Project.swift */,
@@ -466,6 +471,15 @@
 			path = NodesExtension;
 			sourceTree = "<group>";
 		};
+		D50EB24B2868847800B075AA /* Serializers */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB24C286884AE00B075AA /* Serializable.swift */,
+				D50EB24E2868854600B075AA /* FileSerializer.swift */,
+			);
+			path = Serializers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -587,6 +601,7 @@
 				D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */,
 				D50EB23928670C1F00B075AA /* ElementsQueryable.swift in Sources */,
 				D50EB1E52865FF6200B075AA /* Generator.swift in Sources */,
+				D50EB24D286884AE00B075AA /* Serializable.swift in Sources */,
 				D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */,
 				D50EB17B2864540700B075AA /* Lexer.swift in Sources */,
 				D50EB18E286465E600B075AA /* Logger.swift in Sources */,
@@ -606,6 +621,7 @@
 				D50EB24028674ADC00B075AA /* PropertiesNodeExtension.swift in Sources */,
 				D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */,
 				D50EB227286700CB00B075AA /* FileType.swift in Sources */,
+				D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */,
 				D50EB2172866E76300B075AA /* GenericError.swift in Sources */,
 				D50EB229286702F000B075AA /* StringReplacers.swift in Sources */,
 				D50EB1B12864961400B075AA /* PropertyTokenGenerator.swift in Sources */,

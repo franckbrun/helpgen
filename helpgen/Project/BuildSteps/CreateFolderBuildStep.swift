@@ -13,30 +13,31 @@ enum CreateFolderError: Error {
   case notADirectory
 }
 
-class CreateFolderBuildStep: BuildStep {
+struct CreateFolderBuildOptions: OptionSet {
+  var rawValue: Int
   
-  struct Options: OptionSet {
-    var rawValue: Int
+  static let throwIfExists = CreateFolderBuildOptions(rawValue: 1 << 0)
+}
+
+class CreateFolderBuildStep<S: Serializable>: BuildStep {
     
-    static let throwIfExists = Options(rawValue: 1 << 0)
-  }
-  
   let folderPath: FilePath
   
-  var options: Options
+  var options: CreateFolderBuildOptions
   
-  init(_ folderPath: FilePath, options: Options = []) {
+  let serializer: S
+  
+  init(_ folderPath: FilePath, options: CreateFolderBuildOptions = [], serializer: S) {
     self.folderPath = folderPath
     self.options = options
+    self.serializer = serializer
   }
   
   func exec() throws {
-    
-    let fm = FileManager()
-        
-    var isDirectory: ObjCBool = false
-    if fm.fileExists(atPath: folderPath.string, isDirectory: &isDirectory) {
-      if !isDirectory.boolValue {
+    var isDir = false
+    let exists = try serializer.fileExists(at: folderPath, idDirectory: &isDir)
+    if exists {
+      if !isDir {
         throw CreateFolderError.notADirectory
       }
       if options.contains(.throwIfExists) {
@@ -44,7 +45,7 @@ class CreateFolderBuildStep: BuildStep {
       }
     }
     
-    try fm.createDirectory(atPath: folderPath.string, withIntermediateDirectories: true)    
+    try serializer.createFolder(at: folderPath, withIntermediateDirectories: true)
   }
   
 }
