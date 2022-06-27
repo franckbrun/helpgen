@@ -18,26 +18,34 @@ enum ElementReplacerError: Error {
 /// properties query ::= (propertyName=propertyvalue)
 /// propertyName ::= type | name | lang
 /// if text or image, type is not used
-class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable>: PropertiesReplacer<S> {
+class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: ValueTransformable>: PropertiesReplacer<S, T> {
 
+  let multiplesElements = "elements"
+  
   override var searchRegExpr: String {
     "%\\{\(RegExprConstant.elementQueryRegExpr)\\}%"
   }
   
   override func value(for match: NSTextCheckingResult, in str: String) throws -> String? {
     
-    // Search Element type
+    // Element type key
     guard let elementTypeNamed = match.string(withRangeName: RegExprConstant.ElementTypeKey, in: str) else {
       throw ElementReplacerError.missingElementType
     }
     
-    guard let elemenType = ElementType(rawValue: elementTypeNamed) else {
-      throw ElementReplacerError.unknownElementType(elementTypeNamed)
+    var elementType: ElementType?
+    var elementName: String?
+    var language = self.project.currentLanguage
+
+    // Element type
+    if elementTypeNamed != multiplesElements {
+      elementType = ElementType(rawValue: elementTypeNamed)
+      if elementType == nil {
+        throw ElementReplacerError.unknownElementType(elementTypeNamed)
+      }
     }
     
-    var elementName = Constants.AllElementsKey
-    var language = self.project.currentLanguage
-    
+    // Other properties
     if let propertiesString = match.string(withRangeName: RegExprConstant.PropertiesNameKey, in: str) {
       let properties = Property.parseList(from: propertiesString)
       if let nameProperty = properties.find(propertyName: Constants.NamePropertyKey) {
@@ -48,10 +56,16 @@ class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable>: Proper
       }
     }
     
-    let elements = source.element(type: elemenType, name: elementName, language: language)
+    let elements = source.element(type: elementType, name: elementName, language: language)
     
+    var replacementString = ""
     
+    for element in elements {
+      if let value = try self.valueTransformer.transform(element: element) {
+        replacementString.append(value)
+      }
+    }
     
-    return nil
+    return replacementString.isEmpty ? nil : replacementString
   }
 }

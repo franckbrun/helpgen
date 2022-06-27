@@ -78,7 +78,14 @@ class HelpSourceParser: Parser {
     return PropertyNode(property: Property(name: propertyName, value: propertyValue))
   }
   
-  /// element ::= /name properties
+  func parseValue() throws -> ValueNode {
+    let token = try expected(tokenType: .value)
+    let value = token.value
+    try nextToken()
+    return ValueNode(value: value)
+  }
+  
+  /// element ::= /name properties """value"""
   func parseElement() throws -> ElementNode {
     var token = try expected(tokenType: .element)
     guard let elementType = ElementType(rawValue: token.value) else {
@@ -86,12 +93,14 @@ class HelpSourceParser: Parser {
     }
     token = try nextToken()
     
-    var elementNode = ElementNode(type: elementType)
+    var properties = [Property]()
     
     if token.type == .property {
-      elementNode.propertiesNode = try parseProperties()
+      properties = try parseProperties().properties.map { $0.property }
     }
-    
+
+    let elementNode = ElementNode(element: Element(type: elementType, properties: properties))
+
     return elementNode
   }
   

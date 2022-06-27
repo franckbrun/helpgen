@@ -7,18 +7,16 @@
 
 import Foundation
 
-enum ElementType: String, CaseIterable {
-  case elements
-  case text
-  case image
-  case anchor
+struct ElementNode: ExprNode {
+
+  let element: Element
+  
 }
 
-struct ElementNode: ExprNode {
-  let type: ElementType
-  var propertiesNode = PropertiesNode()
+extension ElementNode: PropertyQueryable {
   
-  var description: String {
-    return "ElementNode{type:\(type.rawValue), properties:\(propertiesNode)}"
+  func property(named propertyName: String) -> Property? {
+    return self.element.property(named: propertyName)
   }
+  
 }

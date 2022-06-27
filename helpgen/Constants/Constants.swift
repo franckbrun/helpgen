@@ -13,7 +13,11 @@ struct Constants {
   static let TemplatePropertyKey = "template"
   static let NamePropertyKey = "name"
   static let LanguagePropertyKey = "lang"
+  static let OutputFilenameKey = "filename"
+
   
+  static let HelpFileExtension = "help"
+  static let LanguageProjectExtension = "lproj"
   
-  static let AllElementsKey = ""
+  static let PropertyNameCharacterSeparator = Character(".")
 }

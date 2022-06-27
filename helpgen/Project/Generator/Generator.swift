@@ -7,14 +7,16 @@
 
 import Foundation
 
-class Generator<S: SourceFile> : Generatable {
+class Generator<S: SourceFile, T: ValueTransformable> : Generatable {
   
   let project: Project
   let source: S
+  let valueTransformer: T
   
-  init(project: Project, sourceFile: S) {
+  init(project: Project, sourceFile: S, valueTransformer: T) {
     self.project = project
     self.source = sourceFile
+    self.valueTransformer = valueTransformer
     internalInit()
   }
   

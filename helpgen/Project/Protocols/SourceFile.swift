@@ -8,7 +8,7 @@
 import Foundation
 import SystemPackage
 
-protocol SourceFile {
+protocol SourceFile: Identifiable {
   
   var filePath: FilePath { get }
 

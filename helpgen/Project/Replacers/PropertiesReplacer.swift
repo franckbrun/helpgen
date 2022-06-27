@@ -7,18 +7,30 @@
 
 import Foundation
 
-class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
+enum PropertySource: String {
+  case project
+  case page
+}
+
+class PropertiesReplacer<S: LocalizedPropertyQueryable, T: ValueTransformable>: StringReplacer<S> {
   
   let regExprCache = RegExprCache.shared
   
   var searchRegExpr: String {
-    "%\\{\(RegExprConstant.propertyNameRegExpr)\(RegExprConstant.propertyValueRegExpr)\\}%"
+    "%\\{\(RegExprConstant.propertyQueryRegExpr)\\}%"
+  }
+  
+  let valueTransformer: T
+  
+  init(project: Project, source: S, valueTransformer: T) {
+    self.valueTransformer = valueTransformer
+    super.init(project: project, source: source)
   }
   
   override func replace(in sourceStr: String) throws -> String? {
     if let matches = regExprCache.matches(expression: self.searchRegExpr, str: sourceStr) {
       logd(matches.debugDescription)
-
+      
       var hasChanges = false
       var str = sourceStr
       
@@ -36,22 +48,50 @@ class PropertiesReplacer<S: LocalizedPropertyQueryable>: StringReplacer<S> {
   }
   
   func value(for match: NSTextCheckingResult, in str: String) throws -> String? {
-    if let propertyName = match.string(withRangeName: RegExprConstant.propertyNameKey, in: str),
-       let propertyValue = match.string(withRangeName: RegExprConstant.propertyValueKey, in: str) {
-
-      return value(for: Property(name: propertyName, value: propertyValue))
+    if let propertyName = match.string(withRangeName: RegExprConstant.propertyNameKey, in: str) {
+      
+      var language = project.currentLanguage
+      
+      // Specific language for this propertyy
+      if let propertiesString = match.string(withRangeName: RegExprConstant.PropertiesNameKey, in: str) {
+        let properties = Property.parseList(from: propertiesString)
+        if let languageProperty = properties.find(propertyName: Constants.LanguagePropertyKey) {
+          language = languageProperty.value
+        }
+      }
+      
+      if let (source, name) = decompose(propertyName: propertyName) {
+        if let property = property(for: name, from: source, language: language) {
+          return try valueTransformer.tranform(property: property)
+        }
+      }
     }
+    
     return nil
   }
   
-  /// search property value for type ("property:<name>")
-  func value(for property: Property) -> String? {
-    guard property.name == Constants.PropertyKey else {
+  /// search property value for type ("propertyName[:properties]]")
+  private func property(for propertyName: String, from propertySource: PropertySource, language: String?) -> Property? {
+    switch propertySource {
+    case .project:
+      loge("\(propertySource) not handled")
       return nil
+    case .page:
+      return source.property(named: propertyName, language: language)
     }
-    
-    // Search property in source properties
-    return self.source.property(named: property.value, language: project.currentLanguage)?.value
+  }
+  
+  private func decompose(propertyName: String) -> (PropertySource, String)? {
+    let components = propertyName.split(separator: Constants.PropertyNameCharacterSeparator)
+    if components.count == 1 {
+      return (.page, propertyName)
+    } else {
+      guard let source = PropertySource(rawValue: String(components[0])) else {
+        loge("unknow property source '\(propertyName)' (should be 'page' or 'project' or empty)")
+        return nil
+      }
+      return (source, components.dropFirst().joined(separator: "\(Constants.PropertyNameCharacterSeparator)"))
+    }
   }
   
 }

@@ -76,7 +76,6 @@
 		D50EB20528661D2900B075AA /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E12865FB8C00B075AA /* BuildStep.swift */; };
 		D50EB20628661D7500B075AA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB18D286465E600B075AA /* Logger.swift */; };
 		D50EB20828661D8B00B075AA /* SystemPackage in Frameworks */ = {isa = PBXBuildFile; productRef = D50EB20728661D8B00B075AA /* SystemPackage */; };
-		D50EB20A2866DD1100B075AA /* PListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2092866DD1100B075AA /* PListGenerator.swift */; };
 		D50EB20D2866E2D000B075AA /* StringReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB20C2866E2D000B075AA /* StringReplacer.swift */; };
 		D50EB2102866E45500B075AA /* RegExprCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB20F2866E45500B075AA /* RegExprCache.swift */; };
 		D50EB2122866E5E000B075AA /* PropertiesReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2112866E5E000B075AA /* PropertiesReplacer.swift */; };
@@ -102,14 +101,12 @@
 		D50EB235286706DD00B075AA /* StringReplacers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB228286702F000B075AA /* StringReplacers.swift */; };
 		D50EB236286706DD00B075AA /* PropertiesReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2112866E5E000B075AA /* PropertiesReplacer.swift */; };
 		D50EB237286706DD00B075AA /* DOMStringReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2212866FE9F00B075AA /* DOMStringReplacer.swift */; };
-		D50EB23928670C1F00B075AA /* ElementsQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementsQueryable.swift */; };
+		D50EB23928670C1F00B075AA /* ElementQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementQueryable.swift */; };
 		D50EB23B28670C5900B075AA /* CreateFolderBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */; };
 		D50EB23D2867444600B075AA /* CopyFilesBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */; };
 		D50EB24228674BC900B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
-		D50EB24428674BF400B075AA /* ElementNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24328674BF400B075AA /* ElementNodeExtension.swift */; };
-		D50EB24628674F1400B075AA /* ElementNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24328674BF400B075AA /* ElementNodeExtension.swift */; };
 		D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
-		D50EB24828674F1400B075AA /* ElementsQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementsQueryable.swift */; };
+		D50EB24828674F1400B075AA /* ElementQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementQueryable.swift */; };
 		D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
 		D50EB24D286884AE00B075AA /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* Serializable.swift */; };
 		D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24E2868854600B075AA /* FileSerializer.swift */; };
@@ -118,6 +115,18 @@
 		D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2522868901E00B075AA /* ArrayExtension.swift */; };
 		D50EB25528689AE300B075AA /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25028688B4300B075AA /* Property.swift */; };
 		D50EB25628689AE300B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
+		D50EB25928698AE600B075AA /* ValueTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25828698AE600B075AA /* ValueTransformable.swift */; };
+		D50EB25B28698BC700B075AA /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25A28698BC700B075AA /* Element.swift */; };
+		D50EB25E28698CF400B075AA /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25A28698BC700B075AA /* Element.swift */; };
+		D50EB25F28698CF400B075AA /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* Serializable.swift */; };
+		D50EB26028698CF400B075AA /* ValueTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25828698AE600B075AA /* ValueTransformable.swift */; };
+		D50EB26228698FC900B075AA /* ValueNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB26128698FC900B075AA /* ValueNode.swift */; };
+		D50EB265286990BC00B075AA /* HTMLValueTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB264286990BC00B075AA /* HTMLValueTransform.swift */; };
+		D50EB26A2869BA2E00B075AA /* EscapedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2692869BA2E00B075AA /* EscapedString.swift */; };
+		D50EB26C2869BC0F00B075AA /* CommonOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB26B2869BC0F00B075AA /* CommonOptions.swift */; };
+		D50EB26E2869D75200B075AA /* ProjectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB26D2869D75200B075AA /* ProjectBuilder.swift */; };
+		D50EB2702869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB26F2869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift */; };
+		D50EB2722869DBE000B075AA /* CreatePkgInfoFileBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2712869DBE000B075AA /* CreatePkgInfoFileBuildStep.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -170,7 +179,6 @@
 		D50EB1ED286605C900B075AA /* SourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
 		D50EB1F128660F2100B075AA /* PropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyQueryable.swift; sourceTree = "<group>"; };
 		D50EB1F6286618CD00B075AA /* HTMLHelpGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLHelpGeneratorTests.swift; sourceTree = "<group>"; };
-		D50EB2092866DD1100B075AA /* PListGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListGenerator.swift; sourceTree = "<group>"; };
 		D50EB20C2866E2D000B075AA /* StringReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringReplacer.swift; sourceTree = "<group>"; };
 		D50EB20F2866E45500B075AA /* RegExprCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegExprCache.swift; sourceTree = "<group>"; };
 		D50EB2112866E5E000B075AA /* PropertiesReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesReplacer.swift; sourceTree = "<group>"; };
@@ -184,16 +192,24 @@
 		D50EB226286700CB00B075AA /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		D50EB228286702F000B075AA /* StringReplacers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringReplacers.swift; sourceTree = "<group>"; };
 		D50EB22A2867056100B075AA /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
-		D50EB23828670C1F00B075AA /* ElementsQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsQueryable.swift; sourceTree = "<group>"; };
+		D50EB23828670C1F00B075AA /* ElementQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementQueryable.swift; sourceTree = "<group>"; };
 		D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderBuildStep.swift; sourceTree = "<group>"; };
 		D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFilesBuildStep.swift; sourceTree = "<group>"; };
 		D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedPropertyQueryable.swift; sourceTree = "<group>"; };
-		D50EB24328674BF400B075AA /* ElementNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementNodeExtension.swift; sourceTree = "<group>"; };
 		D50EB24928684D9A00B075AA /* ElementsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsReplacer.swift; sourceTree = "<group>"; };
 		D50EB24C286884AE00B075AA /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		D50EB24E2868854600B075AA /* FileSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSerializer.swift; sourceTree = "<group>"; };
 		D50EB25028688B4300B075AA /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		D50EB2522868901E00B075AA /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		D50EB25828698AE600B075AA /* ValueTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTransformable.swift; sourceTree = "<group>"; };
+		D50EB25A28698BC700B075AA /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		D50EB26128698FC900B075AA /* ValueNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueNode.swift; sourceTree = "<group>"; };
+		D50EB264286990BC00B075AA /* HTMLValueTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLValueTransform.swift; sourceTree = "<group>"; };
+		D50EB2692869BA2E00B075AA /* EscapedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscapedString.swift; sourceTree = "<group>"; };
+		D50EB26B2869BC0F00B075AA /* CommonOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonOptions.swift; sourceTree = "<group>"; };
+		D50EB26D2869D75200B075AA /* ProjectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBuilder.swift; sourceTree = "<group>"; };
+		D50EB26F2869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHelpBookPlistBuildStep.swift; sourceTree = "<group>"; };
+		D50EB2712869DBE000B075AA /* CreatePkgInfoFileBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePkgInfoFileBuildStep.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +267,7 @@
 				D50EB18628645F1D00B075AA /* Lexers */,
 				D50EB19628648C7300B075AA /* Parsers */,
 				D50EB1BE2864D24800B075AA /* Nodes */,
+				D50EB2682869BA1500B075AA /* PropertyWrappers */,
 				D50EB1D72865F24000B075AA /* Project */,
 				D50EB1872864600700B075AA /* Commands */,
 				D50EB168286450BB00B075AA /* HelpGen.swift */,
@@ -270,6 +287,7 @@
 		D50EB1872864600700B075AA /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				D50EB26B2869BC0F00B075AA /* CommonOptions.swift */,
 				D50EB1882864601700B075AA /* Build.swift */,
 				D50EB22A2867056100B075AA /* Create.swift */,
 			);
@@ -317,6 +335,7 @@
 				D50EB1C52865B5C800B075AA /* PropertiesNode.swift */,
 				D50EB1C12864D32800B075AA /* PropertyNode.swift */,
 				D50EB1C32864D3A000B075AA /* ElementNode.swift */,
+				D50EB26128698FC900B075AA /* ValueNode.swift */,
 				D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */,
 			);
 			path = Nodes;
@@ -342,15 +361,15 @@
 		D50EB1D72865F24000B075AA /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				D50EB1F028660E9200B075AA /* Protocols */,
 				D50EB1EF28660CC500B075AA /* Models */,
 				D50EB24B2868847800B075AA /* Serializers */,
-				D50EB23E28674AAD00B075AA /* NodesExtension */,
 				D50EB225286700BF00B075AA /* Enums */,
 				D50EB20B2866E26A00B075AA /* Replacers */,
-				D50EB1F028660E9200B075AA /* Protocols */,
+				D50EB25728689C5C00B075AA /* Tranformers */,
 				D50EB1E32865FF3300B075AA /* Generator */,
 				D50EB1DA2865F77E00B075AA /* BuildSteps */,
-				D50EB17E286454F000B075AA /* Project.swift */,
+				D50EB26D2869D75200B075AA /* ProjectBuilder.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -364,6 +383,8 @@
 				D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */,
 				D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */,
 				D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */,
+				D50EB26F2869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift */,
+				D50EB2712869DBE000B075AA /* CreatePkgInfoFileBuildStep.swift */,
 			);
 			path = BuildSteps;
 			sourceTree = "<group>";
@@ -374,7 +395,6 @@
 				D50EB1E62865FF8F00B075AA /* Generatable.swift */,
 				D50EB1E42865FF6200B075AA /* Generator.swift */,
 				D50EB1EB2866035100B075AA /* HTMLHelpGenerator.swift */,
-				D50EB2092866DD1100B075AA /* PListGenerator.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -383,7 +403,9 @@
 			isa = PBXGroup;
 			children = (
 				D50EB25028688B4300B075AA /* Property.swift */,
-				D50EB1D82865F26200B075AA /* HelpSourceFile.swift */,
+				D50EB25A28698BC700B075AA /* Element.swift */,
+				D50EB17E286454F000B075AA /* Project.swift */,
+				D50EB2632869908200B075AA /* SourceFiles */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,7 +416,7 @@
 				D50EB1ED286605C900B075AA /* SourceFile.swift */,
 				D50EB1F128660F2100B075AA /* PropertyQueryable.swift */,
 				D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */,
-				D50EB23828670C1F00B075AA /* ElementsQueryable.swift */,
+				D50EB23828670C1F00B075AA /* ElementQueryable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -410,8 +432,8 @@
 			isa = PBXGroup;
 			children = (
 				D50EB2132866E6F800B075AA /* StringReplacable.swift */,
-				D50EB228286702F000B075AA /* StringReplacers.swift */,
 				D50EB20C2866E2D000B075AA /* StringReplacer.swift */,
+				D50EB228286702F000B075AA /* StringReplacers.swift */,
 				D50EB2112866E5E000B075AA /* PropertiesReplacer.swift */,
 				D50EB24928684D9A00B075AA /* ElementsReplacer.swift */,
 				D50EB2212866FE9F00B075AA /* DOMStringReplacer.swift */,
@@ -471,14 +493,6 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		D50EB23E28674AAD00B075AA /* NodesExtension */ = {
-			isa = PBXGroup;
-			children = (
-				D50EB24328674BF400B075AA /* ElementNodeExtension.swift */,
-			);
-			path = NodesExtension;
-			sourceTree = "<group>";
-		};
 		D50EB24B2868847800B075AA /* Serializers */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +500,31 @@
 				D50EB24E2868854600B075AA /* FileSerializer.swift */,
 			);
 			path = Serializers;
+			sourceTree = "<group>";
+		};
+		D50EB25728689C5C00B075AA /* Tranformers */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB25828698AE600B075AA /* ValueTransformable.swift */,
+				D50EB264286990BC00B075AA /* HTMLValueTransform.swift */,
+			);
+			path = Tranformers;
+			sourceTree = "<group>";
+		};
+		D50EB2632869908200B075AA /* SourceFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB1D82865F26200B075AA /* HelpSourceFile.swift */,
+			);
+			path = SourceFiles;
+			sourceTree = "<group>";
+		};
+		D50EB2682869BA1500B075AA /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB2692869BA2E00B075AA /* EscapedString.swift */,
+			);
+			path = PropertyWrappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -594,21 +633,24 @@
 				D50EB24228674BC900B075AA /* LocalizedPropertyQueryable.swift in Sources */,
 				D50EB17D2864541400B075AA /* Token.swift in Sources */,
 				D50EB1E02865FB4300B075AA /* GenerateHelpFileStep.swift in Sources */,
-				D50EB20A2866DD1100B075AA /* PListGenerator.swift in Sources */,
 				D50EB21A2866E9E000B075AA /* RegExprMatchable.swift in Sources */,
+				D50EB265286990BC00B075AA /* HTMLValueTransform.swift in Sources */,
 				D50EB2202866F1DC00B075AA /* NSTextCheckingResultExtension.swift in Sources */,
+				D50EB26A2869BA2E00B075AA /* EscapedString.swift in Sources */,
 				D50EB1D12865DA0D00B075AA /* HelpSourceNode.swift in Sources */,
 				D50EB1B328649CEE00B075AA /* ValueTokenGenerator.swift in Sources */,
 				D50EB1C42864D3A000B075AA /* ElementNode.swift in Sources */,
+				D50EB26C2869BC0F00B075AA /* CommonOptions.swift in Sources */,
 				D50EB2222866FE9F00B075AA /* DOMStringReplacer.swift in Sources */,
 				D50EB2532868901E00B075AA /* ArrayExtension.swift in Sources */,
 				D50EB22B2867056100B075AA /* Create.swift in Sources */,
 				D50EB1C02864D26100B075AA /* ExprNode.swift in Sources */,
 				D50EB2142866E6F800B075AA /* StringReplacable.swift in Sources */,
 				D50EB2242866FF7000B075AA /* Constants.swift in Sources */,
+				D50EB25928698AE600B075AA /* ValueTransformable.swift in Sources */,
 				D50EB1EC2866035100B075AA /* HTMLHelpGenerator.swift in Sources */,
 				D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */,
-				D50EB23928670C1F00B075AA /* ElementsQueryable.swift in Sources */,
+				D50EB23928670C1F00B075AA /* ElementQueryable.swift in Sources */,
 				D50EB1E52865FF6200B075AA /* Generator.swift in Sources */,
 				D50EB24D286884AE00B075AA /* Serializable.swift in Sources */,
 				D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */,
@@ -616,13 +658,15 @@
 				D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */,
 				D50EB18E286465E600B075AA /* Logger.swift in Sources */,
 				D50EB1B72864A0DF00B075AA /* OperatorTokenGenerator.swift in Sources */,
+				D50EB26228698FC900B075AA /* ValueNode.swift in Sources */,
+				D50EB25B28698BC700B075AA /* Element.swift in Sources */,
 				D50EB1DE2865F99B00B075AA /* ParseHelpSourceFileStep.swift in Sources */,
+				D50EB2722869DBE000B075AA /* CreatePkgInfoFileBuildStep.swift in Sources */,
 				D50EB23B28670C5900B075AA /* CreateFolderBuildStep.swift in Sources */,
 				D50EB1D92865F26200B075AA /* HelpSourceFile.swift in Sources */,
 				D50EB19828648C8800B075AA /* HelpSourceParser.swift in Sources */,
 				D50EB21D2866EABD00B075AA /* RegExprConstants.swift in Sources */,
 				D50EB169286450BB00B075AA /* HelpGen.swift in Sources */,
-				D50EB24428674BF400B075AA /* ElementNodeExtension.swift in Sources */,
 				D50EB2122866E5E000B075AA /* PropertiesReplacer.swift in Sources */,
 				D50EB1892864601700B075AA /* Build.swift in Sources */,
 				D50EB20D2866E2D000B075AA /* StringReplacer.swift in Sources */,
@@ -632,8 +676,10 @@
 				D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */,
 				D50EB227286700CB00B075AA /* FileType.swift in Sources */,
 				D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */,
+				D50EB26E2869D75200B075AA /* ProjectBuilder.swift in Sources */,
 				D50EB2172866E76300B075AA /* GenericError.swift in Sources */,
 				D50EB229286702F000B075AA /* StringReplacers.swift in Sources */,
+				D50EB2702869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift in Sources */,
 				D50EB1B12864961400B075AA /* PropertyTokenGenerator.swift in Sources */,
 				D50EB1F228660F2100B075AA /* PropertyQueryable.swift in Sources */,
 				D50EB1C62865B5C800B075AA /* PropertiesNode.swift in Sources */,
@@ -653,12 +699,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50EB25E28698CF400B075AA /* Element.swift in Sources */,
+				D50EB25F28698CF400B075AA /* Serializable.swift in Sources */,
+				D50EB26028698CF400B075AA /* ValueTransformable.swift in Sources */,
 				D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */,
 				D50EB25528689AE300B075AA /* Property.swift in Sources */,
 				D50EB25628689AE300B075AA /* ElementsReplacer.swift in Sources */,
-				D50EB24628674F1400B075AA /* ElementNodeExtension.swift in Sources */,
 				D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */,
-				D50EB24828674F1400B075AA /* ElementsQueryable.swift in Sources */,
+				D50EB24828674F1400B075AA /* ElementQueryable.swift in Sources */,
 				D50EB22E286706DD00B075AA /* GenericError.swift in Sources */,
 				D50EB22F286706DD00B075AA /* NSTextCheckingResultExtension.swift in Sources */,
 				D50EB230286706DD00B075AA /* RegExprMatchable.swift in Sources */,

@@ -8,23 +8,49 @@
 import Foundation
 import SystemPackage
 
-class GenerateHelpFileStep: BuildStep {
+enum GenerateHelpFileError: Error {
+  case undefinedContents
+  case undefinedOutputFilename
+}
+
+class GenerateHelpFileStep<S: Serializable>: BuildStep {
   
   let project: Project
   let helpSourceFile: HelpSourceFile
   let output: FilePath
+  let serializer: S
   
-  init(project: Project, helpSourceFile: HelpSourceFile, output: FilePath) {
+  init(project: Project, helpSourceFile: HelpSourceFile, output: FilePath, serializer: S) {
     self.project = project
     self.helpSourceFile = helpSourceFile
     self.output = output
+    self.serializer = serializer
   }
   
   func exec() throws {
-    let generator = HTMLHelpGenerator<HelpSourceFile>(project: self.project, sourceFile: self.helpSourceFile)
+    let valueTransformer = HTMLValueTransform(project: self.project)
+    let generator = HTMLHelpGenerator(project: self.project, sourceFile: self.helpSourceFile, valueTransformer: valueTransformer)
     if let contents = try generator.generate() as? String {
-      //try contents.write(toFile: output.string, atomically: true, encoding: .utf8)
+      guard let data = contents.data(using: .utf8)  else {
+        throw GenerateHelpFileError.undefinedContents
+      }
+      
+      let path = try outputFilePath(for: helpSourceFile)
+      try serializer.write(to: path, contents: data)
     }
+  }
+  
+  func outputFilePath(for sourceFile: HelpSourceFile) throws -> FilePath {
+    
+    if let property = sourceFile.property(named: Constants.OutputFilenameKey, language: self.project.currentLanguage) {
+      return FilePath(property.name)
+    }
+    
+    if let defaultOutputFilename = sourceFile.defaultOutputFilename {
+      return FilePath(defaultOutputFilename)
+    }
+    
+    throw GenerateHelpFileError.undefinedOutputFilename
   }
   
 }

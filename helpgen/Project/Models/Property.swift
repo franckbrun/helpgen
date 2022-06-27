@@ -12,7 +12,7 @@ struct Property {
   let value: String
 }
 
-extension Property: Equatable {}
+extension Property: Equatable, Hashable, Codable {}
 
 extension Property {
   

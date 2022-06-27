@@ -8,11 +8,9 @@
 import Foundation
 
 struct PropertiesNode: ExprNode {
+
   var properties = [PropertyNode]()
   
-  var description: String {
-    return "PropertiesNode{properties:\(properties)}"
-  }
 }
 
 extension PropertiesNode: PropertyQueryable {

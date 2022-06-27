@@ -11,7 +11,7 @@ import ArgumentParser
 @main
 struct HelpGen: ParsableCommand {
   static var configuration = CommandConfiguration(
-    abstract: "Apple Help Book Genegator",
+    abstract: "Apple Help Book builder",
     version: "0.1",
     subcommands: [Build.self, Create.self],
     defaultSubcommand: Build.self)

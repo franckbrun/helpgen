@@ -10,12 +10,18 @@ import SystemPackage
 
 class HelpSourceFile: SourceFile {
   
+  let id = UUID().uuidString
+  
   let fileType: FileType
   
   let filePath: FilePath
   
   var node: HelpSourceNode?
-   
+     
+  var defaultOutputFilename: String? {
+    return self.filePath.lastComponent?.string
+  }
+  
   init(path: FilePath) {
     self.filePath = path
     self.fileType = FileType.fileType(for: path)
@@ -42,7 +48,7 @@ extension HelpSourceFile: SourcePropertiesQueryable {
 
 extension HelpSourceFile: LocalizedPropertyQueryable {
   
-  func property(named propertyName: String, language lang: String) -> Property? {
+  func property(named propertyName: String, language lang: String?) -> Property? {
     // TODO: Take language in account
     return self.node?.properties?.property(named: propertyName)
   }
@@ -51,31 +57,31 @@ extension HelpSourceFile: LocalizedPropertyQueryable {
 
 extension HelpSourceFile: ElementQueryable {
   
-  func element(type: ElementType, name: String, language: String) -> [ElementNode] {
+  func element(type: ElementType?, name: String?, language: String?) -> [Element] {
     guard let node = node else {
       return []
     }
     
-    let filteredElements = node.elements.filter { element in
+    let filteredElements = node.elements.filter { elementNode in
       
-      if ![ElementType.elements, element.type].contains(type) {
+      if let queryedElementType = type, elementNode.element.type != queryedElementType {
         return false
       }
 
-      if !name.isEmpty {
-        guard let elementName = element.property(named: Constants.NamePropertyKey)?.value else {
+      if let queryedElementName = name {
+        guard let elementName = elementNode.property(named: Constants.NamePropertyKey)?.value else {
           return false
         }
-        if elementName != name {
+        if elementName != queryedElementName {
           return false
         }
       }
       
-      if !language.isEmpty {
-        guard let elementLangage = element.property(named: Constants.LanguagePropertyKey)?.value else {
+      if let queryedElementLanguage = language {
+        guard let elementLangage = elementNode.property(named: Constants.LanguagePropertyKey)?.value else {
           return true
         }
-        if elementLangage != language {
+        if elementLangage != queryedElementLanguage {
           return false
         }
       }
@@ -83,7 +89,7 @@ extension HelpSourceFile: ElementQueryable {
       return true
     }
     
-    return filteredElements
+    return filteredElements.map { $0.element }
   }
   
 }

@@ -8,14 +8,21 @@
 import Foundation
 import SwiftSoup
 
-class DOMStringReplacer<S: LocalizedPropertyQueryable & ElementQueryable>: StringReplacer<S>, StringReplacers {
+class DOMStringReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: ValueTransformable>: StringReplacer<S>, StringReplacers {
   
   var replacers = [StringReplacer<S>]()
 
+  let valueTransformer: T
+  
+  init(project: Project, source: S, valueTransformer: T) {
+    self.valueTransformer = valueTransformer
+    super.init(project: project, source: source)
+  }
+  
   override func internalInit() {
     replacers.append(contentsOf: [
-      PropertiesReplacer(project: project, source: source),
-      ElementsReplacer(project: project, source: source)
+      PropertiesReplacer(project: project, source: source, valueTransformer: valueTransformer),
+      ElementsReplacer(project: project, source: source, valueTransformer: valueTransformer)
     ])
   }
   

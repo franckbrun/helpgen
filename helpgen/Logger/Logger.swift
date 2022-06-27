@@ -17,7 +17,7 @@ enum LogLevel: Int {
 }
 
 class Logger {
-  static var currentLevel = LogLevel.error
+  static var currentLevel = LogLevel.info
   
   static func log(level: LogLevel, line: String) {
     if level.rawValue <= currentLevel.rawValue {

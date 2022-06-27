@@ -10,3 +10,11 @@ import Foundation
 protocol ExprNode: CustomStringConvertible, Equatable {
   
 }
+
+extension ExprNode {
+  
+  var description: String {
+    let mirror = Mirror(reflecting: self)
+    return mirror.description    
+  }
+}

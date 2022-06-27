@@ -10,7 +10,7 @@ import Foundation
 struct RegExprConstant {
   
   static let propertyNameRegExpr = "(?<propertyName>[a-zA-Z_][a-zA-Z0-9_.]*):"
-  static let propertyNameQueryRegExpr = "(?<propertyName>[a-zA-Z_][a-zA-Z0-9_.]*)="
+  static let propertyQueryRegExpr = "(?<propertyName>[a-zA-Z_][a-zA-Z0-9_.]*)(?::(?<properties>.*))*"
   static let propertyNameKey = "propertyName"
 
   static let propertyValueRegExpr = "(?<propertyValue>[a-z0-9_]+)"

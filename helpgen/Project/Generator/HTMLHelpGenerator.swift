@@ -12,13 +12,13 @@ enum HTMLHelpError: Error {
   case emptyTemplateFile
 }
 
-class HTMLHelpGenerator<S: SourceFile & LocalizedPropertyQueryable & ElementQueryable> : Generator<S>, StringReplacers {
+class HTMLHelpGenerator<S: SourceFile & LocalizedPropertyQueryable & ElementQueryable, T: ValueTransformable> : Generator<S, T>, StringReplacers {
 
   var replacers = [StringReplacer<S>]()
   
   override func internalInit() {
     self.replacers.append(contentsOf: [
-      DOMStringReplacer(project: project, source: source)
+      DOMStringReplacer(project: project, source: source, valueTransformer: valueTransformer)
     ])
   }
   

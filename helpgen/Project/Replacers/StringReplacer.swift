@@ -9,17 +9,16 @@ import Foundation
 
 class StringReplacer<S: Any>: StringReplacable {
 
-  var project: Project
-  var source: S
-  
+  let project: Project
+  let source: S
+ 
   init(project: Project, source: S) {
     self.project = project
     self.source = source
     internalInit()
   }
   
-  func internalInit() {
-    
+  func internalInit() {    
   }
   
   func replace(in sourceStr: String) throws -> String? {

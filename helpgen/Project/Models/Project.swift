@@ -16,8 +16,9 @@ class Project {
   // List of langages
   var languages = [String]()
   
-  // Current langage for the current build
-  var currentLanguage = ""
+  /// Current langage for the current build
+  /// nil = no specific language
+  var currentLanguage: String?
   
   // Globals project properties
   var properties = [String : String]()
@@ -47,39 +48,6 @@ extension Project {
 
 extension Project {
   
-  func create(at: FilePath) throws {
-    throw GenericError.notImplemented(#function)
-  }
-  
-}
-
-extension Project {
-  
-  enum BuildError: Error {
-    case generalError
-  }
-  
-  func build(at: FilePath) throws {
-    let output = FilePath(".")
-    
-    if at.isEmpty {
-      
-    }
-    
-    for file in self.helpSourceFiles {
-      try ParseHelpSourceFileStep(file).exec()
-      try ApplyGlobalPropertiesStep(project: self, source: file).exec()
-    }
-       
-    for file in self.helpSourceFiles {
-      try GenerateHelpFileStep(project: self, helpSourceFile: file, output: output).exec()
-    }
-  }
-
-}
-
-extension Project {
-  
   func template<S: SourceFile & LocalizedPropertyQueryable>(for source: S) -> String? {
     // TODO: Check template of source
     if let templateFilename = source.property(named: Constants.TemplatePropertyKey, language: self.currentLanguage) {
@@ -101,8 +69,8 @@ extension Project {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>%{property:title}%</title>
-    <meta name="AppleTitle" content="%{property:apple_title}%">
+    <title>%{page.title}%</title>
+    <meta name="AppleTitle" content="%{page.apple_title}%">
   </head>
   <body>
     <a name="%apple_anchor%"></a>
