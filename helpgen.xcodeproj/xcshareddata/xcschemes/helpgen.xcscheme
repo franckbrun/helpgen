@@ -52,20 +52,20 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "create"
+            argument = "-v"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-p test"
+            argument = "create -p test -l en -l fr -i &quot;/Users/franckb/Documents/Dev/MoxAdventu/Current projets/Simpura/Simpura/Help/Source&quot;"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "build -p test -l en -l fr -i &quot;/Users/franckb/Documents/Dev/MoxAdventu/Current projets/Simpura/Simpura/Help/Source&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-l en"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-l fr"
-            isEnabled = "YES">
+            argument = "--overwrite"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

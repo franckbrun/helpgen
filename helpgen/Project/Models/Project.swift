@@ -11,8 +11,13 @@ import SystemPackage
 class Project {
 
   // Project name
-  var name: String
+  var name: String = "Application"
 
+  // Project filename
+  var filename: String {
+    "\(self.name).\(Constants.HelpFileExtension)"
+  }
+  
   // List of langages
   var languages = [String]()
   

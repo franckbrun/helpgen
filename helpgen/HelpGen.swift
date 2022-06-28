@@ -13,17 +13,13 @@ struct HelpGen: ParsableCommand {
   static var configuration = CommandConfiguration(
     abstract: "Apple Help Book builder",
     version: "0.1",
-    subcommands: [Build.self, Create.self],
-    defaultSubcommand: Build.self)
+    subcommands: [BuildCommand.self, CreateCommand.self],
+    defaultSubcommand: BuildCommand.self)
   
-  struct Options: ParsableArguments {
-    @Flag(name:[.customShort("v"), .long], help: "Verbose")
-    var verbose = false {
-      didSet {
-        Logger.currentLevel = .verbose
-      }
+  @Flag(name:[.customShort("v"), .long], help: "Verbose")
+  var verbose = false {
+    didSet {
+      Logger.currentLevel = .verbose
     }
   }
-  
-  @OptionGroup var options: Options
 }

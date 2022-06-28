@@ -17,13 +17,11 @@ class GenerateHelpFileStep<S: StorageWrappable>: BuildStep {
   
   let project: Project
   let helpSourceFile: HelpSourceFile
-  let output: FilePath
   let serializer: S
   
-  init(project: Project, helpSourceFile: HelpSourceFile, output: FilePath, serializer: S) {
+  init(project: Project, helpSourceFile: HelpSourceFile, serializer: S) {
     self.project = project
     self.helpSourceFile = helpSourceFile
-    self.output = output
     self.serializer = serializer
   }
   

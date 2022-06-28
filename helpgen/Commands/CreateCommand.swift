@@ -1,5 +1,5 @@
 //
-//  Create.swift
+//  CreateCommand.swift
 //  helpgen
 //
 //  Created by Franck Brun on 25/06/2022.
@@ -9,8 +9,10 @@ import Foundation
 import SystemPackage
 import ArgumentParser
 
-struct Create: ParsableCommand {
+struct CreateCommand: ParsableCommand {
   
+  static var configuration = CommandConfiguration(commandName: "create")
+
   struct Options: ParsableArguments {
     @OptionGroup
     var common: CommonOptions
@@ -22,13 +24,11 @@ struct Create: ParsableCommand {
   @OptionGroup var options: Options
   
   func run() throws {
-    let fileManager = FileManager()
-    var projectFolderPath = FilePath(fileManager.currentDirectoryPath).appending(self.options.common.outputFolder).appending(self.options.common.projectName)
-    projectFolderPath.extension = Constants.HelpFileExtension
-    
     let project = Project(self.options.common.projectName)
     project.languages = self.options.common.languages
     
+    let projectFolderPath = Config.currentPath.appending(self.options.common.outputFolder).appending(project.filename)
+
     let serializer = try createSerializer(rootPath: projectFolderPath)
     
     if try serializer.fileExists(at: projectFolderPath) {
@@ -36,7 +36,7 @@ struct Create: ParsableCommand {
         logi("Project '\(project.name)' already exists at '\(projectFolderPath)'")
         return
       }
-      try serializer.
+      try serializer.removeFile(at: projectFolderPath)
     }
     
     let builder = ProjectBuilder(project: project, serializer: serializer)

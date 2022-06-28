@@ -18,6 +18,12 @@ class ProjectBuilder<S: StorageWrappable> {
     self.serializer = serializer
   }
   
+  func execute(buildSteps: [BuildStep]) throws {
+    for buildStep in buildSteps {
+      try buildStep.exec()
+    }
+  }
+  
 }
 
 extension ProjectBuilder {
@@ -44,11 +50,8 @@ extension ProjectBuilder {
     ]
     
     buildSteps.append(contentsOf: filesBuildSteps)
-    
-    
-    for buildStep in buildSteps {
-      try buildStep.exec()
-    }
+          
+    try execute(buildSteps: buildSteps)
   }
   
 }
@@ -59,21 +62,24 @@ extension ProjectBuilder {
     case generalError
   }
   
-  func build(at: FilePath) throws {
-//    let output = FilePath(".")
-//    
-//    if at.isEmpty {
-//      
-//    }
-//    
-//    for file in self.project.helpSourceFiles {
-//      try ParseHelpSourceFileStep(file).exec()
-//      try ApplyGlobalPropertiesStep(project: self.project, source: file).exec()
-//    }
-//    
-//    for file in self.project.helpSourceFiles {
-//      try GenerateHelpFileStep(project: self.project, helpSourceFile: file, output: output, serializer: self.serializer).exec()
-//    }
+  func build(at projectFolderPath: FilePath) throws {
+
+    var buildSteps = [BuildStep]()
+    
+    let sourceFiles = self.project.helpSourceFiles.sorted(by: { $0.filePath.string > $1.filePath.string })
+    
+    for file in sourceFiles {
+      buildSteps.append(contentsOf: [
+        ParseHelpSourceFileStep(file),
+        ApplyGlobalPropertiesStep(project: self.project, source: file)
+      ] as [BuildStep])
+    }
+    
+    for file in self.project.helpSourceFiles {
+      buildSteps.append(GenerateHelpFileStep(project: self.project, helpSourceFile: file, serializer: self.serializer))
+    }
+    
+    try execute(buildSteps: buildSteps)
   }
 
 }
