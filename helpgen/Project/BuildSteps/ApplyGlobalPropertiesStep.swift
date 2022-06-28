@@ -9,8 +9,8 @@ import Foundation
 
 protocol SourcePropertiesQueryable {
   
-  func globalProperties() -> PropertiesNode?
-  func sourceProperties() -> PropertiesNode?
+  func globalProperties() -> [Property]?
+  func sourceProperties() -> [Property]?
   
 }
 
@@ -25,9 +25,9 @@ class ApplyGlobalPropertiesStep<T: SourcePropertiesQueryable>: BuildStep {
   }
   
   func exec() throws {
-    if let sourceProperties = source.globalProperties() {
-      for node in sourceProperties.properties {
-        project.properties[node.property.name] = node.property.value
+    if let properties = source.globalProperties() {
+      for property in properties {
+        project.properties[property.name] = property.value
       }
     }
   }

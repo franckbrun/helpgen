@@ -36,12 +36,12 @@ class HelpSourceFile: SourceFile {
 
 extension HelpSourceFile: SourcePropertiesQueryable {
 
-  func globalProperties() -> PropertiesNode? {
+  func globalProperties() -> [Property]? {
     return nil
   }
   
-  func sourceProperties() -> PropertiesNode? {
-    return node?.properties
+  func sourceProperties() -> [Property]? {
+    return node?.properties?.properties.map { $0.property }
   }
 
 }
