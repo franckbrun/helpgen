@@ -11,11 +11,11 @@ import SystemPackage
 class ProjectBuilder<S: StorageWrappable> {
   
   let project: Project
-  let serializer: S
+  let storage: S
   
-  init(project: Project, serializer: S) {
+  init(project: Project, storage: S) {
     self.project = project
-    self.serializer = serializer
+    self.storage = storage
   }
   
   func execute(buildSteps: [BuildStep]) throws {
@@ -31,22 +31,22 @@ extension ProjectBuilder {
   func create(at projectFolderPath: FilePath) throws {
 
     var buildSteps: [BuildStep] = [
-      CreateFolderBuildStep(FilePath("Contents"), options: [], serializer: self.serializer)
+      CreateFolderBuildStep(FilePath("Contents"), options: [], storage: self.storage)
     ]
     
     if self.project.languages.count > 0 {
-      buildSteps.append(CreateFolderBuildStep(FilePath("Contents/Resources"), options: [], serializer: self.serializer))
+      buildSteps.append(CreateFolderBuildStep(FilePath("Contents/Resources"), options: [], storage: self.storage))
     }
     
     for lang in self.project.languages {
       // TODO: Check language
       let langFolderPath = FilePath("Contents/Resources/\(lang).\(Constants.LanguageProjectExtension)")
-      buildSteps.append(CreateFolderBuildStep(langFolderPath, options: [], serializer: self.serializer))
+      buildSteps.append(CreateFolderBuildStep(langFolderPath, options: [], storage: self.storage))
     }
     
     let filesBuildSteps: [BuildStep] = [
-      CreatePkgInfoFileBuildStep(serializer: self.serializer),
-      CreateHelpBookPlistBuildStep(project: self.project, serializer: self.serializer)
+      CreatePkgInfoFileBuildStep(storage: self.storage),
+      CreateHelpBookPlistBuildStep(project: self.project, storage: self.storage)
     ]
     
     buildSteps.append(contentsOf: filesBuildSteps)
@@ -76,7 +76,7 @@ extension ProjectBuilder {
     }
     
     for file in self.project.helpSourceFiles {
-      buildSteps.append(GenerateHelpFileStep(project: self.project, helpSourceFile: file, serializer: self.serializer))
+      buildSteps.append(GenerateHelpFileStep(project: self.project, helpSourceFile: file, storage: self.storage))
     }
     
     try execute(buildSteps: buildSteps)

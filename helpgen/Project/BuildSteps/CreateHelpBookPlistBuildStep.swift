@@ -48,11 +48,11 @@ struct HelpBookPList: Codable {
 class CreateHelpBookPlistBuildStep<S: StorageWrappable>: BuildStep {
   
   let project: Project
-  let serializer: S
+  let storage: S
   
-  init(project: Project, serializer: S) {
+  init(project: Project, storage: S) {
     self.project = project
-    self.serializer = serializer
+    self.storage = storage
   }
   
   func exec() throws {
@@ -60,7 +60,7 @@ class CreateHelpBookPlistBuildStep<S: StorageWrappable>: BuildStep {
     let encoder = PropertyListEncoder()
     encoder.outputFormat = .xml
     let data = try encoder.encode(helpBook)
-    try serializer.write(to: FilePath("Info.plist"), contents: data)
+    try storage.write(to: FilePath("Info.plist"), contents: data)
   }
   
   func createHelpBookPList() -> HelpBookPList {

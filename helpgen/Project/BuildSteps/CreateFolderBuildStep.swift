@@ -25,17 +25,17 @@ class CreateFolderBuildStep<S: StorageWrappable>: BuildStep {
   
   var options: CreateFolderBuildOptions
   
-  let serializer: S
+  let storage: S
   
-  init(_ folderPath: FilePath, options: CreateFolderBuildOptions = [], serializer: S) {
+  init(_ folderPath: FilePath, options: CreateFolderBuildOptions = [], storage: S) {
     self.folderPath = folderPath
     self.options = options
-    self.serializer = serializer
+    self.storage = storage
   }
   
   func exec() throws {
     var isDir = false
-    let exists = try serializer.fileExists(at: folderPath, isDirectory: &isDir)
+    let exists = try storage.fileExists(at: folderPath, isDirectory: &isDir)
     if exists {
       if !isDir {
         throw CreateFolderError.notADirectory
@@ -45,7 +45,7 @@ class CreateFolderBuildStep<S: StorageWrappable>: BuildStep {
       }
     }
     
-    try serializer.createFolder(at: folderPath, withIntermediateDirectories: true)
+    try storage.createFolder(at: folderPath, withIntermediateDirectories: true)
   }
   
 }

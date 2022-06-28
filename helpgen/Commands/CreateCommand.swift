@@ -29,22 +29,22 @@ struct CreateCommand: ParsableCommand {
     
     let projectFolderPath = Config.currentPath.appending(self.options.common.outputFolder).appending(project.filename)
 
-    let serializer = try createSerializer(rootPath: projectFolderPath)
+    let storage = try createStorage(rootPath: projectFolderPath)
     
-    if try serializer.fileExists(at: projectFolderPath) {
+    if try storage.fileExists(at: projectFolderPath) {
       if !self.options.overwrite {
         logi("Project '\(project.name)' already exists at '\(projectFolderPath)'")
         return
       }
-      try serializer.removeFile(at: projectFolderPath)
+      try storage.removeFile(at: projectFolderPath)
     }
     
-    let builder = ProjectBuilder(project: project, serializer: serializer)
+    let builder = ProjectBuilder(project: project, storage: storage)
     logi("Creating project '\(project.name)' at '\(projectFolderPath)'")
 
     do {
-      try serializer.initialize()
-      defer { try! serializer.finalize() }
+      try storage.initialize()
+      defer { try! storage.finalize() }
       try builder.create(at: projectFolderPath)
     } catch let error {
       loge("error while create project: \(error.localizedDescription)")
@@ -52,15 +52,15 @@ struct CreateCommand: ParsableCommand {
     }
   }
   
-  func createSerializer(rootPath: FilePath) throws -> some StorageWrappable {
-    var serializerOptions: FileSystemWrapper.Options = []
+  func createStorage(rootPath: FilePath) throws -> some StorageWrappable {
+    var storageOptions: FileSystemWrapper.Options = []
     
     if self.options.overwrite {
-      serializerOptions.insert(.overwrite)
+      storageOptions.insert(.overwrite)
     }
 
-    let serializer = try FileSystemWrapper(rootPath: rootPath, options: serializerOptions)
-    return serializer
+    let storage = try FileSystemWrapper(rootPath: rootPath, options: storageOptions)
+    return storage
   }
   
 }

@@ -37,14 +37,14 @@ struct BuildCommand: ParsableCommand {
     
     let projectFolderPath = Config.currentPath.appending(self.options.common.outputFolder).appending(project.filename)
 
-    let serializer = try FileSystemWrapper(rootPath: projectFolderPath)
+    let storage = try FileSystemWrapper(rootPath: projectFolderPath)
     
-    let builder = ProjectBuilder(project: project, serializer: serializer)
+    let builder = ProjectBuilder(project: project, storage: storage)
     logi("Builing project '\(project.name)' at '\(projectFolderPath)'...")
 
     do {
-      try serializer.initialize()
-      defer { try! serializer.finalize() }
+      try storage.initialize()
+      defer { try! storage.finalize() }
       try builder.build(at: projectFolderPath)
     } catch let error {
       loge("error while builing project: \(error.localizedDescription)")
@@ -52,7 +52,7 @@ struct BuildCommand: ParsableCommand {
     }
   }
   
-  func runCreateCommand() throws {    
+  func runCreateCommand() throws {
     var args: [String] = [
       "-p", self.options.common.projectName,
       "-o", self.options.common.outputFolder

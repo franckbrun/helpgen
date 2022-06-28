@@ -17,12 +17,12 @@ class GenerateHelpFileStep<S: StorageWrappable>: BuildStep {
   
   let project: Project
   let helpSourceFile: HelpSourceFile
-  let serializer: S
+  let storage: S
   
-  init(project: Project, helpSourceFile: HelpSourceFile, serializer: S) {
+  init(project: Project, helpSourceFile: HelpSourceFile, storage: S) {
     self.project = project
     self.helpSourceFile = helpSourceFile
-    self.serializer = serializer
+    self.storage = storage
   }
   
   func exec() throws {
@@ -34,7 +34,7 @@ class GenerateHelpFileStep<S: StorageWrappable>: BuildStep {
       }
       
       let path = try outputFilePath(for: helpSourceFile)
-      try serializer.write(to: path, contents: data)
+      try storage.write(to: path, contents: data)
     }
   }
   

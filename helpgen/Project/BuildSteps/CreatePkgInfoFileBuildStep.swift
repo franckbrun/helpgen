@@ -10,14 +10,14 @@ import SystemPackage
 
 class CreatePkgInfoFileBuildStep<S: StorageWrappable>: BuildStep {
   
-  let serializer: S
+  let storage: S
   
-  init(serializer: S) {
-    self.serializer = serializer
+  init(storage: S) {
+    self.storage = storage
   }
   
   func exec() throws {
-    try serializer.createFile(at: FilePath("Contents/PkgInfo"), contents: "BNDLhbwr")
+    try storage.createFile(at: FilePath("Contents/PkgInfo"), contents: "BNDLhbwr")
   }
   
 }
