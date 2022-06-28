@@ -1,5 +1,5 @@
 //
-//  FileSerializer.swift
+//  FileSystemWrapper.swift
 //  helpgen
 //
 //  Created by Franck Brun on 26/06/2022.
@@ -8,7 +8,7 @@
 import Foundation
 import SystemPackage
 
-class FileSerializer: Serializable {
+class FileSystemWrapper: StorageWrappable {
 
   let fileManager = FileManager()
   

@@ -108,8 +108,8 @@
 		D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
 		D50EB24828674F1400B075AA /* ElementQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementQueryable.swift */; };
 		D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
-		D50EB24D286884AE00B075AA /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* Serializable.swift */; };
-		D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24E2868854600B075AA /* FileSerializer.swift */; };
+		D50EB24D286884AE00B075AA /* StorageWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* StorageWrappable.swift */; };
+		D50EB24F2868854600B075AA /* FileSystemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24E2868854600B075AA /* FileSystemWrapper.swift */; };
 		D50EB25128688B4300B075AA /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25028688B4300B075AA /* Property.swift */; };
 		D50EB2532868901E00B075AA /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2522868901E00B075AA /* ArrayExtension.swift */; };
 		D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2522868901E00B075AA /* ArrayExtension.swift */; };
@@ -118,7 +118,7 @@
 		D50EB25928698AE600B075AA /* ValueTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25828698AE600B075AA /* ValueTransformable.swift */; };
 		D50EB25B28698BC700B075AA /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25A28698BC700B075AA /* Element.swift */; };
 		D50EB25E28698CF400B075AA /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25A28698BC700B075AA /* Element.swift */; };
-		D50EB25F28698CF400B075AA /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* Serializable.swift */; };
+		D50EB25F28698CF400B075AA /* StorageWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* StorageWrappable.swift */; };
 		D50EB26028698CF400B075AA /* ValueTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25828698AE600B075AA /* ValueTransformable.swift */; };
 		D50EB26228698FC900B075AA /* ValueNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB26128698FC900B075AA /* ValueNode.swift */; };
 		D50EB265286990BC00B075AA /* HTMLValueTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB264286990BC00B075AA /* HTMLValueTransform.swift */; };
@@ -197,8 +197,8 @@
 		D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFilesBuildStep.swift; sourceTree = "<group>"; };
 		D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedPropertyQueryable.swift; sourceTree = "<group>"; };
 		D50EB24928684D9A00B075AA /* ElementsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsReplacer.swift; sourceTree = "<group>"; };
-		D50EB24C286884AE00B075AA /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
-		D50EB24E2868854600B075AA /* FileSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSerializer.swift; sourceTree = "<group>"; };
+		D50EB24C286884AE00B075AA /* StorageWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWrappable.swift; sourceTree = "<group>"; };
+		D50EB24E2868854600B075AA /* FileSystemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemWrapper.swift; sourceTree = "<group>"; };
 		D50EB25028688B4300B075AA /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		D50EB2522868901E00B075AA /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D50EB25828698AE600B075AA /* ValueTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTransformable.swift; sourceTree = "<group>"; };
@@ -259,6 +259,7 @@
 		D50EB167286450BB00B075AA /* helpgen */ = {
 			isa = PBXGroup;
 			children = (
+				D50EB273286A028200B075AA /* Config */,
 				D50EB21B2866EAAF00B075AA /* Constants */,
 				D50EB2152866E75500B075AA /* Errors */,
 				D50EB20E2866E43C00B075AA /* Utils */,
@@ -363,7 +364,7 @@
 			children = (
 				D50EB1F028660E9200B075AA /* Protocols */,
 				D50EB1EF28660CC500B075AA /* Models */,
-				D50EB24B2868847800B075AA /* Serializers */,
+				D50EB24B2868847800B075AA /* StorageWrappers */,
 				D50EB225286700BF00B075AA /* Enums */,
 				D50EB20B2866E26A00B075AA /* Replacers */,
 				D50EB25728689C5C00B075AA /* Tranformers */,
@@ -493,13 +494,13 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		D50EB24B2868847800B075AA /* Serializers */ = {
+		D50EB24B2868847800B075AA /* StorageWrappers */ = {
 			isa = PBXGroup;
 			children = (
-				D50EB24C286884AE00B075AA /* Serializable.swift */,
-				D50EB24E2868854600B075AA /* FileSerializer.swift */,
+				D50EB24C286884AE00B075AA /* StorageWrappable.swift */,
+				D50EB24E2868854600B075AA /* FileSystemWrapper.swift */,
 			);
-			path = Serializers;
+			path = StorageWrappers;
 			sourceTree = "<group>";
 		};
 		D50EB25728689C5C00B075AA /* Tranformers */ = {
@@ -525,6 +526,14 @@
 				D50EB2692869BA2E00B075AA /* EscapedString.swift */,
 			);
 			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
+		D50EB273286A028200B075AA /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D50EB274286A028E00B075AA /* Config.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -652,7 +661,7 @@
 				D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */,
 				D50EB23928670C1F00B075AA /* ElementQueryable.swift in Sources */,
 				D50EB1E52865FF6200B075AA /* Generator.swift in Sources */,
-				D50EB24D286884AE00B075AA /* Serializable.swift in Sources */,
+				D50EB24D286884AE00B075AA /* StorageWrappable.swift in Sources */,
 				D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */,
 				D50EB17B2864540700B075AA /* Lexer.swift in Sources */,
 				D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */,
@@ -668,6 +677,7 @@
 				D50EB21D2866EABD00B075AA /* RegExprConstants.swift in Sources */,
 				D50EB169286450BB00B075AA /* HelpGen.swift in Sources */,
 				D50EB2122866E5E000B075AA /* PropertiesReplacer.swift in Sources */,
+				D50EB275286A028E00B075AA /* Config.swift in Sources */,
 				D50EB1892864601700B075AA /* Build.swift in Sources */,
 				D50EB20D2866E2D000B075AA /* StringReplacer.swift in Sources */,
 				D50EB1EE286605C900B075AA /* SourceFile.swift in Sources */,
@@ -675,7 +685,7 @@
 				D50EB17F286454F000B075AA /* Project.swift in Sources */,
 				D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */,
 				D50EB227286700CB00B075AA /* FileType.swift in Sources */,
-				D50EB24F2868854600B075AA /* FileSerializer.swift in Sources */,
+				D50EB24F2868854600B075AA /* FileSystemWrapper.swift in Sources */,
 				D50EB26E2869D75200B075AA /* ProjectBuilder.swift in Sources */,
 				D50EB2172866E76300B075AA /* GenericError.swift in Sources */,
 				D50EB229286702F000B075AA /* StringReplacers.swift in Sources */,
@@ -700,7 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D50EB25E28698CF400B075AA /* Element.swift in Sources */,
-				D50EB25F28698CF400B075AA /* Serializable.swift in Sources */,
+				D50EB25F28698CF400B075AA /* StorageWrappable.swift in Sources */,
 				D50EB26028698CF400B075AA /* ValueTransformable.swift in Sources */,
 				D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */,
 				D50EB25528689AE300B075AA /* Property.swift in Sources */,

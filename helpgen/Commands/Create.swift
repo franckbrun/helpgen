@@ -52,14 +52,14 @@ struct Create: ParsableCommand {
     }
   }
   
-  func createSerializer(rootPath: FilePath) throws -> some Serializable {
-    var serializerOptions: FileSerializer.Options = []
+  func createSerializer(rootPath: FilePath) throws -> some StorageWrappable {
+    var serializerOptions: FileSystemWrapper.Options = []
     
     if self.options.overwrite {
       serializerOptions.insert(.overwrite)
     }
 
-    let serializer = try FileSerializer(rootPath: rootPath, options: serializerOptions)
+    let serializer = try FileSystemWrapper(rootPath: rootPath, options: serializerOptions)
     return serializer
   }
   

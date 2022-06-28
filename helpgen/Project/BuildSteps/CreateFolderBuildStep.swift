@@ -19,7 +19,7 @@ struct CreateFolderBuildOptions: OptionSet {
   static let throwIfExists = CreateFolderBuildOptions(rawValue: 1 << 0)
 }
 
-class CreateFolderBuildStep<S: Serializable>: BuildStep {
+class CreateFolderBuildStep<S: StorageWrappable>: BuildStep {
     
   let folderPath: FilePath
   

@@ -8,7 +8,7 @@
 import Foundation
 import SystemPackage
 
-class ProjectBuilder<S: Serializable> {
+class ProjectBuilder<S: StorageWrappable> {
   
   let project: Project
   let serializer: S

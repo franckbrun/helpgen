@@ -8,7 +8,7 @@
 import Foundation
 import SystemPackage
 
-class CreatePkgInfoFileBuildStep<S: Serializable>: BuildStep {
+class CreatePkgInfoFileBuildStep<S: StorageWrappable>: BuildStep {
   
   let serializer: S
   

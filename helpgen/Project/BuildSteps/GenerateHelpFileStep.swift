@@ -13,7 +13,7 @@ enum GenerateHelpFileError: Error {
   case undefinedOutputFilename
 }
 
-class GenerateHelpFileStep<S: Serializable>: BuildStep {
+class GenerateHelpFileStep<S: StorageWrappable>: BuildStep {
   
   let project: Project
   let helpSourceFile: HelpSourceFile

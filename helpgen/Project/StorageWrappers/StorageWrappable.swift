@@ -1,5 +1,5 @@
 //
-//  Serializable.swift
+//  StorageWrappable.swift
 //  helpgen
 //
 //  Created by Franck Brun on 26/06/2022.
@@ -8,7 +8,7 @@
 import Foundation
 import SystemPackage
 
-protocol Serializable {
+protocol StorageWrappable {
   
   func initialize() throws
   

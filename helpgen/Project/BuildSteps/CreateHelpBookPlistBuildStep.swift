@@ -45,7 +45,7 @@ struct HelpBookPList: Codable {
   }
 }
 
-class CreateHelpBookPlistBuildStep<S: Serializable>: BuildStep {
+class CreateHelpBookPlistBuildStep<S: StorageWrappable>: BuildStep {
   
   let project: Project
   let serializer: S
