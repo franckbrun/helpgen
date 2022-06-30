@@ -24,8 +24,6 @@ struct BuildCommand: ParsableCommand {
   @OptionGroup var options: Options
   
   func run() throws {
-    // Create project folder if not exists
-    try runCreateCommand()
     
     // Create project
     let project = Project(self.options.common.projectName)
@@ -52,23 +50,7 @@ struct BuildCommand: ParsableCommand {
       throw ExitCode.failure
     }
   }
-  
-  func runCreateCommand() throws {
-    var args: [String] = [
-      "-p", self.options.common.projectName,
-      "-o", self.options.common.outputFolder
-    ]
     
-    for lang in self.options.common.languages {
-      args.append(contentsOf: ["-l", lang])
-    }
-    
-    args.append("--overwrite")
-    
-    let command = try CreateCommand.parse(args)
-    try command.run()
-  }
-  
 }
 
 

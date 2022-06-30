@@ -24,9 +24,11 @@ struct CreateCommand: ParsableCommand {
   @OptionGroup var options: Options
   
   func run() throws {
+    
+    // Create project
     let project = Project(self.options.common.projectName)
     project.languages = self.options.common.languages
-    
+        
     let projectFolderPath = Config.currentPath.appending(self.options.common.outputFolder).appending(project.filename)
 
     let storage = try createStorage(rootPath: projectFolderPath)

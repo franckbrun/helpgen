@@ -65,11 +65,35 @@ class CreateHelpBookPlistBuildStep<S: StorageWrappable>: BuildStep {
   
   func createHelpBookPList() -> HelpBookPList {
     var helpBook = HelpBookPList()
-    
-    if let bundleIdentifierProperty = project.properties[Constants.ProjectBundleIdentifierPropertyKey] {
-      helpBook.bundleIdentifier = bundleIdentifierProperty.value
+
+    let keyPaths:[(String, Any)] = [
+      (Constants.ProjectBundleDevelopmentRegionPropertyKey, \HelpBookPList.bundleDevelopmentRegion),
+      (Constants.ProjectBundleIdentifierPropertyKey, \HelpBookPList.bundleIdentifier),
+      (Constants.ProjectBundleInfoDictionaryVersionPropertyKey, \HelpBookPList.bundleInfoDictionaryVersion),
+      (Constants.ProjectBundleNamePropertyKey, \HelpBookPList.bundleName),
+      (Constants.ProjectBundlePackageTypePropertyKey, \HelpBookPList.bundlePackageType),
+      (Constants.ProjectBookIconPathPropertyKey, \HelpBookPList.bookIconPath),
+      (Constants.ProjectBundleShortVersionStringPropertyKey, \HelpBookPList.bundleShortVersionString),
+      (Constants.ProjectBundleSignaturePropertyKey, \HelpBookPList.bundleSignature),
+      (Constants.ProjectBundleVersionPropertyKey, \HelpBookPList..bundleVersion),
+      (Constants.ProjectBookAccessPathPropertyKey, \HelpBookPList.bookAccessPath),
+      (Constants.ProjectBookIndexPathPropertyKey, \HelpBookPList.bookIndexPath),
+      (Constants.ProjectBookCSIndexPathPropertyKey, \HelpBookPList.bookCSIndexPath),
+      (Constants.ProjectBookKBProductPropertyKey, \HelpBookPList.bookKBProduct),
+      (Constants.ProjectBookTitlePropertyKey, \HelpBookPList.bookTitle),
+      (Constants.ProjectBookTypePropertyKey, \HelpBookPList.bookType),
+    ]
+
+    for (identifier, keypath) in keyPaths {
+      if let property = project.properties[identifier] {
+        if let kp = keypath as? WritableKeyPath<HelpBookPList, String> {
+          helpBook[keyPath: kp] = property.value
+        } else if let kp = keypath as? WritableKeyPath<HelpBookPList, String?> {
+          helpBook[keyPath: kp] = property.value
+        }
+      }
     }
-    
+        
     return helpBook
   }
 }
