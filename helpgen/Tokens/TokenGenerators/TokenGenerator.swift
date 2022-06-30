@@ -26,7 +26,10 @@ class TokenGenerator: RegExprMatchable {
   }
   
   func matches(expression: String, str: String) -> [NSTextCheckingResult]? {
-    return regExprCache.matches(expression: expression, str: str)
+    if let matches = regExprCache.matches(expression: expression, str: str) {
+      return matches.count > 0 ? matches : nil
+    }
+    return nil
   }
   
 }

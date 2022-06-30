@@ -15,17 +15,23 @@ class HelpSourceParser: Parser {
   func parse() throws -> HelpSourceNode {
     var node = HelpSourceNode()
     
+    var elementsNode = ElementsNode()
+    
     var token = try peekToken()
     while token != Token.end() {
       switch token.type {
       case .propertiesSection:
         node.properties = try parsePropertiesSection()
       case .element:
-        node.elements.append(try parseElement())
+        elementsNode.nodes.append(try parseElement())
       default:
         throw ParserError.unexceptedToken(token)
       }
       token = try peekToken()
+    }
+
+    if elementsNode.nodes.count > 0 {
+      node.elements = elementsNode
     }
     
     return node
@@ -58,11 +64,29 @@ class HelpSourceParser: Parser {
         break
       }
       let property = try parseProperty()
-      propertiesNode.properties.append(property)
+      propertiesNode.nodes.append(property)
       token = try peekToken()
     } while true
     
     return propertiesNode
+  }
+  
+  /// values := (value)*
+  func parseValues() throws -> ValuesNode {
+    var token = try expected(tokenType: .value)
+
+    var valuesNode = ValuesNode()
+
+    repeat {
+      guard token.type == .value else {
+        break
+      }
+      let value = try parseValue()
+      valuesNode.nodes.append(value)
+      token = try peekToken()
+    } while true
+    
+    return valuesNode
   }
   
   /// property ::= propertyName: propertyValue
@@ -80,7 +104,7 @@ class HelpSourceParser: Parser {
   
   func parseValue() throws -> ValueNode {
     let token = try expected(tokenType: .value)
-    let value = token.value
+    let value = Value(value: token.value)
     try nextToken()
     return ValueNode(value: value)
   }
@@ -96,10 +120,18 @@ class HelpSourceParser: Parser {
     var properties = [Property]()
     
     if token.type == .property {
-      properties = try parseProperties().properties.map { $0.property }
+      properties = try parseProperties().nodes.map { $0.property }
+      token = try peekToken()
     }
 
-    let elementNode = ElementNode(element: Element(type: elementType, properties: properties))
+    var values = [Value]()
+    
+    if token.type == .value {
+      values = try parseValues().nodes.map { $0.value }
+      token = try peekToken()
+    }
+        
+    let elementNode = ElementNode(element: Element(type: elementType, values: values, properties: properties))
 
     return elementNode
   }

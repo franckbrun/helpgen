@@ -17,7 +17,7 @@ class CreatePkgInfoFileBuildStep<S: StorageWrappable>: BuildStep {
   }
   
   func exec() throws {
-    try storage.createFile(at: FilePath("Contents/PkgInfo"), contents: "BNDLhbwr")
+    try storage.createFile(at: FilePath("\(Constants.ContainerPathString)/PkgInfo"), contents: "BNDLhbwr")
   }
   
 }

@@ -11,6 +11,13 @@ protocol ExprNode: CustomStringConvertible, Equatable {
   
 }
 
+protocol ArrayNode: ExprNode {
+  associatedtype Node: ExprNode
+  
+  var nodes: [Node] { get }
+  
+}
+
 extension ExprNode {
   
   var description: String {

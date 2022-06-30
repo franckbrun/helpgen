@@ -15,6 +15,7 @@ enum ElementType: String, CaseIterable {
 
 struct Element {
   let type: ElementType
+  var values = [Value]()
   var properties = [Property]()
 }
 

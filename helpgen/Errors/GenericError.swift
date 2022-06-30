@@ -10,6 +10,7 @@ import Foundation
 enum GenericError: Error {
   case notImplemented(String)
   case stringConversionError
+  case internalError
 }
 
 extension GenericError: LocalizedError {
@@ -19,6 +20,8 @@ extension GenericError: LocalizedError {
       return "\(method) is not implemented"
     case .stringConversionError:
       return "unable to convert data"
+    case .internalError:
+      return "internal error"
     }
   }
 }

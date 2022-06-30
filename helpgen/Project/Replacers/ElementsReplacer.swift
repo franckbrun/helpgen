@@ -7,9 +7,25 @@
 
 import Foundation
 
+enum PlaceHolderElementType: String {
+  case element    // Single Element
+  case elements   // All elements that reponds to criteria
+}
+
 enum ElementReplacerError: Error {
   case missingElementType
   case unknownElementType(String)
+}
+
+extension ElementReplacerError: LocalizedError {
+  var errorDescription: String? {
+    switch self {
+    case .missingElementType:
+      return "missing element type"
+    case .unknownElementType(let name):
+      return "unknown element type '\(name)'"
+    }
+  }
 }
 
 /// Element are specified with %{elementName:<element properties query>}%
@@ -21,6 +37,7 @@ enum ElementReplacerError: Error {
 class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: ValueTransformable>: PropertiesReplacer<S, T> {
 
   let multiplesElements = "elements"
+  let singleElement = "element"
   
   override var searchRegExpr: String {
     "%\\{\(RegExprConstant.elementQueryRegExpr)\\}%"
@@ -33,12 +50,16 @@ class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: Valu
       throw ElementReplacerError.missingElementType
     }
     
+    var placeholderElementType: PlaceHolderElementType?
     var elementType: ElementType?
     var elementName: String?
     var language = self.project.currentLanguage
+    var searchElementType = false
 
-    // Element type
-    if elementTypeNamed != multiplesElements {
+    if let elementType = PlaceHolderElementType(rawValue: elementTypeNamed) {
+      placeholderElementType = elementType
+      searchElementType = true
+    } else {
       elementType = ElementType(rawValue: elementTypeNamed)
       if elementType == nil {
         throw ElementReplacerError.unknownElementType(elementTypeNamed)
@@ -48,6 +69,14 @@ class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: Valu
     // Other properties
     if let propertiesString = match.string(withRangeName: RegExprConstant.PropertiesNameKey, in: str) {
       let properties = Property.parseList(from: propertiesString)
+      
+      if searchElementType, let elementTypeProperty = properties.find(propertyName: Constants.TypePropertyKey) {
+        elementType = ElementType(rawValue: elementTypeProperty.value)
+        if elementType == nil {
+          throw ElementReplacerError.unknownElementType(elementTypeNamed)
+        }
+      }
+      
       if let nameProperty = properties.find(propertyName: Constants.NamePropertyKey) {
         elementName = nameProperty.value
       }
@@ -56,7 +85,7 @@ class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: Valu
       }
     }
     
-    let elements = source.element(type: elementType, name: elementName, language: language)
+    let elements = source.element(type: elementType, name: elementName, language: language, limit: (placeholderElementType == .element) ? 1 : 0)
     
     var replacementString = ""
     

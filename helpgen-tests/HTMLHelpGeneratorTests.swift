@@ -13,7 +13,7 @@ class MockSourceFile: SourceFile, LocalizedPropertyQueryable, ElementQueryable {
   
   var fileType = FileType.helpSource
   
-  func property(named propertyName: String, language lang: String) -> Property? {
+  func property(named propertyName: String, language lang: String?) -> Property? {
     switch propertyName {
     case "title":
       return Property(name:"title", value:"The Title of the page")
@@ -24,10 +24,38 @@ class MockSourceFile: SourceFile, LocalizedPropertyQueryable, ElementQueryable {
     }
   }
   
-  func element(type: ElementType, name: String, language: String) -> [ElementNode] {
-    return [ElementNode]()
+  func element(type: ElementType?, name: String?, language: String?, limit: Int = 0) -> [Element] {
+    return [Element]()
   }
   
+}
+
+class NullStorage: StorageWrappable {
+  func initialize() throws {
+  }
+  
+  func finalize() throws {
+  }
+  
+  func createFolder(at path: FilePath, withIntermediateDirectories: Bool) throws {
+  }
+  
+  func createFile(at path: FilePath, contents: String) throws {
+  }
+  
+  func fileExists(at path: FilePath, isDirectory: inout Bool) throws -> Bool {
+    false
+  }
+  
+  func fileExists(at path: FilePath) throws -> Bool {
+    false
+  }
+  
+  func write(to path: FilePath, contents: Data) throws {
+  }
+  
+  func removeFile(at path: FilePath) throws {
+  }
 }
 
 class HTMLHelpGeneratorTests: XCTestCase {
@@ -43,7 +71,8 @@ class HTMLHelpGeneratorTests: XCTestCase {
     
     let project = Project("test_project")
     let source = MockSourceFile()
-    let generator = HTMLHelpGenerator<MockSourceFile>(project: project, sourceFile: source)
+    let valueTransformer = HTMLValueTransform(project: project)
+    let generator = HTMLHelpGenerator(project: project, sourceFile: source, valueTransformer: valueTransformer)
 
     do {
       if let result = try generator.generate() {

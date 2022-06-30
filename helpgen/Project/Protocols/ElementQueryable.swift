@@ -9,7 +9,7 @@ import Foundation
 
 protocol ElementQueryable {
   
-  func element(type: ElementType?, name: String?, language: String?) -> [Element]
+  func element(type: ElementType?, name: String?, language: String?, limit: Int) -> [Element]
 
   // TODO: Implement this
   //func element(type: ElementType, with properties:[Property]) -> [ElementNode]

@@ -16,10 +16,14 @@ struct HelpGen: ParsableCommand {
     subcommands: [BuildCommand.self, CreateCommand.self],
     defaultSubcommand: BuildCommand.self)
   
-  @Flag(name:[.customShort("v"), .long], help: "Verbose")
+  @Flag(name:[.short, .long], help: "Verbose")
   var verbose = false {
     didSet {
       Logger.currentLevel = .verbose
     }
+  }
+  
+  func run() throws {
+    logd("ddd")
   }
 }

@@ -19,7 +19,7 @@ extension ParserError: LocalizedError {
     case .unexceptedToken(let token):
       return "unexcepted token \(token)"
     case .unknownElementType(let token):
-      return "unknownElementType in \(token)"
+      return "unknown element type in \(token)"
     case .unexceptedEnd:
       return "unexcepted end"
     }

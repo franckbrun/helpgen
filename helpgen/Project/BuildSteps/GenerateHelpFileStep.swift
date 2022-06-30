@@ -34,21 +34,36 @@ class GenerateHelpFileStep<S: StorageWrappable>: BuildStep {
       }
       
       let path = try outputFilePath(for: helpSourceFile)
+      logd("write file \(path.string)")
       try storage.write(to: path, contents: data)
     }
   }
   
   func outputFilePath(for sourceFile: HelpSourceFile) throws -> FilePath {
     
+    var rootFilePath = FilePath(Constants.ResourcesPathString)
+    
+    if let lang = project.currentLanguage, !lang.isEmpty {
+      if let folder = FilePath.Component("\(lang).\(Constants.LanguageProjectExtension)") {
+        rootFilePath.append(folder)
+      } else {
+        throw GenericError.internalError
+      }
+    }
+
+    var filename = ""
     if let property = sourceFile.property(named: Constants.OutputFilenameKey, language: self.project.currentLanguage) {
-      return FilePath(property.name)
+      filename = property.value
+    } else if let defaultOutputFilename = sourceFile.defaultOutputFilename {
+      filename = defaultOutputFilename
     }
-    
-    if let defaultOutputFilename = sourceFile.defaultOutputFilename {
-      return FilePath(defaultOutputFilename)
+
+    if !filename.isEmpty, let filenameComponent = FilePath.Component(filename) {
+      rootFilePath.append(filenameComponent)
+      return rootFilePath
+    } else {
+      throw GenericError.internalError
     }
-    
-    throw GenerateHelpFileError.undefinedOutputFilename
   }
   
 }

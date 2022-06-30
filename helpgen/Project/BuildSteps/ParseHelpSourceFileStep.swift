@@ -16,8 +16,8 @@ class ParseHelpSourceFileStep: BuildStep {
   }
   
   func exec() throws {
-    let contents = String(decoding: self.helpSourceFile.filePath)
-    let lexer = HelpSourceLexer(options: [.discardWhiteSpace])
+    let contents = try String(contentsOfFile: helpSourceFile.filePath.string)
+    let lexer = HelpSourceLexer(options: [.discardWhiteSpace, .discardComments])
     let tokens = lexer.tokenise(input: contents)
     let parser = HelpSourceParser(tokens)
     self.helpSourceFile.node = try parser.parse()

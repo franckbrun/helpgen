@@ -13,6 +13,7 @@ class HelpSourceLexer: Lexer {
     let rawValue: Int
     
     static let discardWhiteSpace = HelpSourceLexer.Options(rawValue: 1 << 0)
+    static let discardComments = HelpSourceLexer.Options(rawValue: 1 << 1)
   }
   
   var options: Options = []
@@ -37,10 +38,9 @@ class HelpSourceLexer: Lexer {
     add(PropertiesSectionTokenGenerator())
     add(PropertyTokenGenerator())
     add(ElementTokenGenerator())
+    add(RawStringValueTokenGenerator())
+    add(CommentTokenGenerator(discardable: options.contains(.discardComments)))
+    add(QuotedStringValueTokenGenerator())
     add(ValueTokenGenerator())
-  }
-  
-  func stringClassExpectedTokens() {
-    
   }
 }

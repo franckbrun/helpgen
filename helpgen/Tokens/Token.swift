@@ -18,8 +18,8 @@ enum TokenType {
   case colon
   case equal
 //  case slashOperator
+  case comment
   case other
-  
   case end
 }
 
@@ -81,5 +81,9 @@ extension Token {
 
   static func end() -> Token {
     return Token(.end, element: "")
+  }
+  
+  static func comment(_ value: String) -> Token {
+    return Token(.comment, value: value, element: "# \(value)")
   }
 }

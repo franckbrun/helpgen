@@ -19,11 +19,12 @@ import Foundation
     }
   }
   
-  init(_ string: String) {
-    self.string = string
+  init(wrappedValue: String) {
+    self.string = wrappedValue
   }
-  
 }
+
+extension EscapedString: Equatable {}
 
 extension String {
   func escaped() -> String {

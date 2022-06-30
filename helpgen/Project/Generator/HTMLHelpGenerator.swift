@@ -23,7 +23,7 @@ class HTMLHelpGenerator<S: SourceFile & LocalizedPropertyQueryable & ElementQuer
   }
   
   override func generate() throws -> Any?  {
-    guard let templateContents = project.template(for: source) else {
+    guard let templateContents = try project.template(for: source) else {
       throw HTMLHelpError.emptyTemplateFile
     }
     return try changeValue(in:templateContents);

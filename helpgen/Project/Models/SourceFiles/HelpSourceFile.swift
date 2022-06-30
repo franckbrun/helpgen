@@ -36,12 +36,29 @@ class HelpSourceFile: SourceFile {
 
 extension HelpSourceFile: SourcePropertiesQueryable {
 
-  func globalProperties() -> [Property]? {
-    return nil
+  func projectProperties() -> [Property]? {
+    return node?.properties?.nodes.compactMap { node in
+      let projectPropertyPrefix = "\(Constants.ProjectPropertyNameRadix)."
+      if node.property.name.hasPrefix(projectPropertyPrefix) {
+        let propertyName = node.property.name.deletingPrefix(projectPropertyPrefix)
+        return Property(name: propertyName, value: node.property.value)
+      }
+      return nil
+    }
   }
   
   func sourceProperties() -> [Property]? {
-    return node?.properties?.properties.map { $0.property }
+    return node?.properties?.nodes.compactMap { node in
+      if !node.property.name.hasPrefix("\(Constants.ProjectPropertyNameRadix).") {
+        let pagePropertyPrefix = "\(Constants.PagePropertyNameRadix)."
+        var propertyName = node.property.name
+        if propertyName.hasPrefix(pagePropertyPrefix) {
+          propertyName = propertyName.deletingPrefix(pagePropertyPrefix)
+        }
+        return Property(name: propertyName, value: node.property.value)
+      }
+      return nil
+    }
   }
 
 }
@@ -57,39 +74,45 @@ extension HelpSourceFile: LocalizedPropertyQueryable {
 
 extension HelpSourceFile: ElementQueryable {
   
-  func element(type: ElementType?, name: String?, language: String?) -> [Element] {
-    guard let node = node else {
+  func element(type: ElementType?, name: String?, language: String?, limit: Int = 0) -> [Element] {
+    guard let elementsNode = self.node?.elements?.nodes else {
       return []
     }
     
-    let filteredElements = node.elements.filter { elementNode in
+    var elements = [Element]()
+    
+    for elementNode in elementsNode {
       
       if let queryedElementType = type, elementNode.element.type != queryedElementType {
-        return false
+        continue
       }
 
       if let queryedElementName = name {
         guard let elementName = elementNode.property(named: Constants.NamePropertyKey)?.value else {
-          return false
+          continue
         }
         if elementName != queryedElementName {
-          return false
+          continue
         }
       }
       
       if let queryedElementLanguage = language {
         guard let elementLangage = elementNode.property(named: Constants.LanguagePropertyKey)?.value else {
-          return true
+          continue
         }
         if elementLangage != queryedElementLanguage {
-          return false
+          continue
         }
       }
+
+      elements.append(elementNode.element)
+      if limit > 0, elements.count >= limit {
+        break
+      }
       
-      return true
     }
-    
-    return filteredElements.map { $0.element }
+        
+    return elements
   }
   
 }

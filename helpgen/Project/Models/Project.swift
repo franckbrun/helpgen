@@ -10,8 +10,22 @@ import SystemPackage
 
 class Project {
 
+  private var _projectName: String = ""
+
   // Project name
-  var name: String = "Application"
+  var name: String {
+    get {
+      if _projectName.isEmpty {
+        if let propertyProjectName = property(named: Constants.NamePropertyKey) {
+          return propertyProjectName.value
+        }
+      }
+      return _projectName
+    }
+    set {
+      _projectName = newValue
+    }
+  }
 
   // Project filename
   var filename: String {
@@ -26,7 +40,7 @@ class Project {
   var currentLanguage: String?
   
   // Globals project properties
-  var properties = [String : String]()
+  var properties = [String: Property]()
   
   var helpSourceFiles = [HelpSourceFile]()
   
@@ -38,14 +52,42 @@ class Project {
     
 }
 
+extension Project: PropertyQueryable {
+  
+  func property(named propertyName: String) -> Property? {
+    return properties[propertyName]
+  }
+  
+}
+
 extension Project {
 
   /// Include all sources files in project
   func includeFiles(in path: FilePath) {
-    let enumerator = FileManager.default.enumerator(atPath: path.string)
-    
-    while let file = enumerator?.nextObject() as? String {
-      self.helpSourceFiles.append(HelpSourceFile(path: path.appending(file)))
+    let url = URL(fileURLWithPath: path.string)
+    let resourceKeys = Set<URLResourceKey>([.nameKey, .isDirectoryKey])
+    let enumerator = FileManager.default.enumerator(at: url,
+                                                    includingPropertiesForKeys: Array(resourceKeys),
+                                                    options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+    guard let enumerator = enumerator else {
+      return
+    }
+
+    for case let fileURL as URL in enumerator {
+      guard let resourceValues = try? fileURL.resourceValues(forKeys: resourceKeys),
+            let isDirectory = resourceValues.isDirectory,
+            let name = resourceValues.name
+      else {
+        continue
+      }
+
+      if isDirectory {
+        if name.hasPrefix("_") {
+          enumerator.skipDescendants()
+        }
+      } else {
+        self.helpSourceFiles.append(HelpSourceFile(path: path.appending(name)))
+      }      
     }
   }
 
@@ -53,11 +95,16 @@ extension Project {
 
 extension Project {
   
-  func template<S: SourceFile & LocalizedPropertyQueryable>(for source: S) -> String? {
+  func template<S: SourceFile & LocalizedPropertyQueryable>(for source: S) throws -> String? {
     // TODO: Check template of source
     if let templateFilename = source.property(named: Constants.TemplatePropertyKey, language: self.currentLanguage) {
       logd("found template filename : \(templateFilename)")
-      // TODO: Load template
+      var path = FilePath(templateFilename.value)
+      if !path.isAbsolute {
+        path = Config.currentPath.appending(path.components)
+      }
+      
+      return try String(contentsOfFile: path.string)
     }
     
     switch source.fileType {
@@ -78,8 +125,10 @@ extension Project {
     <meta name="AppleTitle" content="%{page.apple_title}%">
   </head>
   <body>
-    <a name="%apple_anchor%"></a>
-    <div>%{element:*}%</div>
+    <a name="%{apple_anchor}%"></a>
+    <div>
+      %{elements:*}%
+    </div>
   </body>
 </html>
 """

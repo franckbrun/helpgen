@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct ValueNode {
+struct ValueNode: ExprNode {
 
-  let value: String
+  let value: Value
   
 }
+
+extension ValueNode: Equatable {}

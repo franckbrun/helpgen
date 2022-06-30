@@ -60,11 +60,16 @@ class CreateHelpBookPlistBuildStep<S: StorageWrappable>: BuildStep {
     let encoder = PropertyListEncoder()
     encoder.outputFormat = .xml
     let data = try encoder.encode(helpBook)
-    try storage.write(to: FilePath("Info.plist"), contents: data)
+    try storage.write(to: FilePath("\(Constants.ContainerPathString)/Info.plist"), contents: data)
   }
   
   func createHelpBookPList() -> HelpBookPList {
     var helpBook = HelpBookPList()
+    
+    if let bundleIdentifierProperty = project.properties[Constants.ProjectBundleIdentifierPropertyKey] {
+      helpBook.bundleIdentifier = bundleIdentifierProperty.value
+    }
+    
     return helpBook
   }
 }

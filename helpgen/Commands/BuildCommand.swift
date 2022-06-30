@@ -29,7 +29,8 @@ struct BuildCommand: ParsableCommand {
     
     // Create project
     let project = Project(self.options.common.projectName)
-  
+    project.languages = self.options.common.languages
+
     // Add inputs files
     for input in self.options.inputFolders {
       project.includeFiles(in: FilePath(input))

@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct PropertiesNode: ExprNode {
+struct PropertiesNode: ArrayNode {
 
-  var properties = [PropertyNode]()
+  var nodes = [PropertyNode]()
   
 }
 
 extension PropertiesNode: PropertyQueryable {
   
   func property(named propertyName: String) -> Property? {
-    return properties.find(propertyName: propertyName)
+    return nodes.find(propertyName: propertyName)
   }
 }

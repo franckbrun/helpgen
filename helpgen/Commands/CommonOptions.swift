@@ -10,7 +10,7 @@ import ArgumentParser
 
 struct CommonOptions: ParsableArguments {
   @Option(name: [.customShort("p"), .long], help: "Project name")
-  var projectName: String
+  var projectName: String = ""
 
   @Option(name: [.customShort("o"), .long], help: "Output folder")
   var outputFolder: String = "."

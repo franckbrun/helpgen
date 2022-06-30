@@ -44,7 +44,8 @@ class DOMStringReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: Val
       
       logd(element.ownText())
       if let newValue = try changeValue(in: element.ownText()) {
-        try element.text(newValue)
+        try element.text("")
+        try element.append(newValue)
         hasChanges = true
       }
     }

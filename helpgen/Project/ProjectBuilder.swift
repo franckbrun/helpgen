@@ -31,26 +31,17 @@ extension ProjectBuilder {
   func create(at projectFolderPath: FilePath) throws {
 
     var buildSteps: [BuildStep] = [
-      CreateFolderBuildStep(FilePath("Contents"), options: [], storage: self.storage)
+      CreateFolderBuildStep(FilePath(Constants.ResourcesPathString), options: [], storage: self.storage),
+      CreatePkgInfoFileBuildStep(storage: self.storage),
+      CreateHelpBookPlistBuildStep(project: self.project, storage: self.storage),
     ]
-    
-    if self.project.languages.count > 0 {
-      buildSteps.append(CreateFolderBuildStep(FilePath("Contents/Resources"), options: [], storage: self.storage))
-    }
     
     for lang in self.project.languages {
       // TODO: Check language
-      let langFolderPath = FilePath("Contents/Resources/\(lang).\(Constants.LanguageProjectExtension)")
+      let langFolderPath = FilePath("\(Constants.ResourcesPathString)/\(lang).\(Constants.LanguageProjectExtension)")
       buildSteps.append(CreateFolderBuildStep(langFolderPath, options: [], storage: self.storage))
     }
     
-    let filesBuildSteps: [BuildStep] = [
-      CreatePkgInfoFileBuildStep(storage: self.storage),
-      CreateHelpBookPlistBuildStep(project: self.project, storage: self.storage)
-    ]
-    
-    buildSteps.append(contentsOf: filesBuildSteps)
-          
     try execute(buildSteps: buildSteps)
   }
   
@@ -63,23 +54,40 @@ extension ProjectBuilder {
   }
   
   func build(at projectFolderPath: FilePath) throws {
-
-    var buildSteps = [BuildStep]()
-    
-    let sourceFiles = self.project.helpSourceFiles.sorted(by: { $0.filePath.string > $1.filePath.string })
-    
-    for file in sourceFiles {
-      buildSteps.append(contentsOf: [
-        ParseHelpSourceFileStep(file),
-        ApplyGlobalPropertiesStep(project: self.project, source: file)
-      ] as [BuildStep])
-    }
-    
-    for file in self.project.helpSourceFiles {
-      buildSteps.append(GenerateHelpFileStep(project: self.project, helpSourceFile: file, storage: self.storage))
-    }
-    
-    try execute(buildSteps: buildSteps)
+    try parseSourceFiles()
+    try buildHelpFilesForAllLanguages()
   }
 
+  func parseSourceFiles() throws {
+    var buildSteps = [BuildStep]()
+    
+    for helpFile in self.project.helpSourceFiles {
+      let fileBuildSteps: [BuildStep] = [
+        ParseHelpSourceFileStep(helpFile),
+        ApplyGlobalPropertiesStep(project: self.project, source: helpFile)
+      ]
+      
+      buildSteps.append(contentsOf: fileBuildSteps)
+    }
+
+    try execute(buildSteps: buildSteps)
+  }
+  
+  func buildHelpFilesForAllLanguages() throws {
+    if project.languages.count > 0 {
+      for lang in project.languages {
+        project.currentLanguage = lang
+        try buildHelpFiles()
+      }
+    } else {
+      try buildHelpFiles()
+    }
+  }
+  
+  func buildHelpFiles() throws {
+    for helpSourceFile in self.project.helpSourceFiles {
+      try GenerateHelpFileStep(project: self.project, helpSourceFile: helpSourceFile, storage: self.storage).exec()
+    }
+  }
+  
 }

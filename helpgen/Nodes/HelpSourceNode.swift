@@ -9,9 +9,9 @@ import Foundation
 
 struct HelpSourceNode: ExprNode {
   var properties: PropertiesNode?
-  var elements = [ElementNode]()
+  var elements: ElementsNode?
   
   var description: String {
-    return "HelpSourceNode{properties:\(properties?.description ?? "-"), elements:\(elements)}"
+    return "HelpSourceNode{properties:\(properties?.description ?? "-"), elements:\(elements?.description ?? "-")}"
   }
 }
