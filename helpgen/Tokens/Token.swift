@@ -11,6 +11,7 @@ enum TokenType {
   case whiteSpace
   case propertiesSection
   case property// property: value
+  case propertyLocalization
 //  case variable(String) // variable=value
   case value
   case element /// /p /i
@@ -57,6 +58,10 @@ extension Token {
 
   static func property(_ name: String) -> Token {
     return Token(.property, value: name, element: "\(name):")
+  }
+
+  static func propertyLocalization(_ name: String) -> Token {
+    return Token(.property, value: name, element: "@\(name):")
   }
 
   static func value(_ value: String) -> Token {

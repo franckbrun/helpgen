@@ -99,7 +99,30 @@ class HelpSourceParser: Parser {
     let propertyValue = token.value
     try nextToken()
 
-    return PropertyNode(property: Property(name: propertyName, value: propertyValue))
+    var loc = [String: String]()
+    
+    token = try peekToken()
+    if token.type == .propertyLocalization {
+      repeat {
+        guard token.type == .propertyLocalization else {
+          break
+        }
+        
+        token = try expected(tokenType: .propertyLocalization)
+        let lang = token.value
+        try nextToken()
+
+        token = try expected(tokenType: .value)
+        let locValue = token.value
+        try nextToken()
+        
+        loc[lang] = locValue
+        
+        token = try peekToken()
+      } while true
+    }
+    
+    return PropertyNode(property: Property(name: propertyName, value: propertyValue, localizedValues: loc))
   }
   
   func parseValue() throws -> ValueNode {

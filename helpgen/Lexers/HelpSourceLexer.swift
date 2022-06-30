@@ -37,6 +37,7 @@ class HelpSourceLexer: Lexer {
     add(WhiteSpacesListTokenGenerator(discardable: options.contains(.discardWhiteSpace)))
     add(PropertiesSectionTokenGenerator())
     add(PropertyTokenGenerator())
+    add(PropertyLocalizationTokenGenerator())
     add(ElementTokenGenerator())
     add(RawStringValueTokenGenerator())
     add(CommentTokenGenerator(discardable: options.contains(.discardComments)))

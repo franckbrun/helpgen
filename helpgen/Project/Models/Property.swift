@@ -7,12 +7,25 @@
 
 import Foundation
 
-struct Property {
-  let name: String
+struct PropertyLocalization {
+  let lang: String
   let value: String
 }
 
-extension Property: Equatable, Hashable, Codable {}
+struct Property {
+  let name: String
+  let value: String
+    
+  var localizedValues = [String: String]()
+}
+
+extension Property: Equatable, Hashable, Codable {
+  
+  static func ==(lhs: Property, rhs: Property) -> Bool {
+    return lhs.name == rhs.name && lhs.value == rhs.value
+  }
+  
+}
 
 extension Property {
   

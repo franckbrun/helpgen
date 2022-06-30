@@ -142,6 +142,7 @@
 		D50EB28B286DC01700B075AA /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB28A286DC01700B075AA /* Value.swift */; };
 		D50EB28F286DC96100B075AA /* ValuesNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB28E286DC96100B075AA /* ValuesNode.swift */; };
 		D50EB291286DD39F00B075AA /* ElementsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB290286DD39F00B075AA /* ElementsNode.swift */; };
+		D50EB297286E4DEF00B075AA /* PropertyLocalizationTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -234,6 +235,7 @@
 		D50EB28A286DC01700B075AA /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		D50EB28E286DC96100B075AA /* ValuesNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesNode.swift; sourceTree = "<group>"; };
 		D50EB290286DD39F00B075AA /* ElementsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsNode.swift; sourceTree = "<group>"; };
+		D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLocalizationTokenGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,7 +293,7 @@
 				D50EB1D52865F1CA00B075AA /* Tokens */,
 				D50EB18628645F1D00B075AA /* Lexers */,
 				D50EB19628648C7300B075AA /* Parsers */,
-				D50EB1BE2864D24800B075AA /* Nodes */,
+				D50EB295286E479100B075AA /* Solvers */,
 				D50EB2682869BA1500B075AA /* PropertyWrappers */,
 				D50EB1D72865F24000B075AA /* Project */,
 				D50EB1872864600700B075AA /* Commands */,
@@ -327,6 +329,7 @@
 				D50EB27B286B2A6400B075AA /* CommentTokenGenerator.swift */,
 				D50EB1942864754C00B075AA /* PropertiesSectionTokenGenerator.swift */,
 				D50EB1B02864961400B075AA /* PropertyTokenGenerator.swift */,
+				D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */,
 				D50EB1B92864AD7C00B075AA /* ElementTokenGenerator.swift */,
 				D50EB1B228649CEE00B075AA /* ValueTokenGenerator.swift */,
 				D50EB286286D9D9600B075AA /* RawStringValueTokenGenerator.swift */,
@@ -339,6 +342,7 @@
 		D50EB19628648C7300B075AA /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D50EB1BE2864D24800B075AA /* Nodes */,
 				D50EB1BC2864CE2500B075AA /* Parser.swift */,
 				D50EB19728648C8800B075AA /* HelpSourceParser.swift */,
 			);
@@ -568,6 +572,13 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		D50EB295286E479100B075AA /* Solvers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Solvers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -681,6 +692,7 @@
 				D50EB2202866F1DC00B075AA /* NSTextCheckingResultExtension.swift in Sources */,
 				D50EB26A2869BA2E00B075AA /* EscapedString.swift in Sources */,
 				D50EB1D12865DA0D00B075AA /* HelpSourceNode.swift in Sources */,
+				D50EB297286E4DEF00B075AA /* PropertyLocalizationTokenGenerator.swift in Sources */,
 				D50EB1B328649CEE00B075AA /* ValueTokenGenerator.swift in Sources */,
 				D50EB1C42864D3A000B075AA /* ElementNode.swift in Sources */,
 				D50EB26C2869BC0F00B075AA /* CommonOptions.swift in Sources */,
