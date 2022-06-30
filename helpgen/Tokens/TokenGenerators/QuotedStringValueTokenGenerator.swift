@@ -13,7 +13,7 @@ class QuotedStringValueTokenGenerator: ValueTokenGenerator {
     /// Quoted string expression
     #"^"(?<value>(?:[^"\\]|\\.)*)""#,
 
-    /// Single quoted string expression
+    /// Single quote quoted string expression
     #"^'(?<value>(?:[^'\\]|\\.)*)'"#,
   ]
   
