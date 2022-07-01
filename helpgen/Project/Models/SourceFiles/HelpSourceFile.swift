@@ -41,7 +41,7 @@ extension HelpSourceFile: SourcePropertiesQueryable {
       let projectPropertyPrefix = "\(Constants.ProjectPropertyNameRadix)."
       if node.property.name.hasPrefix(projectPropertyPrefix) {
         let propertyName = node.property.name.deletingPrefix(projectPropertyPrefix)
-        return Property(name: propertyName, value: node.property.value)
+        return Property(name: propertyName, value: node.property.value, localizedValues: node.property.localizedValues)
       }
       return nil
     }
@@ -55,7 +55,7 @@ extension HelpSourceFile: SourcePropertiesQueryable {
         if propertyName.hasPrefix(pagePropertyPrefix) {
           propertyName = propertyName.deletingPrefix(pagePropertyPrefix)
         }
-        return Property(name: propertyName, value: node.property.value)
+        return Property(name: propertyName, value: node.property.value, localizedValues: node.property.localizedValues)
       }
       return nil
     }

@@ -144,11 +144,12 @@ extension ProjectBuilder {
   func copyAssets() throws {
     // Common assets
     self.project.currentLanguage = ""
-    try CopyAssetsBuildStep(project: self.project).exec()
+    try CopyAssetsBuildStep(project: self.project, storage: self.storage).exec()
     
+    // Specific assets
     for lang in self.project.languages {
       project.currentLanguage = lang
-      try CopyAssetsBuildStep(project: self.project).exec()
+      try CopyAssetsBuildStep(project: self.project, storage: self.storage).exec()
     }
   }
   

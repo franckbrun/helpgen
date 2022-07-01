@@ -60,4 +60,8 @@ extension Property {
     return Property(name: self.name, value: value(forLanguage: lang))
   }
   
+  func hasLocalization(forLanguage lang: String) -> Bool {
+    return self.localizedValues.index(forKey: lang) != nil
+  }
+  
 }

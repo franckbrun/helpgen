@@ -70,4 +70,21 @@ class FileSystemWrapper: StorageWrappable {
     try self.fileManager.removeItem(atPath: finalPath.string)
   }
   
+  func copyFile(at path: FilePath, to destPath: FilePath) throws {
+    var finalPath = rootPath.pushing(destPath)
+    
+    var isDirectory = false
+    if try fileExists(at: destPath, isDirectory: &isDirectory), isDirectory {
+      if let lastComponent = path.lastComponent {
+        finalPath.append(lastComponent)
+      }
+    }
+    
+    if try fileExists(at: destPath) {
+      try removeFile(at: destPath)
+    }
+    
+    try self.fileManager.copyItem(atPath: path.string, toPath: finalPath.string)
+  }
+  
 }

@@ -25,4 +25,7 @@ protocol StorageWrappable {
   func write(to path: FilePath, contents: Data) throws
   
   func removeFile(at path: FilePath) throws
+  
+  func copyFile(at path: FilePath, to destPath: FilePath) throws
+  
 }
