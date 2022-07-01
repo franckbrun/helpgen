@@ -11,6 +11,8 @@ enum ElementType: String, CaseIterable {
   case text
   case image
   case anchor
+  case link
+  case helplink
 }
 
 struct Element {

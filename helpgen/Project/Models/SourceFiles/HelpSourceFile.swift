@@ -96,11 +96,10 @@ extension HelpSourceFile: ElementQueryable {
       }
       
       if let queryedElementLanguage = language {
-        guard let elementLangage = elementNode.property(named: Constants.LanguagePropertyKey)?.value else {
-          continue
-        }
-        if elementLangage != queryedElementLanguage {
-          continue
+        if let elementLangage = elementNode.property(named: Constants.LanguagePropertyKey)?.value {
+          if elementLangage != queryedElementLanguage {
+            continue
+          }
         }
       }
 

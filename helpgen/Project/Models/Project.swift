@@ -98,7 +98,6 @@ extension Project {
     <meta name="AppleTitle" content="%{page.apple_title}%">
   </head>
   <body>
-    <a name="%{apple_anchor}%"></a>
     <div>
       %{elements:*}%
     </div>
