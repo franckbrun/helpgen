@@ -1,5 +1,5 @@
 //
-//  ApplyGlobalPropertiesStep.swift
+//  GetProjectPropertiesStep.swift
 //  helpgen
 //
 //  Created by Franck Brun on 24/06/2022.
@@ -14,7 +14,7 @@ protocol SourcePropertiesQueryable {
   
 }
 
-class ApplyGlobalPropertiesStep<T: SourcePropertiesQueryable>: BuildStep {
+class GetProjectPropertiesStep<T: SourcePropertiesQueryable>: BuildStep {
   
   let project: Project
   let source: T
@@ -29,7 +29,7 @@ class ApplyGlobalPropertiesStep<T: SourcePropertiesQueryable>: BuildStep {
       for property in properties {
         project.properties[property.name] = property
       }
-    }
+    }    
   }
   
 }

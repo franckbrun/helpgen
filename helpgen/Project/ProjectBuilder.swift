@@ -114,7 +114,7 @@ extension ProjectBuilder {
     for helpFile in self.project.helpSourceFiles {
       let fileBuildSteps: [BuildStep] = [
         ParseHelpSourceFileStep(helpFile),
-        ApplyGlobalPropertiesStep(project: self.project, source: helpFile)
+        GetProjectPropertiesStep(project: self.project, source: helpFile)
       ]
       
       buildSteps.append(contentsOf: fileBuildSteps)

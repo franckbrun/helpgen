@@ -50,7 +50,7 @@
 		D50EB1D22865DC4000B075AA /* HelpSourceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */; };
 		D50EB1D42865E37D00B075AA /* TestFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D32865E37D00B075AA /* TestFiles.swift */; };
 		D50EB1D92865F26200B075AA /* HelpSourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1D82865F26200B075AA /* HelpSourceFile.swift */; };
-		D50EB1DC2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */; };
+		D50EB1DC2865F7AE00B075AA /* GetProjectPropertiesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DB2865F7AE00B075AA /* GetProjectPropertiesStep.swift */; };
 		D50EB1DE2865F99B00B075AA /* ParseHelpSourceFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */; };
 		D50EB1E02865FB4300B075AA /* GenerateHelpFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */; };
 		D50EB1E22865FB8C00B075AA /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E12865FB8C00B075AA /* BuildStep.swift */; };
@@ -70,7 +70,7 @@
 		D50EB1FE28661C7300B075AA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB17E286454F000B075AA /* Project.swift */; };
 		D50EB20128661CF900B075AA /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D50EB20028661CF900B075AA /* SwiftSoup */; };
 		D50EB20228661D2900B075AA /* ParseHelpSourceFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */; };
-		D50EB20328661D2900B075AA /* ApplyGlobalPropertiesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */; };
+		D50EB20328661D2900B075AA /* GetProjectPropertiesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DB2865F7AE00B075AA /* GetProjectPropertiesStep.swift */; };
 		D50EB20428661D2900B075AA /* GenerateHelpFileStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */; };
 		D50EB20528661D2900B075AA /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB1E12865FB8C00B075AA /* BuildStep.swift */; };
 		D50EB20628661D7500B075AA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB18D286465E600B075AA /* Logger.swift */; };
@@ -182,7 +182,7 @@
 		D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceNode.swift; sourceTree = "<group>"; };
 		D50EB1D32865E37D00B075AA /* TestFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFiles.swift; sourceTree = "<group>"; };
 		D50EB1D82865F26200B075AA /* HelpSourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceFile.swift; sourceTree = "<group>"; };
-		D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyGlobalPropertiesStep.swift; sourceTree = "<group>"; };
+		D50EB1DB2865F7AE00B075AA /* GetProjectPropertiesStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProjectPropertiesStep.swift; sourceTree = "<group>"; };
 		D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseHelpSourceFileStep.swift; sourceTree = "<group>"; };
 		D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateHelpFileStep.swift; sourceTree = "<group>"; };
 		D50EB1E12865FB8C00B075AA /* BuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildStep.swift; sourceTree = "<group>"; };
@@ -233,6 +233,7 @@
 		D50EB290286DD39F00B075AA /* ElementsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsNode.swift; sourceTree = "<group>"; };
 		D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLocalizationTokenGenerator.swift; sourceTree = "<group>"; };
 		D535AA4E286F6341008BAA6A /* EraserReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserReplacer.swift; sourceTree = "<group>"; };
+		D535AA52286F6BF9008BAA6A /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +260,7 @@
 		D50EB15C286450BB00B075AA = {
 			isa = PBXGroup;
 			children = (
+				D535AA52286F6BF9008BAA6A /* TODO.md */,
 				D50EB167286450BB00B075AA /* helpgen */,
 				D50EB1A22864901F00B075AA /* helpgen-tests */,
 				D50EB166286450BB00B075AA /* Products */,
@@ -410,7 +412,7 @@
 				D50EB1E12865FB8C00B075AA /* BuildStep.swift */,
 				D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */,
 				D50EB1DD2865F99B00B075AA /* ParseHelpSourceFileStep.swift */,
-				D50EB1DB2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift */,
+				D50EB1DB2865F7AE00B075AA /* GetProjectPropertiesStep.swift */,
 				D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */,
 				D50EB23C2867444600B075AA /* CopyAssetsBuildStep.swift */,
 				D50EB26F2869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift */,
@@ -736,7 +738,7 @@
 				D50EB1B12864961400B075AA /* PropertyTokenGenerator.swift in Sources */,
 				D50EB1F228660F2100B075AA /* PropertyQueryable.swift in Sources */,
 				D50EB1C62865B5C800B075AA /* PropertiesNode.swift in Sources */,
-				D50EB1DC2865F7AE00B075AA /* ApplyGlobalPropertiesStep.swift in Sources */,
+				D50EB1DC2865F7AE00B075AA /* GetProjectPropertiesStep.swift in Sources */,
 				D50EB19328646BD900B075AA /* TokenGenerator.swift in Sources */,
 				D50EB2102866E45500B075AA /* RegExprCache.swift in Sources */,
 				D50EB1C22864D32800B075AA /* PropertyNode.swift in Sources */,
@@ -797,7 +799,7 @@
 				D50EB1B52864A04600B075AA /* ValueTokenGenerator.swift in Sources */,
 				D50EB1A82864910200B075AA /* TokenGenerator.swift in Sources */,
 				D50EB1FE28661C7300B075AA /* Project.swift in Sources */,
-				D50EB20328661D2900B075AA /* ApplyGlobalPropertiesStep.swift in Sources */,
+				D50EB20328661D2900B075AA /* GetProjectPropertiesStep.swift in Sources */,
 				D50EB1A92864910200B075AA /* WhiteSpacesListTokenGenerator.swift in Sources */,
 				D50EB22C286706BB00B075AA /* RegExprConstants.swift in Sources */,
 				D50EB20528661D2900B075AA /* BuildStep.swift in Sources */,
