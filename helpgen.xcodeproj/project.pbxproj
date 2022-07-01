@@ -139,6 +139,7 @@
 		D50EB28F286DC96100B075AA /* ValuesNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB28E286DC96100B075AA /* ValuesNode.swift */; };
 		D50EB291286DD39F00B075AA /* ElementsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB290286DD39F00B075AA /* ElementsNode.swift */; };
 		D50EB297286E4DEF00B075AA /* PropertyLocalizationTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */; };
+		D535AA4F286F6341008BAA6A /* EraserReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535AA4E286F6341008BAA6A /* EraserReplacer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -231,6 +232,7 @@
 		D50EB28E286DC96100B075AA /* ValuesNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesNode.swift; sourceTree = "<group>"; };
 		D50EB290286DD39F00B075AA /* ElementsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsNode.swift; sourceTree = "<group>"; };
 		D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLocalizationTokenGenerator.swift; sourceTree = "<group>"; };
+		D535AA4E286F6341008BAA6A /* EraserReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserReplacer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +466,7 @@
 				D50EB228286702F000B075AA /* StringReplacers.swift */,
 				D50EB2112866E5E000B075AA /* PropertiesReplacer.swift */,
 				D50EB24928684D9A00B075AA /* ElementsReplacer.swift */,
+				D535AA4E286F6341008BAA6A /* EraserReplacer.swift */,
 				D50EB2212866FE9F00B075AA /* DOMStringReplacer.swift */,
 			);
 			path = Replacers;
@@ -693,6 +696,7 @@
 				D50EB2242866FF7000B075AA /* Constants.swift in Sources */,
 				D50EB25928698AE600B075AA /* ValueTransformable.swift in Sources */,
 				D50EB1EC2866035100B075AA /* HTMLHelpGenerator.swift in Sources */,
+				D535AA4F286F6341008BAA6A /* EraserReplacer.swift in Sources */,
 				D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */,
 				D50EB23928670C1F00B075AA /* ElementQueryable.swift in Sources */,
 				D50EB1E52865FF6200B075AA /* Generator.swift in Sources */,

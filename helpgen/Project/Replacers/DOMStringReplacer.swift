@@ -22,7 +22,8 @@ class DOMStringReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransfo
   override func internalInit() {
     replacers.append(contentsOf: [
       PropertiesReplacer(project: project, source: source, valueTransformer: valueTransformer),
-      ElementsReplacer(project: project, source: source, valueTransformer: valueTransformer)
+      ElementsReplacer(project: project, source: source, valueTransformer: valueTransformer),
+      EraserReplacer(project: project, source: source, valueTransformer: valueTransformer)
     ])
   }
   
