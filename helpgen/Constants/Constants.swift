@@ -39,7 +39,10 @@ struct Constants {
   static let ProjectBookKBProductPropertyKey = "bookKBProduct"
   static let ProjectBookTitlePropertyKey = "bookTitle"
   static let ProjectBookTypePropertyKey = "bookType"
-  
+
+  static let ProjectAssetsFolderPropertyKey = "assetsFolder"
+
   static let ContainerPathString = "Contents"
   static let ResourcesPathString = "Contents/Resources"
+  static let AssetsPathString = "assets"
 }

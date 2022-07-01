@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import SystemPackage
+import System
 
 class MockSourceFile: SourceFile, PropertyQueryable, ElementQueryable {
   var filePath = FilePath("MockSourceFile")

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SystemPackage
+import System
 
 class ProjectBuilder<S: StorageWrappable> {
   
@@ -42,15 +42,46 @@ extension ProjectBuilder {
   }
   
   func build(at projectFolderPath: FilePath) throws {
+    includeFiles()
     try createFolders(overwrite: true)
     try parseSourceFiles()
     try createFiles()
     try buildHelpFilesForAllLanguages()
+    try copyAssets()
   }
   
 }
 
 extension ProjectBuilder {
+  
+  /// Include all sources files in project
+  func includeFiles() {
+    let url = URL(fileURLWithPath: self.project.inputFolder.string)
+    let resourceKeys = Set<URLResourceKey>([.nameKey, .isDirectoryKey])
+    let enumerator = FileManager.default.enumerator(at: url,
+                                                    includingPropertiesForKeys: Array(resourceKeys),
+                                                    options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+    guard let enumerator = enumerator else {
+      return
+    }
+
+    for case let fileURL as URL in enumerator {
+      guard let resourceValues = try? fileURL.resourceValues(forKeys: resourceKeys),
+            let isDirectory = resourceValues.isDirectory,
+            let name = resourceValues.name
+      else {
+        continue
+      }
+
+      if isDirectory {
+        if name.hasPrefix("_") {
+          enumerator.skipDescendants()
+        }
+      } else {
+        project.helpSourceFiles.append(HelpSourceFile(path: self.project.inputFolder.appending(name)))
+      }
+    }
+  }
   
   func createFolders(overwrite: Bool = false) throws {
     let createFoldersOptions: CreateFolderBuildOptions = overwrite ? [] : [.throwIfExists]
@@ -98,6 +129,7 @@ extension ProjectBuilder {
         project.currentLanguage = lang
         try buildHelpFiles()
       }
+      project.currentLanguage = ""
     } else {
       try buildHelpFiles()
     }
@@ -109,4 +141,15 @@ extension ProjectBuilder {
     }
   }
 
+  func copyAssets() throws {
+    // Common assets
+    self.project.currentLanguage = ""
+    try CopyAssetsBuildStep(project: self.project).exec()
+    
+    for lang in self.project.languages {
+      project.currentLanguage = lang
+      try CopyAssetsBuildStep(project: self.project).exec()
+    }
+  }
+  
 }

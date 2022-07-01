@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SystemPackage
+import System
 
 enum FileType: String {
   case undefined

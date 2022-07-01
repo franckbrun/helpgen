@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SystemPackage
+import System
 import ArgumentParser
 
 struct BuildCommand: ParsableCommand {
@@ -17,8 +17,8 @@ struct BuildCommand: ParsableCommand {
     @OptionGroup
     var common: CommonOptions
     
-    @Option(name: [.customShort("i"), .long], help: "Input folders")
-    var inputFolders: [String]
+    @Option(name: [.customShort("i"), .long], help: "Input folder")
+    var inputFolder: String
   }
   
   @OptionGroup var options: Options
@@ -29,11 +29,9 @@ struct BuildCommand: ParsableCommand {
     let project = Project(self.options.common.projectName)
     project.languages = self.options.common.languages
 
-    // Add inputs files
-    for input in self.options.inputFolders {
-      project.includeFiles(in: FilePath(input))
-    }
-    
+    // Add inputs files from input folder
+    project.inputFolder = FilePath(self.options.inputFolder)
+
     let projectFolderPath = Config.currentPath.appending(self.options.common.outputFolder).appending(project.filename)
 
     let storage = try FileSystemWrapper(rootPath: projectFolderPath)

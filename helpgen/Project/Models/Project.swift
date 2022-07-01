@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SystemPackage
+import System
 
 class Project {
 
@@ -44,6 +44,8 @@ class Project {
   
   var helpSourceFiles = [HelpSourceFile]()
   
+  var inputFolder = FilePath(".")
+  
   var outputFolder: FilePath?
   
   init(_ name: String) {
@@ -61,35 +63,6 @@ extension Project: PropertyQueryable {
 }
 
 extension Project {
-
-  /// Include all sources files in project
-  func includeFiles(in path: FilePath) {
-    let url = URL(fileURLWithPath: path.string)
-    let resourceKeys = Set<URLResourceKey>([.nameKey, .isDirectoryKey])
-    let enumerator = FileManager.default.enumerator(at: url,
-                                                    includingPropertiesForKeys: Array(resourceKeys),
-                                                    options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
-    guard let enumerator = enumerator else {
-      return
-    }
-
-    for case let fileURL as URL in enumerator {
-      guard let resourceValues = try? fileURL.resourceValues(forKeys: resourceKeys),
-            let isDirectory = resourceValues.isDirectory,
-            let name = resourceValues.name
-      else {
-        continue
-      }
-
-      if isDirectory {
-        if name.hasPrefix("_") {
-          enumerator.skipDescendants()
-        }
-      } else {
-        self.helpSourceFiles.append(HelpSourceFile(path: path.appending(name)))
-      }      
-    }
-  }
 
 }
 

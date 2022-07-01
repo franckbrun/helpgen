@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SystemPackage
+import System
 
 class CreatePkgInfoFileBuildStep<S: StorageWrappable>: BuildStep {
   

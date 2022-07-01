@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SystemPackage
+import System
 
 struct HelpBookPList: Codable {
   var bundleDevelopmentRegion = "en_US"
