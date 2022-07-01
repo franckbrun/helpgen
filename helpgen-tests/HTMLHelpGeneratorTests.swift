@@ -8,12 +8,12 @@
 import XCTest
 import SystemPackage
 
-class MockSourceFile: SourceFile, LocalizedPropertyQueryable, ElementQueryable {
+class MockSourceFile: SourceFile, PropertyQueryable, ElementQueryable {
   var filePath = FilePath("MockSourceFile")
   
   var fileType = FileType.helpSource
   
-  func property(named propertyName: String, language lang: String?) -> Property? {
+  func property(named propertyName: String) -> Property? {
     switch propertyName {
     case "title":
       return Property(name:"title", value:"The Title of the page")

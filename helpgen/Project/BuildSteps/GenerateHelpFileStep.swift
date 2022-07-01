@@ -42,8 +42,9 @@ class GenerateHelpFileStep<S: StorageWrappable>: BuildStep {
   func outputFilePath(for sourceFile: HelpSourceFile) throws -> FilePath {
     
     var rootFilePath = FilePath(Constants.ResourcesPathString)
+    let lang = project.currentLanguage
     
-    if let lang = project.currentLanguage, !lang.isEmpty {
+    if !lang.isEmpty {
       if let folder = FilePath.Component("\(lang).\(Constants.LanguageProjectExtension)") {
         rootFilePath.append(folder)
       } else {
@@ -52,8 +53,8 @@ class GenerateHelpFileStep<S: StorageWrappable>: BuildStep {
     }
 
     var filename = ""
-    if let property = sourceFile.property(named: Constants.OutputFilenameKey, language: self.project.currentLanguage) {
-      filename = property.value
+    if let property = sourceFile.property(named: Constants.OutputFilenameKey) {
+      filename = property.value(forLanguage: lang)
     } else if let defaultOutputFilename = sourceFile.defaultOutputFilename {
       filename = defaultOutputFilename
     }

@@ -63,10 +63,9 @@ extension HelpSourceFile: SourcePropertiesQueryable {
 
 }
 
-extension HelpSourceFile: LocalizedPropertyQueryable {
+extension HelpSourceFile: PropertyQueryable {
   
-  func property(named propertyName: String, language lang: String?) -> Property? {
-    // TODO: Take language in account
+  func property(named propertyName: String) -> Property? {
     return self.node?.properties?.property(named: propertyName)
   }
     

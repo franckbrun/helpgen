@@ -12,7 +12,7 @@ enum HTMLHelpError: Error {
   case emptyTemplateFile
 }
 
-class HTMLHelpGenerator<S: SourceFile & LocalizedPropertyQueryable & ElementQueryable, T: ValueTransformable> : Generator<S, T>, StringReplacers {
+class HTMLHelpGenerator<S: SourceFile & PropertyQueryable & ElementQueryable, T: ValueTransformable> : Generator<S, T>, StringReplacers {
 
   var replacers = [StringReplacer<S>]()
   

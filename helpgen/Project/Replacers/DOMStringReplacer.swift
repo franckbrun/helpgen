@@ -8,7 +8,7 @@
 import Foundation
 import SwiftSoup
 
-class DOMStringReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: ValueTransformable>: StringReplacer<S>, StringReplacers {
+class DOMStringReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransformable>: StringReplacer<S>, StringReplacers {
   
   var replacers = [StringReplacer<S>]()
 

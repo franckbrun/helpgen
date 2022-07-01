@@ -12,7 +12,7 @@ enum PropertySource: String {
   case page
 }
 
-class PropertiesReplacer<S: LocalizedPropertyQueryable, T: ValueTransformable>: StringReplacer<S> {
+class PropertiesReplacer<S: PropertyQueryable, T: ValueTransformable>: StringReplacer<S> {
   
   let regExprCache = RegExprCache.shared
   
@@ -61,8 +61,9 @@ class PropertiesReplacer<S: LocalizedPropertyQueryable, T: ValueTransformable>: 
       }
       
       if let (source, name) = decompose(propertyName: propertyName) {
-        if let property = property(for: name, from: source, language: language) {
-          return try valueTransformer.tranform(property: property)
+        if let property = property(for: name, from: source) {
+          // Pass property for the specific language
+          return try valueTransformer.tranform(property: property.clone(forLanguage: language))
         }
       }
     }
@@ -71,13 +72,12 @@ class PropertiesReplacer<S: LocalizedPropertyQueryable, T: ValueTransformable>: 
   }
   
   /// search property value for type ("propertyName[:properties]]")
-  private func property(for propertyName: String, from propertySource: PropertySource, language: String?) -> Property? {
+  private func property(for propertyName: String, from propertySource: PropertySource) -> Property? {
     switch propertySource {
     case .project:
-      loge("\(propertySource) not handled")
-      return nil
+      return project.property(named: propertyName)
     case .page:
-      return source.property(named: propertyName, language: language)
+      return source.property(named: propertyName)
     }
   }
   

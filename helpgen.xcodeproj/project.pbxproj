@@ -104,8 +104,6 @@
 		D50EB23928670C1F00B075AA /* ElementQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementQueryable.swift */; };
 		D50EB23B28670C5900B075AA /* CreateFolderBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */; };
 		D50EB23D2867444600B075AA /* CopyFilesBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */; };
-		D50EB24228674BC900B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
-		D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */; };
 		D50EB24828674F1400B075AA /* ElementQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementQueryable.swift */; };
 		D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
 		D50EB24D286884AE00B075AA /* StorageWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* StorageWrappable.swift */; };
@@ -211,7 +209,6 @@
 		D50EB23828670C1F00B075AA /* ElementQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementQueryable.swift; sourceTree = "<group>"; };
 		D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderBuildStep.swift; sourceTree = "<group>"; };
 		D50EB23C2867444600B075AA /* CopyFilesBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFilesBuildStep.swift; sourceTree = "<group>"; };
-		D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedPropertyQueryable.swift; sourceTree = "<group>"; };
 		D50EB24928684D9A00B075AA /* ElementsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsReplacer.swift; sourceTree = "<group>"; };
 		D50EB24C286884AE00B075AA /* StorageWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWrappable.swift; sourceTree = "<group>"; };
 		D50EB24E2868854600B075AA /* FileSystemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemWrapper.swift; sourceTree = "<group>"; };
@@ -451,7 +448,6 @@
 			children = (
 				D50EB1ED286605C900B075AA /* SourceFile.swift */,
 				D50EB1F128660F2100B075AA /* PropertyQueryable.swift */,
-				D50EB24128674BC900B075AA /* LocalizedPropertyQueryable.swift */,
 				D50EB23828670C1F00B075AA /* ElementQueryable.swift */,
 			);
 			path = Protocols;
@@ -683,7 +679,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D50EB28F286DC96100B075AA /* ValuesNode.swift in Sources */,
-				D50EB24228674BC900B075AA /* LocalizedPropertyQueryable.swift in Sources */,
 				D50EB17D2864541400B075AA /* Token.swift in Sources */,
 				D50EB1E02865FB4300B075AA /* GenerateHelpFileStep.swift in Sources */,
 				D50EB21A2866E9E000B075AA /* RegExprMatchable.swift in Sources */,
@@ -772,7 +767,6 @@
 				D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */,
 				D50EB25528689AE300B075AA /* Property.swift in Sources */,
 				D50EB25628689AE300B075AA /* ElementsReplacer.swift in Sources */,
-				D50EB24728674F1400B075AA /* LocalizedPropertyQueryable.swift in Sources */,
 				D50EB24828674F1400B075AA /* ElementQueryable.swift in Sources */,
 				D50EB22E286706DD00B075AA /* GenericError.swift in Sources */,
 				D50EB22F286706DD00B075AA /* NSTextCheckingResultExtension.swift in Sources */,

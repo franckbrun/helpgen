@@ -47,3 +47,17 @@ extension Property {
   }
   
 }
+
+extension Property {
+  
+  /// Return localized value of the property or default value if not found
+  func value(forLanguage lang: String) -> String {
+    return self.localizedValues[lang] ?? value
+  }
+ 
+  /// Returns a new property with a value fot the specific lqanguage
+  func clone(forLanguage lang: String) -> Property {
+    return Property(name: self.name, value: value(forLanguage: lang))
+  }
+  
+}

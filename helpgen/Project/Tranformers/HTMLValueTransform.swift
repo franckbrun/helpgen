@@ -21,7 +21,7 @@ class HTMLValueTransform: ValueTransformable {
     self.project = project
   }
   
-  /// Only return value of property
+  /// Returns property's value
   func tranform(property: Property) throws -> String? {
     return property.value
   }

@@ -34,7 +34,7 @@ extension ElementReplacerError: LocalizedError {
 /// properties query ::= (propertyName=propertyvalue)
 /// propertyName ::= type | name | lang
 /// if text or image, type is not used
-class ElementsReplacer<S: LocalizedPropertyQueryable & ElementQueryable, T: ValueTransformable>: PropertiesReplacer<S, T> {
+class ElementsReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransformable>: PropertiesReplacer<S, T> {
 
   let multiplesElements = "elements"
   let singleElement = "element"

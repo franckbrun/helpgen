@@ -36,8 +36,8 @@ class Project {
   var languages = [String]()
   
   /// Current langage for the current build
-  /// nil = no specific language
-  var currentLanguage: String?
+  /// empty = no specific language
+  var currentLanguage = ""
   
   // Globals project properties
   var properties = [String: Property]()
@@ -95,11 +95,11 @@ extension Project {
 
 extension Project {
   
-  func template<S: SourceFile & LocalizedPropertyQueryable>(for source: S) throws -> String? {
+  func template<S: SourceFile & PropertyQueryable>(for source: S) throws -> String? {
     // TODO: Check template of source
-    if let templateFilename = source.property(named: Constants.TemplatePropertyKey, language: self.currentLanguage) {
-      logd("found template filename : \(templateFilename)")
-      var path = FilePath(templateFilename.value)
+    if let property = source.property(named: Constants.TemplatePropertyKey) {
+      logd("found template propery : \(property)")
+      var path = FilePath(property.value(forLanguage: self.currentLanguage))
       if !path.isAbsolute {
         path = Config.currentPath.appending(path.components)
       }
