@@ -26,14 +26,16 @@ class CopyAssetsBuildStep<S: StorageWrappable>: BuildStep {
     if let property = self.project.property(named: Constants.ProjectAssetsFolderPropertyKey) {
       if self.project.currentLanguage.isEmpty {
         sourceAssetsFolder = property.value
+        if sourceAssetsFolder.isEmpty {
+          logi("no common assets")
+          return
+        }
       } else if property.hasLocalization(forLanguage: self.project.currentLanguage) {
         sourceAssetsFolder = property.value(forLanguage: self.project.currentLanguage)
+      } else {
+        logi("no specific assets for language '\(self.project.currentLanguage)'")
+        return
       }
-    }
-    
-    if sourceAssetsFolder.isEmpty {
-      logi("No assets to copy")
-      return
     }
     
     let sourceFolder = self.project.inputFolder.appending(sourceAssetsFolder)
@@ -74,7 +76,7 @@ class CopyAssetsBuildStep<S: StorageWrappable>: BuildStep {
     guard let enumerator = enumerator else {
       return files
     }
-
+    
     for case let fileURL as URL in enumerator {
       guard let resourceValues = try? fileURL.resourceValues(forKeys: resourceKeys),
             let isDirectory = resourceValues.isDirectory,
@@ -83,7 +85,7 @@ class CopyAssetsBuildStep<S: StorageWrappable>: BuildStep {
       else {
         continue
       }
-
+      
       if isDirectory {
         if name.hasPrefix("_") {
           enumerator.skipDescendants()
