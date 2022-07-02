@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// EraserReplacer remove all remains properties or elements placeholders.
 class EraserReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransformable>: PropertiesReplacer<S, T> {
   
   override var searchRegExpr: String {

@@ -22,8 +22,4 @@ struct HelpGen: ParsableCommand {
       Logger.currentLevel = .verbose
     }
   }
-  
-  func run() throws {
-    logd("ddd")
-  }
 }
