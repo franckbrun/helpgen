@@ -137,6 +137,12 @@ extension ProjectBuilder {
   
   func buildHelpFiles() throws {
     for helpSourceFile in self.project.helpSourceFiles {
+      if let outputProperty = helpSourceFile.property(named: Constants.OutputKey) {
+        if let output = Bool(outputProperty.value(forLanguage: self.project.currentLanguage)), !output {
+          logi("no output file '\(helpSourceFile.filePath.string)'")
+          continue
+        }
+      }
       try GenerateHelpFileStep(project: self.project, helpSourceFile: helpSourceFile, storage: self.storage).exec()
     }
   }
