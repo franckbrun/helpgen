@@ -238,8 +238,6 @@
 		D535AA52286F6BF9008BAA6A /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		D5565C8B28707BBA00F8430A /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
 		D5565C8E2870852200F8430A /* OptionsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsHelper.swift; sourceTree = "<group>"; };
-		D5B01575287184A400F719AF /* HelpSourceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceObject.swift; sourceTree = "<group>"; };
-		D5B015772871855B00F719AF /* HelpSourceCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceCompiler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,12 +291,12 @@
 				D50EB2152866E75500B075AA /* Errors */,
 				D50EB20E2866E43C00B075AA /* Utils */,
 				D50EB1D62865F1F400B075AA /* Logger */,
+				D50EB1D72865F24000B075AA /* Project */,
 				D50EB1D52865F1CA00B075AA /* Tokens */,
 				D50EB18628645F1D00B075AA /* Lexers */,
 				D50EB19628648C7300B075AA /* Parsers */,
 				D50EB295286E479100B075AA /* Solvers */,
 				D50EB2682869BA1500B075AA /* PropertyWrappers */,
-				D50EB1D72865F24000B075AA /* Project */,
 				D50EB1872864600700B075AA /* Commands */,
 				D50EB168286450BB00B075AA /* HelpGen.swift */,
 			);
