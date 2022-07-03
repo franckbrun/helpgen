@@ -291,6 +291,7 @@
 				D50EB2152866E75500B075AA /* Errors */,
 				D50EB20E2866E43C00B075AA /* Utils */,
 				D50EB1D62865F1F400B075AA /* Logger */,
+				D50EB1EF28660CC500B075AA /* Models */,
 				D50EB1D72865F24000B075AA /* Project */,
 				D50EB1D52865F1CA00B075AA /* Tokens */,
 				D50EB18628645F1D00B075AA /* Lexers */,
@@ -399,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				D50EB1F028660E9200B075AA /* Protocols */,
-				D50EB1EF28660CC500B075AA /* Models */,
 				D50EB24B2868847800B075AA /* StorageWrappers */,
 				D50EB225286700BF00B075AA /* Enums */,
 				D50EB20B2866E26A00B075AA /* Replacers */,
@@ -439,11 +439,11 @@
 		D50EB1EF28660CC500B075AA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D50EB2632869908200B075AA /* SourceFiles */,
 				D50EB28A286DC01700B075AA /* Value.swift */,
 				D50EB25028688B4300B075AA /* Property.swift */,
 				D50EB25A28698BC700B075AA /* Element.swift */,
 				D50EB17E286454F000B075AA /* Project.swift */,
-				D50EB2632869908200B075AA /* SourceFiles */,
 			);
 			path = Models;
 			sourceTree = "<group>";
