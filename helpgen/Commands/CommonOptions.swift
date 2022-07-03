@@ -17,4 +17,11 @@ struct CommonOptions: ParsableArguments {
   
   @Option(name: [.customShort("l"), .long], help: "Langage(s)")
   var languages = [String]()
+  
+  @Flag(name: [.long], help: "Overwrite output if exists")
+  var overwrite = false
+  
+  @Flag(name: [.long], help: "Dry run")
+  var dryRun = false
+
 }

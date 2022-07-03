@@ -25,17 +25,24 @@ struct BuildCommand: ParsableCommand {
   
   func run() throws {
     
+    if self.options.common.dryRun {
+      print(self.options)
+      return
+    }
+    
     // Create project
     let project = Project(self.options.common.projectName)
-    project.languages = self.options.common.languages
+    
+    // Languages
+    project.languages = OptionsHelper.languages(from: self.options.common.languages)
 
     // Add inputs files from input folder
     project.inputFolder = FilePath(self.options.inputFolder)
 
-    let projectFolderPath = Config.currentPath.appending(self.options.common.outputFolder).appending(project.filename)
+    let projectFolderPath = Config.currentPath.pushing(FilePath(self.options.common.outputFolder)).appending(project.filename)
 
-    let storage = try FileSystemWrapper(rootPath: projectFolderPath)
-    
+    let storage = try StorageHelper.createStorage(rootPath: projectFolderPath, overwrite: self.options.common.overwrite)
+
     let builder = ProjectBuilder(project: project, storage: storage)
     logi("Builing project '\(project.name)' at '\(projectFolderPath)'...")
 
@@ -43,6 +50,9 @@ struct BuildCommand: ParsableCommand {
       try storage.initialize()
       defer { try! storage.finalize() }
       try builder.build(at: projectFolderPath)
+    } catch StorageError.alreadyExists {
+      logi("Project already esists ar '\(projectFolderPath)'")
+      throw ExitCode.failure
     } catch let error {
       loge("error while builing project: \(error.localizedDescription)")
       throw ExitCode.failure

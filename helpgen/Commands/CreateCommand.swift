@@ -15,10 +15,7 @@ struct CreateCommand: ParsableCommand {
 
   struct Options: ParsableArguments {
     @OptionGroup
-    var common: CommonOptions
-    
-    @Flag(help: "Overwrite output if exists")
-    var overwrite = false
+    var common: CommonOptions    
   }
 
   @OptionGroup var options: Options
@@ -27,20 +24,14 @@ struct CreateCommand: ParsableCommand {
     
     // Create project
     let project = Project(self.options.common.projectName)
-    project.languages = self.options.common.languages
+    
+    // Languages
+    project.languages = OptionsHelper.languages(from: self.options.common.languages)
         
-    let projectFolderPath = Config.currentPath.appending(self.options.common.outputFolder).appending(project.filename)
+    let projectFolderPath = Config.currentPath.pushing(FilePath(self.options.common.outputFolder)).appending(project.filename)
 
-    let storage = try createStorage(rootPath: projectFolderPath)
-    
-    if try storage.fileExists(at: projectFolderPath) {
-      if !self.options.overwrite {
-        logi("Project '\(project.name)' already exists at '\(projectFolderPath)'")
-        return
-      }
-      try storage.removeFile(at: projectFolderPath)
-    }
-    
+    let storage = try StorageHelper.createStorage(rootPath: projectFolderPath, overwrite: self.options.common.overwrite)
+        
     let builder = ProjectBuilder(project: project, storage: storage)
     logi("Creating project '\(project.name)' at '\(projectFolderPath)'")
 
@@ -48,21 +39,13 @@ struct CreateCommand: ParsableCommand {
       try storage.initialize()
       defer { try! storage.finalize() }
       try builder.create(at: projectFolderPath)
+    } catch StorageError.alreadyExists {
+      logi("Project already exists at '\(projectFolderPath)'")
+      throw ExitCode.failure
     } catch let error {
       loge("error while create project: \(error.localizedDescription)")
       throw ExitCode.failure
     }
   }
-  
-  func createStorage(rootPath: FilePath) throws -> some StorageWrappable {
-    var storageOptions: FileSystemWrapper.Options = []
-    
-    if self.options.overwrite {
-      storageOptions.insert(.overwrite)
-    }
 
-    let storage = try FileSystemWrapper(rootPath: rootPath, options: storageOptions)
-    return storage
-  }
-  
 }

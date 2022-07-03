@@ -140,6 +140,8 @@
 		D50EB291286DD39F00B075AA /* ElementsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB290286DD39F00B075AA /* ElementsNode.swift */; };
 		D50EB297286E4DEF00B075AA /* PropertyLocalizationTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */; };
 		D535AA4F286F6341008BAA6A /* EraserReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535AA4E286F6341008BAA6A /* EraserReplacer.swift */; };
+		D5565C8C28707BBA00F8430A /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5565C8B28707BBA00F8430A /* StorageHelper.swift */; };
+		D5565C8F2870852200F8430A /* OptionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5565C8E2870852200F8430A /* OptionsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -234,6 +236,10 @@
 		D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLocalizationTokenGenerator.swift; sourceTree = "<group>"; };
 		D535AA4E286F6341008BAA6A /* EraserReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserReplacer.swift; sourceTree = "<group>"; };
 		D535AA52286F6BF9008BAA6A /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		D5565C8B28707BBA00F8430A /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
+		D5565C8E2870852200F8430A /* OptionsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsHelper.swift; sourceTree = "<group>"; };
+		D5B01575287184A400F719AF /* HelpSourceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceObject.swift; sourceTree = "<group>"; };
+		D5B015772871855B00F719AF /* HelpSourceCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceCompiler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +317,7 @@
 		D50EB1872864600700B075AA /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				D5565C8A28707BAD00F8430A /* Helper */,
 				D50EB26B2869BC0F00B075AA /* CommonOptions.swift */,
 				D50EB22A2867056100B075AA /* CreateCommand.swift */,
 				D50EB1882864601700B075AA /* BuildCommand.swift */,
@@ -362,10 +369,10 @@
 			isa = PBXGroup;
 			children = (
 				D50EB1BF2864D26100B075AA /* ExprNode.swift */,
+				D50EB1C12864D32800B075AA /* PropertyNode.swift */,
 				D50EB1C52865B5C800B075AA /* PropertiesNode.swift */,
 				D50EB28E286DC96100B075AA /* ValuesNode.swift */,
 				D50EB290286DD39F00B075AA /* ElementsNode.swift */,
-				D50EB1C12864D32800B075AA /* PropertyNode.swift */,
 				D50EB1C32864D3A000B075AA /* ElementNode.swift */,
 				D50EB26128698FC900B075AA /* ValueNode.swift */,
 				D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */,
@@ -576,6 +583,15 @@
 			path = Solvers;
 			sourceTree = "<group>";
 		};
+		D5565C8A28707BAD00F8430A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D5565C8B28707BBA00F8430A /* StorageHelper.swift */,
+				D5565C8E2870852200F8430A /* OptionsHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -687,6 +703,7 @@
 				D50EB1D12865DA0D00B075AA /* HelpSourceNode.swift in Sources */,
 				D50EB297286E4DEF00B075AA /* PropertyLocalizationTokenGenerator.swift in Sources */,
 				D50EB1B328649CEE00B075AA /* ValueTokenGenerator.swift in Sources */,
+				D5565C8C28707BBA00F8430A /* StorageHelper.swift in Sources */,
 				D50EB1C42864D3A000B075AA /* ElementNode.swift in Sources */,
 				D50EB26C2869BC0F00B075AA /* CommonOptions.swift in Sources */,
 				D50EB2222866FE9F00B075AA /* DOMStringReplacer.swift in Sources */,
@@ -726,6 +743,7 @@
 				D50EB1EE286605C900B075AA /* SourceFile.swift in Sources */,
 				D50EB25128688B4300B075AA /* Property.swift in Sources */,
 				D50EB287286D9D9600B075AA /* RawStringValueTokenGenerator.swift in Sources */,
+				D5565C8F2870852200F8430A /* OptionsHelper.swift in Sources */,
 				D50EB17F286454F000B075AA /* Project.swift in Sources */,
 				D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */,
 				D50EB227286700CB00B075AA /* FileType.swift in Sources */,
