@@ -1,5 +1,5 @@
 //
-//  StorageWrappable.swift
+//  StorageWrapper.swift
 //  helpgen
 //
 //  Created by Franck Brun on 26/06/2022.
@@ -8,7 +8,11 @@
 import Foundation
 import System
 
-protocol StorageWrappable {
+enum StorageError: Error {
+  case alreadyExists
+}
+
+protocol StorageWrapper {
   
   func initialize() throws
   

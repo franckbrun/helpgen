@@ -45,7 +45,7 @@ struct HelpBookPList: Codable {
   }
 }
 
-class CreateHelpBookPlistBuildStep<S: StorageWrappable>: BuildStep {
+class CreateHelpBookPlistBuildStep<S: StorageWrapper>: BuildStep {
   
   let project: Project
   let storage: S

@@ -8,7 +8,7 @@
 import Foundation
 import System
 
-class ProjectBuilder<S: StorageWrappable> {
+class ProjectBuilder<S: StorageWrapper> {
   
   let project: Project
   let storage: S

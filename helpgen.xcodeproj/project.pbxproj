@@ -104,7 +104,7 @@
 		D50EB23D2867444600B075AA /* CopyAssetsBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23C2867444600B075AA /* CopyAssetsBuildStep.swift */; };
 		D50EB24828674F1400B075AA /* ElementQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB23828670C1F00B075AA /* ElementQueryable.swift */; };
 		D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24928684D9A00B075AA /* ElementsReplacer.swift */; };
-		D50EB24D286884AE00B075AA /* StorageWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* StorageWrappable.swift */; };
+		D50EB24D286884AE00B075AA /* StorageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* StorageWrapper.swift */; };
 		D50EB24F2868854600B075AA /* FileSystemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24E2868854600B075AA /* FileSystemWrapper.swift */; };
 		D50EB25128688B4300B075AA /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25028688B4300B075AA /* Property.swift */; };
 		D50EB2532868901E00B075AA /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB2522868901E00B075AA /* ArrayExtension.swift */; };
@@ -114,7 +114,7 @@
 		D50EB25928698AE600B075AA /* ValueTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25828698AE600B075AA /* ValueTransformable.swift */; };
 		D50EB25B28698BC700B075AA /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25A28698BC700B075AA /* Element.swift */; };
 		D50EB25E28698CF400B075AA /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25A28698BC700B075AA /* Element.swift */; };
-		D50EB25F28698CF400B075AA /* StorageWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* StorageWrappable.swift */; };
+		D50EB25F28698CF400B075AA /* StorageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB24C286884AE00B075AA /* StorageWrapper.swift */; };
 		D50EB26028698CF400B075AA /* ValueTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB25828698AE600B075AA /* ValueTransformable.swift */; };
 		D50EB26228698FC900B075AA /* ValueNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB26128698FC900B075AA /* ValueNode.swift */; };
 		D50EB265286990BC00B075AA /* HTMLValueTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB264286990BC00B075AA /* HTMLValueTransform.swift */; };
@@ -209,7 +209,7 @@
 		D50EB23A28670C5900B075AA /* CreateFolderBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderBuildStep.swift; sourceTree = "<group>"; };
 		D50EB23C2867444600B075AA /* CopyAssetsBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyAssetsBuildStep.swift; sourceTree = "<group>"; };
 		D50EB24928684D9A00B075AA /* ElementsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsReplacer.swift; sourceTree = "<group>"; };
-		D50EB24C286884AE00B075AA /* StorageWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWrappable.swift; sourceTree = "<group>"; };
+		D50EB24C286884AE00B075AA /* StorageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWrapper.swift; sourceTree = "<group>"; };
 		D50EB24E2868854600B075AA /* FileSystemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemWrapper.swift; sourceTree = "<group>"; };
 		D50EB25028688B4300B075AA /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		D50EB2522868901E00B075AA /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 		D50EB24B2868847800B075AA /* StorageWrappers */ = {
 			isa = PBXGroup;
 			children = (
-				D50EB24C286884AE00B075AA /* StorageWrappable.swift */,
+				D50EB24C286884AE00B075AA /* StorageWrapper.swift */,
 				D50EB24E2868854600B075AA /* FileSystemWrapper.swift */,
 			);
 			path = StorageWrappers;
@@ -702,7 +702,7 @@
 				D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */,
 				D50EB23928670C1F00B075AA /* ElementQueryable.swift in Sources */,
 				D50EB1E52865FF6200B075AA /* Generator.swift in Sources */,
-				D50EB24D286884AE00B075AA /* StorageWrappable.swift in Sources */,
+				D50EB24D286884AE00B075AA /* StorageWrapper.swift in Sources */,
 				D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */,
 				D50EB17B2864540700B075AA /* Lexer.swift in Sources */,
 				D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */,
@@ -761,7 +761,7 @@
 				D50EB283286D9B3200B075AA /* ValueNode.swift in Sources */,
 				D50EB284286D9B3200B075AA /* EscapedString.swift in Sources */,
 				D50EB25E28698CF400B075AA /* Element.swift in Sources */,
-				D50EB25F28698CF400B075AA /* StorageWrappable.swift in Sources */,
+				D50EB25F28698CF400B075AA /* StorageWrapper.swift in Sources */,
 				D50EB26028698CF400B075AA /* ValueTransformable.swift in Sources */,
 				D50EB25428689AE300B075AA /* ArrayExtension.swift in Sources */,
 				D50EB25528689AE300B075AA /* Property.swift in Sources */,

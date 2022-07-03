@@ -8,7 +8,7 @@
 import Foundation
 import System
 
-class CopyAssetsBuildStep<S: StorageWrappable>: BuildStep {
+class CopyAssetsBuildStep<S: StorageWrapper>: BuildStep {
   
   let filemanager = FileManager()
   let project: Project

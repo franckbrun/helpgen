@@ -8,7 +8,7 @@
 import Foundation
 import System
 
-class CreatePkgInfoFileBuildStep<S: StorageWrappable>: BuildStep {
+class CreatePkgInfoFileBuildStep<S: StorageWrapper>: BuildStep {
   
   let storage: S
   

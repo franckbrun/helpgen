@@ -8,7 +8,7 @@
 import Foundation
 import System
 
-class FileSystemWrapper: StorageWrappable {
+class FileSystemWrapper: StorageWrapper {
 
   let fileManager = FileManager()
   
@@ -28,6 +28,15 @@ class FileSystemWrapper: StorageWrappable {
   }
   
   func initialize() throws {
+    
+    if fileManager.fileExists(atPath: self.rootPath.string, isDirectory:nil) {
+      if !self.options.contains(.overwrite) {
+        throw StorageError.alreadyExists
+      } else {
+        try fileManager.removeItem(atPath: self.rootPath.string)
+      }
+    }
+    
     try fileManager.createDirectory(atPath: self.rootPath.string, withIntermediateDirectories: true)
   }
   
