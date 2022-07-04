@@ -9,6 +9,8 @@ import Foundation
 
 struct PropertyNode: ExprNode {
 
-  let property: Property
+  let name: String
+  let value: ValueNode
+  let localization: [PropertyLocalisationNode]?
   
 }

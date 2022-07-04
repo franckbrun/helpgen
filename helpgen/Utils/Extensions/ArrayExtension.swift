@@ -20,12 +20,12 @@ extension Array where Array.Element == Property {
   
 }
 
-extension Array where Array.Element == PropertyNode {
+extension Array where Array.Element == PropertyLocalization {
   
-  func find(propertyName name: String) -> Property? {
-    for node in self {
-      if node.property.name == name {
-        return node.property
+  func find(propertyLoc lang: String) -> PropertyLocalization? {
+    for element in self {
+      if element.lang == lang {
+        return element
       }
     }
     return nil

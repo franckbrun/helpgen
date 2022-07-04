@@ -9,7 +9,7 @@ import Foundation
 
 struct ValueNode: ExprNode {
 
-  let value: Value
+  let value: String
   
 }
 

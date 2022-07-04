@@ -9,7 +9,6 @@ import Foundation
 
 enum ParserError: Error {
   case unexceptedToken(Token)
-  case unknownElementType(Token)
   case unexceptedEnd
 }
 
@@ -18,8 +17,6 @@ extension ParserError: LocalizedError {
     switch self {
     case .unexceptedToken(let token):
       return "unexcepted token \(token)"
-    case .unknownElementType(let token):
-      return "unknown element type in \(token)"
     case .unexceptedEnd:
       return "unexcepted end"
     }

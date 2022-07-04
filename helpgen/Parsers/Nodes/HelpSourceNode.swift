@@ -8,8 +8,8 @@
 import Foundation
 
 struct HelpSourceNode: ExprNode {
-  var properties: PropertiesNode?
-  var elements: ElementsNode?
+  var properties: [PropertyNode]?
+  var elements: [ElementNode]?
   
   var description: String {
     return "HelpSourceNode{properties:\(properties?.description ?? "-"), elements:\(elements?.description ?? "-")}"

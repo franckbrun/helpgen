@@ -9,14 +9,8 @@ import Foundation
 
 struct ElementNode: ExprNode {
 
-  let element: Element
-  
-}
-
-extension ElementNode: PropertyQueryable {
-  
-  func property(named propertyName: String) -> Property? {
-    return self.element.property(named: propertyName)
-  }
+  let elementTypeName: String
+  let values: [ValueNode]?
+  let properties: [PropertyNode]?
   
 }

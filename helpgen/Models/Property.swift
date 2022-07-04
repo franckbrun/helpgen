@@ -12,11 +12,13 @@ struct PropertyLocalization {
   let value: String
 }
 
+extension PropertyLocalization: Equatable, Hashable, Codable {}
+
 struct Property {
   let name: String
   let value: String
     
-  var localizedValues = [String: String]()
+  var localizedValues: [PropertyLocalization]?
 }
 
 extension Property: Equatable, Hashable, Codable {
@@ -52,16 +54,16 @@ extension Property {
   
   /// Return localized value of the property or default value if not found
   func value(forLanguage lang: String) -> String {
-    return self.localizedValues[lang] ?? value
+    return self.localizedValues?.find(propertyLoc: lang)?.value ?? value
   }
  
-  /// Returns a new property with a value fot the specific lqanguage
+  /// Returns a new property with a value for the specific lqanguage
   func clone(forLanguage lang: String) -> Property {
     return Property(name: self.name, value: value(forLanguage: lang))
   }
   
   func hasLocalization(forLanguage lang: String) -> Bool {
-    return self.localizedValues.index(forKey: lang) != nil
+    return self.localizedValues?.find(propertyLoc: lang) != nil
   }
   
 }
