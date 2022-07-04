@@ -100,12 +100,19 @@ extension ProjectBuilder {
   }
   
   func createFiles() throws {
-    let buildSteps: [BuildStep] = [
+    var buildSteps: [BuildStep] = [
       CreatePkgInfoFileBuildStep(storage: self.storage),
       CreateHelpBookPlistBuildStep(project: self.project, storage: self.storage),
     ]
-            
+
     try execute(buildSteps: buildSteps)
+
+    for lang in self.project.languages {
+      self.project.currentLanguage = lang
+      try CreatePlistStringsFileBuildStep(project: self.project, storage: self.storage).exec()
+    }
+    self.project.currentLanguage = ""
+            
   }
   
   func parseSourceFiles() throws {

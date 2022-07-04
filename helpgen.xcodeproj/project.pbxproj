@@ -141,6 +141,8 @@
 		D5B0157C2871D5FB00F719AF /* HelpSourceCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B0157B2871D5FB00F719AF /* HelpSourceCompiler.swift */; };
 		D5B0157F2871D67100F719AF /* HelpSourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B0157E2871D67100F719AF /* HelpSourceObject.swift */; };
 		D5B015812871D7C500F719AF /* PropertyLocalisationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B015802871D7C500F719AF /* PropertyLocalisationNode.swift */; };
+		D5B015A5287328C900F719AF /* CreatePlistStringsFileBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B015A4287328C900F719AF /* CreatePlistStringsFileBuildStep.swift */; };
+		D5B015A728732CB700F719AF /* InfoPlistConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B015A628732CB700F719AF /* InfoPlistConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -237,6 +239,8 @@
 		D5B0157B2871D5FB00F719AF /* HelpSourceCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceCompiler.swift; sourceTree = "<group>"; };
 		D5B0157E2871D67100F719AF /* HelpSourceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceObject.swift; sourceTree = "<group>"; };
 		D5B015802871D7C500F719AF /* PropertyLocalisationNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLocalisationNode.swift; sourceTree = "<group>"; };
+		D5B015A4287328C900F719AF /* CreatePlistStringsFileBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlistStringsFileBuildStep.swift; sourceTree = "<group>"; };
+		D5B015A628732CB700F719AF /* InfoPlistConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlistConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +422,7 @@
 				D50EB1DF2865FB4300B075AA /* GenerateHelpFileStep.swift */,
 				D50EB23C2867444600B075AA /* CopyAssetsBuildStep.swift */,
 				D50EB26F2869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift */,
+				D5B015A4287328C900F719AF /* CreatePlistStringsFileBuildStep.swift */,
 				D50EB2712869DBE000B075AA /* CreatePkgInfoFileBuildStep.swift */,
 			);
 			path = BuildSteps;
@@ -507,6 +512,7 @@
 			children = (
 				D50EB21C2866EABD00B075AA /* RegExprConstants.swift */,
 				D50EB2232866FF7000B075AA /* Constants.swift */,
+				D5B015A628732CB700F719AF /* InfoPlistConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -753,10 +759,12 @@
 				D50EB1BA2864AD7C00B075AA /* ElementTokenGenerator.swift in Sources */,
 				D50EB227286700CB00B075AA /* FileType.swift in Sources */,
 				D50EB24F2868854600B075AA /* FileSystemWrapper.swift in Sources */,
+				D5B015A5287328C900F719AF /* CreatePlistStringsFileBuildStep.swift in Sources */,
 				D50EB289286D9DAD00B075AA /* QuotedStringValueTokenGenerator.swift in Sources */,
 				D50EB26E2869D75200B075AA /* ProjectBuilder.swift in Sources */,
 				D50EB2172866E76300B075AA /* GenericError.swift in Sources */,
 				D50EB229286702F000B075AA /* StringReplacers.swift in Sources */,
+				D5B015A728732CB700F719AF /* InfoPlistConstants.swift in Sources */,
 				D50EB2702869DA7600B075AA /* CreateHelpBookPlistBuildStep.swift in Sources */,
 				D50EB1B12864961400B075AA /* PropertyTokenGenerator.swift in Sources */,
 				D50EB1F228660F2100B075AA /* PropertyQueryable.swift in Sources */,

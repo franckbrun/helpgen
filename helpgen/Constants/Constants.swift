@@ -21,6 +21,8 @@ struct Constants {
   static let HelpFileExtension = "help"
   static let LanguageProjectExtension = "lproj"
   
+  static let InfoPListStringsFilename = "InfoPlist.strings"
+  
   static let PropertyNameCharacterSeparator = Character(".")
   
   static let ProjectPropertyNameRadix = "project"
