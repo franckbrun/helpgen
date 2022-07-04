@@ -18,7 +18,7 @@ class HTMLHelpGenerator<S: SourceFile & PropertyQueryable & ElementQueryable, T:
   
   override func internalInit() {
     self.replacers.append(contentsOf: [
-      DOMStringReplacer(project: project, source: source, valueTransformer: valueTransformer)
+      DOMStringReplacer(project: project, source: source, valueTransformer: valueTransformer),
     ])
   }
   
@@ -26,6 +26,6 @@ class HTMLHelpGenerator<S: SourceFile & PropertyQueryable & ElementQueryable, T:
     guard let templateContents = try project.template(for: source) else {
       throw HTMLHelpError.emptyTemplateFile
     }
-    return try changeValue(in:templateContents);
+    return try changeValue(in: templateContents);
   }
 }

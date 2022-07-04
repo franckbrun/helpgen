@@ -63,10 +63,6 @@ extension Project: PropertyQueryable {
 }
 
 extension Project {
-
-}
-
-extension Project {
   
   func template<S: SourceFile & PropertyQueryable>(for source: S) throws -> String? {
     // TODO: Check template of source
@@ -95,6 +91,7 @@ extension Project {
 <html>
   <head>
     <title>%{page.title}%</title>
+    <meta charset="UTF-8">
     <meta name="AppleTitle" content="%{page.apple_title}%">
   </head>
   <body>

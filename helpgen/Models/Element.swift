@@ -20,6 +20,7 @@ enum ElementType: String, CaseIterable {
   case anchor
   case link
   case helplink
+  case video
 }
 
 struct Element {
@@ -37,5 +38,13 @@ extension Element: PropertyQueryable {
   func property(named propertyName: String) -> Property? {
     return self.properties?.find(propertyName: propertyName)
   }
-  
+    
+}
+
+extension Element {
+
+  func value(forNamedProterty name: String) -> String? {
+    return self.property(named: name)?.value
+  }
+
 }

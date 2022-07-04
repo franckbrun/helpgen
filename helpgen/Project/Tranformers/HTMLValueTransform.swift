@@ -37,6 +37,8 @@ class HTMLValueTransform: ValueTransformable {
       return try anchor(with: element)
     case .helplink:
       return try helpLink(with: element)
+    case .video:
+      return try video(with: element)
     default:
       return nil
     }
@@ -76,7 +78,6 @@ class HTMLValueTransform: ValueTransformable {
   }
   
   func helpLink(with element: Element) throws -> String {
-    
     var anchor_name = ""
     var book_id = ""
     
@@ -102,4 +103,17 @@ class HTMLValueTransform: ValueTransformable {
     
     return try a.outerHtml()
   }
+  
+  func video(with element: Element) throws -> String {
+    let attributes = SwiftSoup.Attributes()
+    if let source = element.value(forNamedProterty: "src") {
+      try attributes.put("src", source)
+    }
+    if let type = element.value(forNamedProterty: "type") {
+      try attributes.put("type", type)
+    }
+    let video = SwiftSoup.Element(Tag("video"), "", attributes)
+    return try video.outerHtml()
+  }
+  
 }
