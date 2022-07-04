@@ -105,14 +105,23 @@ class HTMLValueTransform: ValueTransformable {
   }
   
   func video(with element: Element) throws -> String {
-    let attributes = SwiftSoup.Attributes()
+    let videoAttributes = SwiftSoup.Attributes()
+    try ["controls", "autoplay", "loop"].forEach {
+      if let boolValue = element.bool(forNamedProterty: $0), boolValue {
+        try videoAttributes.put($0, true)
+      }
+    }
+    
+    let sourceAttributes = SwiftSoup.Attributes()
     if let source = element.value(forNamedProterty: "src") {
-      try attributes.put("src", source)
+      try sourceAttributes.put("src", source)
     }
     if let type = element.value(forNamedProterty: "type") {
-      try attributes.put("type", type)
+      try sourceAttributes.put("type", type)
     }
-    let video = SwiftSoup.Element(Tag("video"), "", attributes)
+    
+    let video = SwiftSoup.Element(Tag("video"), "", videoAttributes)
+    try video.appendChild(SwiftSoup.Element(Tag("source"), "", sourceAttributes))
     return try video.outerHtml()
   }
   
