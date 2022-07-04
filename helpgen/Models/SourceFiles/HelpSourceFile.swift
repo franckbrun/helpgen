@@ -16,7 +16,7 @@ class HelpSourceFile: SourceFile {
   
   let filePath: FilePath
   
-  var node: HelpSourceNode?
+  var object: HelpSourceObject?
      
   var defaultOutputFilename: String? {
     return self.filePath.lastComponent?.string
@@ -27,9 +27,9 @@ class HelpSourceFile: SourceFile {
     self.fileType = FileType.fileType(for: path)
   }
   
-  convenience init(path: FilePath, node: HelpSourceNode) {
+  convenience init(path: FilePath, object: HelpSourceObject) {
     self.init(path: path)
-    self.node = node
+    self.object = object
   }
   
 }
@@ -37,25 +37,25 @@ class HelpSourceFile: SourceFile {
 extension HelpSourceFile: SourcePropertiesQueryable {
 
   func projectProperties() -> [Property]? {
-    return node?.properties?.nodes.compactMap { node in
+    return object?.properties?.compactMap { property in
       let projectPropertyPrefix = "\(Constants.ProjectPropertyNameRadix)."
-      if node.property.name.hasPrefix(projectPropertyPrefix) {
-        let propertyName = node.property.name.deletingPrefix(projectPropertyPrefix)
-        return Property(name: propertyName, value: node.property.value, localizedValues: node.property.localizedValues)
+      if property.name.hasPrefix(projectPropertyPrefix) {
+        let propertyName = property.name.deletingPrefix(projectPropertyPrefix)
+        return Property(name: propertyName, value: property.value, localizedValues: property.localizedValues)
       }
       return nil
     }
   }
   
   func sourceProperties() -> [Property]? {
-    return node?.properties?.nodes.compactMap { node in
-      if !node.property.name.hasPrefix("\(Constants.ProjectPropertyNameRadix).") {
+    return object?.properties?.compactMap { property in
+      if !property.name.hasPrefix("\(Constants.ProjectPropertyNameRadix).") {
         let pagePropertyPrefix = "\(Constants.PagePropertyNameRadix)."
-        var propertyName = node.property.name
+        var propertyName = property.name
         if propertyName.hasPrefix(pagePropertyPrefix) {
           propertyName = propertyName.deletingPrefix(pagePropertyPrefix)
         }
-        return Property(name: propertyName, value: node.property.value, localizedValues: node.property.localizedValues)
+        return Property(name: propertyName, value: property.value, localizedValues: property.localizedValues)
       }
       return nil
     }
@@ -66,7 +66,7 @@ extension HelpSourceFile: SourcePropertiesQueryable {
 extension HelpSourceFile: PropertyQueryable {
   
   func property(named propertyName: String) -> Property? {
-    return self.node?.properties?.property(named: propertyName)
+    return self.object?.properties?.find(propertyName: propertyName)
   }
     
 }
@@ -74,20 +74,20 @@ extension HelpSourceFile: PropertyQueryable {
 extension HelpSourceFile: ElementQueryable {
   
   func element(type: ElementType?, name: String?, language: String?, limit: Int = 0) -> [Element] {
-    guard let elementsNode = self.node?.elements?.nodes else {
+    guard let allElements = self.object?.elements else {
       return []
     }
     
     var elements = [Element]()
     
-    for elementNode in elementsNode {
+    for element in allElements {
       
-      if let queryedElementType = type, elementNode.element.type != queryedElementType {
+      if let queryedElementType = type, element.type != queryedElementType {
         continue
       }
 
       if let queryedElementName = name {
-        guard let elementName = elementNode.property(named: Constants.NamePropertyKey)?.value else {
+        guard let elementName = element.name else {
           continue
         }
         if elementName != queryedElementName {
@@ -96,14 +96,14 @@ extension HelpSourceFile: ElementQueryable {
       }
       
       if let queryedElementLanguage = language {
-        if let elementLangage = elementNode.property(named: Constants.LanguagePropertyKey)?.value {
+        if let elementLangage = element.property(named: Constants.LanguagePropertyKey)?.value {
           if elementLangage != queryedElementLanguage {
             continue
           }
         }
       }
 
-      elements.append(elementNode.element)
+      elements.append(element)
       if limit > 0, elements.count >= limit {
         break
       }

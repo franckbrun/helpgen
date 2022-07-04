@@ -44,7 +44,7 @@ class HTMLValueTransform: ValueTransformable {
   
   func paragraphTag(with element: Element) throws -> String {
     let p = SwiftSoup.Element(Tag("p"), "")
-    let joinsedValue = element.values.compactMap({$0.value}).joined(separator: " ")
+    let joinsedValue = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
     try p.text(joinsedValue)
     return try p.outerHtml()
   }
@@ -69,7 +69,7 @@ class HTMLValueTransform: ValueTransformable {
 
     let a = SwiftSoup.Element(Tag("a"), "", attributes)
     
-    let joinedValues = element.values.compactMap({$0.value}).joined(separator: " ")
+    let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
     try a.text(joinedValues)
     
     return try a.outerHtml()
@@ -97,7 +97,7 @@ class HTMLValueTransform: ValueTransformable {
 
     let a = SwiftSoup.Element(Tag("a"), "", attributes)
 
-    let joinedValues = element.values.compactMap({$0.value}).joined(separator: " ")
+    let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
     try a.text(joinedValues)
     
     return try a.outerHtml()

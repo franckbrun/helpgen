@@ -14,6 +14,7 @@ struct Constants {
   static let TypePropertyKey = "type"
   static let NamePropertyKey = "name"
   static let LanguagePropertyKey = "lang"
+  static let ExplicitPropertyKey = "explicit"
   static let OutputKey = "output"
   static let OutputFilenameKey = "filename"
 

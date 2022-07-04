@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct ElementFeatures: OptionSet, Equatable {
+  var rawValue: Int
+  
+  static let explicit = ElementFeatures(rawValue: 1 << 0)
+  
+}
+
 enum ElementType: String, CaseIterable {
   case text
   case image
@@ -17,8 +24,10 @@ enum ElementType: String, CaseIterable {
 
 struct Element {
   let type: ElementType
-  var values = [Value]()
-  var properties = [Property]()
+  let features: ElementFeatures
+  let name: String?
+  var values: [Value]?
+  var properties: [Property]?
 }
 
 extension Element: Equatable {}
@@ -26,7 +35,7 @@ extension Element: Equatable {}
 extension Element: PropertyQueryable {
   
   func property(named propertyName: String) -> Property? {
-    return self.properties.find(propertyName: propertyName)
+    return self.properties?.find(propertyName: propertyName)
   }
   
 }
