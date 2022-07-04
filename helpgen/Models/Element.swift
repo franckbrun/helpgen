@@ -47,4 +47,11 @@ extension Element {
     return self.property(named: name)?.value
   }
 
+  func bool(forNamedProterty name: String) -> Bool? {
+    if let value = value(forNamedProterty: name) {
+      return Bool(value)
+    }
+    return nil
+  }
+  
 }

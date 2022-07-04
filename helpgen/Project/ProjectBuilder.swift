@@ -100,7 +100,7 @@ extension ProjectBuilder {
   }
   
   func createFiles() throws {
-    var buildSteps: [BuildStep] = [
+    let buildSteps: [BuildStep] = [
       CreatePkgInfoFileBuildStep(storage: self.storage),
       CreateHelpBookPlistBuildStep(project: self.project, storage: self.storage),
     ]

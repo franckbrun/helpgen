@@ -63,7 +63,7 @@ class CreatePlistStringsFileBuildStep<S: StorageWrapper>: BuildStep {
     }
     
     return strings.reduce("") { (partialResult: String, keyValue:(key: String, value: String)) in
-      return partialResult + "\(keyValue.key) = \"\(keyValue.value);\"\n"
+      return partialResult + "\(keyValue.key) = \"\(keyValue.value)\";\n"
     }    
   }
   
