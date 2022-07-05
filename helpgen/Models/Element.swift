@@ -21,6 +21,7 @@ enum ElementType: String, CaseIterable {
   case link
   case helplink
   case video
+  case separator
 }
 
 struct Element {

@@ -35,10 +35,14 @@ class HTMLValueTransform: ValueTransformable {
       return try imageTag(with: element)
     case .anchor:
       return try anchor(with: element)
+    case .link:
+      return try link(with: element)
     case .helplink:
       return try helpLink(with: element)
     case .video:
       return try video(with: element)
+    case .separator:
+      return try separator(with: element)
     default:
       return nil
     }
@@ -76,7 +80,18 @@ class HTMLValueTransform: ValueTransformable {
     
     return try a.outerHtml()
   }
-  
+
+  func link(with element: Element) throws -> String {
+    let attributes = SwiftSoup.Attributes()
+
+    let a = SwiftSoup.Element(Tag("a"), "", attributes)
+
+    let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
+    try a.text(joinedValues)
+    
+    return try a.outerHtml()
+  }
+
   func helpLink(with element: Element) throws -> String {
     var anchor_name = ""
     var book_id = ""
@@ -124,5 +139,9 @@ class HTMLValueTransform: ValueTransformable {
     try video.appendChild(SwiftSoup.Element(Tag("source"), "", sourceAttributes))
     return try video.outerHtml()
   }
-  
+
+  func separator(with element: Element) throws -> String {
+    let separator = SwiftSoup.Element(Tag("hr"), "")
+    return try separator.outerHtml()
+  }
 }
