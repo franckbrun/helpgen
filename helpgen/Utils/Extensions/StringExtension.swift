@@ -37,4 +37,12 @@ extension String {
     return formattedString
   }
   
+  func hasValidDigit() -> Bool {
+    guard !isEmpty else {
+      return false
+    }
+    
+    return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: self))
+  }
+  
 }

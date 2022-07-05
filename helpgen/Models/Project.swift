@@ -47,9 +47,18 @@ class Project {
   var inputFolder = FilePath(".")
   
   var outputFolder: FilePath?
+
+  struct Options: OptionSet {
+    var rawValue: Int
+    
+    static let createIndex = Options(rawValue: 1 << 0)
+  }
+
+  var options = Options()
   
-  init(_ name: String) {
+  init(_ name: String, options: Options = []) {
     self.name = name
+    self.options = options
   }
     
 }
@@ -90,9 +99,8 @@ extension Project {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>%{page.title}%</title>
     <meta charset="UTF-8">
-    <meta name="AppleTitle" content="%{page.apple_title}%">
+    <title>%{page.title}%</title>
   </head>
   <body>
     <div>

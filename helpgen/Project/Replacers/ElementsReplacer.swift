@@ -36,9 +36,6 @@ extension ElementReplacerError: LocalizedError {
 /// if text or image, type is not used
 class ElementsReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransformable>: PropertiesReplacer<S, T> {
 
-  let multiplesElements = "elements"
-  let singleElement = "element"
-  
   override var searchRegExpr: String {
     "%\\{\(RegExprConstant.elementQueryRegExpr)\\}%"
   }

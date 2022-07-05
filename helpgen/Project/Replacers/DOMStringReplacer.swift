@@ -23,7 +23,8 @@ class DOMStringReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransfo
     replacers.append(contentsOf: [
       ElementsReplacer(project: project, source: source, valueTransformer: valueTransformer),
       PropertiesReplacer(project: project, source: source, valueTransformer: valueTransformer),
-      EraserReplacer(project: project, source: source, valueTransformer: valueTransformer)
+      EraserReplacer(project: project, source: source, valueTransformer: valueTransformer),
+      ActionsReplacer(project: project, source: source, valueTransformer: valueTransformer),
     ])
   }
   
@@ -37,7 +38,6 @@ class DOMStringReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransfo
     for element in elements {
       if let attributes = element.getAttributes() {
         for attr in attributes {
-          logd(attr.getValue())
           if let newValue = try changeValue(in: attr.getValue()) {
             attr.setValue(value: newValue)
             hasChanges = true
@@ -45,7 +45,6 @@ class DOMStringReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransfo
         }
       }
       
-      logd(element.ownText())
       if let newValue = try changeValue(in: element.ownText()) {
         try element.text("")
         try element.append(newValue)

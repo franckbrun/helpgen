@@ -8,6 +8,19 @@
 import Foundation
 import SwiftSoup
 
+enum HTMLValueTransformError: Error {
+  case malformedValue(Any)
+}
+
+extension HTMLValueTransformError: LocalizedError {
+  var errorDescription: String? {
+    switch self {
+    case .malformedValue(let object):
+      return "malformed element '\(object)'"
+    }
+  }
+}
+
 struct HTMLConstants {
   static let ImageTag = "img"
   static let ImageSourceAttribute = "src"
@@ -49,17 +62,44 @@ class HTMLValueTransform: ValueTransformable {
   }
   
   func paragraphTag(with element: Element) throws -> String {
-    let p = SwiftSoup.Element(Tag("p"), "")
+    var tag = "p"
+    if let headingValue = element.value(forNamedProterty: "heading") {
+      tag = findTag(for: headingValue)
+    }
+    let p = SwiftSoup.Element(Tag(tag), "")
     let joinsedValue = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
     try p.text(joinsedValue)
     return try p.outerHtml()
   }
-  
+    
   func imageTag(with element: Element) throws -> String {
     let attributes = SwiftSoup.Attributes()
     
     if let sourceProperty = element.property(named: HTMLConstants.ImageSourceAttribute) {
       try attributes.put("src", sourceProperty.value)
+    }
+    
+    if let sizeValue = element.value(forNamedProterty: "size") {
+      var width = ""
+      var height = ""
+      if sizeValue.contains("x") {
+        let components = sizeValue.split(separator: "x")
+        if components.count != 2 {
+          throw HTMLValueTransformError.malformedValue(element)
+        }
+        width = String(components[0])
+        height = String(components[1])
+      } else {
+        width = sizeValue
+        height = sizeValue
+      }
+      
+      if width.hasValidDigit() {
+        try attributes.put("width", width)
+      }
+      if height.hasValidDigit() {
+        try attributes.put("height", width)
+      }
     }
     
     let img = SwiftSoup.Element(Tag("img"), "", attributes)
@@ -82,8 +122,21 @@ class HTMLValueTransform: ValueTransformable {
   }
 
   func link(with element: Element) throws -> String {
+    var href = ""
+    
+    if let bundleId = element.value(forNamedProterty: "open_app") {
+      href = "x-help-action://openApp?bundleId=\(bundleId)"
+    } else if let prefPaneId = element.value(forNamedProterty: "open_pref_pane") {
+      href = "x-help-action://openPrefPane?bundleId=\(prefPaneId)"
+    } else if let hrefValue = element.value(forNamedProterty: "href") {
+      href = hrefValue
+    }
+    
     let attributes = SwiftSoup.Attributes()
-
+    if !href.isEmpty {
+      try attributes.put("href", href)
+    }
+    
     let a = SwiftSoup.Element(Tag("a"), "", attributes)
 
     let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
@@ -116,7 +169,10 @@ class HTMLValueTransform: ValueTransformable {
     let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
     try a.text(joinedValues)
     
-    return try a.outerHtml()
+    let p = SwiftSoup.Element(Tag("p"), "")
+    try p.appendChild(a)
+    
+    return try p.outerHtml()
   }
   
   func video(with element: Element) throws -> String {
@@ -144,4 +200,82 @@ class HTMLValueTransform: ValueTransformable {
     let separator = SwiftSoup.Element(Tag("hr"), "")
     return try separator.outerHtml()
   }
+  
+  // MARK: Utilities
+  
+  private func findTag(for headingValue: String) -> String {
+    var tag = "p"
+    
+    lazy var headingValues: [([String], String)] = [
+      (["title1", "t1"], "h1"),
+      (["title2", "t2"], "h2"),
+      (["title3", "t3"], "h3"),
+      (["title4", "t4"], "h4"),
+      (["title5", "t5"], "h5"),
+      (["title6", "t6"], "h6"),
+    ]
+
+    for (propertyValues, tagValue) in headingValues {
+      if propertyValues.contains(headingValue) {
+        tag = tagValue
+        break
+      }
+    }
+
+    return tag
+  }
+
+  // MARK: - Transform actions
+  
+  func transform(action: Action) throws -> String? {
+    switch action.type {
+    case .link:
+      return try link(with: action)
+    case .open:
+      return nil
+    }
+  }
+
+  func link(with action: Action) throws -> String {
+    var href = ""
+    let properties = Property.parseList(from: action.params)
+    if properties.count > 0 {
+      var anchor_name = ""
+      var book_id = ""
+      
+      if let nameProperty = properties.find(propertyName: "anchor_name") {
+        anchor_name = nameProperty.value
+      }
+      
+      if let bookIdProperty = properties.find(propertyName: "book_id") {
+        book_id = bookIdProperty.value
+      } else {
+        if let bundleIdentifierProperty = project.property(named: Constants.ProjectBundleIdentifierPropertyKey) {
+          book_id = bundleIdentifierProperty.value
+        }
+      }
+      
+      if anchor_name.isEmpty {
+        throw HTMLValueTransformError.malformedValue(action)
+      }
+      
+      href = "help:anchor=\(anchor_name) bookID=\(book_id)"
+    } else {
+      guard let url = URL(string: action.params) else {
+        throw HTMLValueTransformError.malformedValue(action)
+      }
+      href = url.absoluteURL.absoluteString
+    }
+    
+    let attributes = SwiftSoup.Attributes()
+    if !href.isEmpty {
+      try attributes.put("href", href)
+    }
+
+    let a = SwiftSoup.Element(Tag("a"), "", attributes)
+    try a.text(action.text)
+    
+    return try a.outerHtml()
+  }
+  
 }

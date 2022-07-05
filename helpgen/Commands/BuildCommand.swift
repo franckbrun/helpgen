@@ -19,6 +19,9 @@ struct BuildCommand: ParsableCommand {
     
     @Option(name: [.customShort("i"), .long], help: "Input folder")
     var inputFolder: String
+    
+    @Flag(inversion: .prefixedNo)
+    var index = true
   }
   
   @OptionGroup var options: Options
@@ -51,7 +54,7 @@ struct BuildCommand: ParsableCommand {
       defer { try! storage.finalize() }
       try builder.build(at: projectFolderPath)
     } catch StorageError.alreadyExists {
-      logi("Project already esists ar '\(projectFolderPath)'")
+      logi("Project already exists at '\(projectFolderPath)'")
       throw ExitCode.failure
     } catch let error {
       loge("error while builing project: \(error.localizedDescription)")

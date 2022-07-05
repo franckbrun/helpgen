@@ -143,6 +143,8 @@
 		D5B015812871D7C500F719AF /* PropertyLocalisationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B015802871D7C500F719AF /* PropertyLocalisationNode.swift */; };
 		D5B015A5287328C900F719AF /* CreatePlistStringsFileBuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B015A4287328C900F719AF /* CreatePlistStringsFileBuildStep.swift */; };
 		D5B015A728732CB700F719AF /* InfoPlistConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B015A628732CB700F719AF /* InfoPlistConstants.swift */; };
+		D5B18E5828742F74002AB97C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E5728742F74002AB97C /* Action.swift */; };
+		D5B18E5A28743123002AB97C /* ActionsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E5928743123002AB97C /* ActionsReplacer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -241,6 +243,8 @@
 		D5B015802871D7C500F719AF /* PropertyLocalisationNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLocalisationNode.swift; sourceTree = "<group>"; };
 		D5B015A4287328C900F719AF /* CreatePlistStringsFileBuildStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlistStringsFileBuildStep.swift; sourceTree = "<group>"; };
 		D5B015A628732CB700F719AF /* InfoPlistConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlistConstants.swift; sourceTree = "<group>"; };
+		D5B18E5728742F74002AB97C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D5B18E5928743123002AB97C /* ActionsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsReplacer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +450,7 @@
 				D50EB25028688B4300B075AA /* Property.swift */,
 				D50EB25A28698BC700B075AA /* Element.swift */,
 				D50EB17E286454F000B075AA /* Project.swift */,
+				D5B18E5728742F74002AB97C /* Action.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				D50EB20C2866E2D000B075AA /* StringReplacer.swift */,
 				D50EB228286702F000B075AA /* StringReplacers.swift */,
 				D50EB2112866E5E000B075AA /* PropertiesReplacer.swift */,
+				D5B18E5928743123002AB97C /* ActionsReplacer.swift */,
 				D50EB24928684D9A00B075AA /* ElementsReplacer.swift */,
 				D535AA4E286F6341008BAA6A /* EraserReplacer.swift */,
 				D50EB2212866FE9F00B075AA /* DOMStringReplacer.swift */,
@@ -653,7 +659,7 @@
 		D50EB15D286450BB00B075AA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
@@ -735,6 +741,7 @@
 				D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */,
 				D50EB18E286465E600B075AA /* Logger.swift in Sources */,
 				D50EB1B72864A0DF00B075AA /* OperatorTokenGenerator.swift in Sources */,
+				D5B18E5A28743123002AB97C /* ActionsReplacer.swift in Sources */,
 				D50EB26228698FC900B075AA /* ValueNode.swift in Sources */,
 				D50EB25B28698BC700B075AA /* Element.swift in Sources */,
 				D50EB1DE2865F99B00B075AA /* ParseHelpSourceFileStep.swift in Sources */,
@@ -769,6 +776,7 @@
 				D50EB1B12864961400B075AA /* PropertyTokenGenerator.swift in Sources */,
 				D50EB1F228660F2100B075AA /* PropertyQueryable.swift in Sources */,
 				D5B0157C2871D5FB00F719AF /* HelpSourceCompiler.swift in Sources */,
+				D5B18E5828742F74002AB97C /* Action.swift in Sources */,
 				D50EB1DC2865F7AE00B075AA /* GetProjectPropertiesStep.swift in Sources */,
 				D50EB19328646BD900B075AA /* TokenGenerator.swift in Sources */,
 				D50EB2102866E45500B075AA /* RegExprCache.swift in Sources */,
@@ -966,9 +974,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = NO;
 				DEVELOPMENT_TEAM = 58S349FGKE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -977,9 +987,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = NO;
 				DEVELOPMENT_TEAM = 58S349FGKE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

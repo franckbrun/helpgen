@@ -18,6 +18,7 @@ struct RegExprConstant {
   static let ElementTypeKey = "elementType"
   static let PropertiesNameKey = "properties"
   
-  static let PropertiesRegExpr = "([^=,]+)=([^\0]+?)(?=,[^,]+=|$)"
+  static let QueryPropertiesRegExpr = "([^=,]+)=([^\0]+?)(?=,[^,]+=|$)"
+  static let PropertiesRegExpr = "([^:,]+):([^\0]+?)(?=,[^,]+:|$)"
 }
 

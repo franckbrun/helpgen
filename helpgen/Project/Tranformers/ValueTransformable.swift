@@ -12,4 +12,6 @@ protocol ValueTransformable {
   func tranform(property: Property) throws -> String?
   
   func transform(element: Element) throws -> String?
+  
+  func transform(action: Action) throws -> String?
 }

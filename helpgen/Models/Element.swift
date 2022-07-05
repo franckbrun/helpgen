@@ -11,7 +11,6 @@ struct ElementFeatures: OptionSet, Equatable {
   var rawValue: Int
   
   static let explicit = ElementFeatures(rawValue: 1 << 0)
-  
 }
 
 enum ElementType: String, CaseIterable {
