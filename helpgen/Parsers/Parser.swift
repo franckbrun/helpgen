@@ -8,17 +8,17 @@
 import Foundation
 
 enum ParserError: Error {
-  case unexceptedToken(Token)
-  case unexceptedEnd
+  case unexpectedToken(Token)
+  case unexpectedEnd
 }
 
 extension ParserError: LocalizedError {
   public var errorDescription: String? {
     switch self {
-    case .unexceptedToken(let token):
-      return "unexcepted token \(token)"
-    case .unexceptedEnd:
-      return "unexcepted end"
+    case .unexpectedToken(let token):
+      return "unexpected token \(token)"
+    case .unexpectedEnd:
+      return "unexpected end"
     }
   }
 }
@@ -35,7 +35,7 @@ class Parser {
   @discardableResult
   func nextToken() throws -> Token {
     if index + 1 >= tokens.count {
-      throw ParserError.unexceptedEnd
+      throw ParserError.unexpectedEnd
     }
     index += 1
     let token = self.tokens[index]
@@ -44,7 +44,7 @@ class Parser {
   
   func peekToken() throws -> Token {
     if index >= tokens.count {
-      throw ParserError.unexceptedEnd
+      throw ParserError.unexpectedEnd
     }
     return self.tokens[index]
   }
@@ -53,7 +53,7 @@ class Parser {
   func expected(tokenType type:TokenType) throws -> Token {
     let currentToken = try peekToken()
     guard currentToken.type == type else {
-      throw ParserError.unexceptedToken(currentToken)
+      throw ParserError.unexpectedToken(currentToken)
     }
     return currentToken
   }

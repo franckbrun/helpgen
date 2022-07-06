@@ -29,7 +29,7 @@ class HelpSourceParser: Parser {
             
         elements?.append(try parseElement())
       default:
-        throw ParserError.unexceptedToken(token)
+        throw ParserError.unexpectedToken(token)
       }
       token = try peekToken()
     }
