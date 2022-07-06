@@ -88,6 +88,7 @@ class HTMLHelpGenerator<S: SourceFile & PropertyQueryable & ElementQueryable, T:
       if !value.isEmpty {
         let attributes = SwiftSoup.Attributes()
         try attributes.put("href", value)
+        try attributes.put("rel", "stylesheet")
         let meta = SwiftSoup.Element(Tag("link"), "", attributes)
         children.append(meta)
       }
