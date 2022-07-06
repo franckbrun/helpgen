@@ -21,6 +21,7 @@ enum ElementType: String, CaseIterable {
   case helplink
   case video
   case separator
+  case note
 }
 
 struct Element {
@@ -43,6 +44,8 @@ extension Element: PropertyQueryable {
 
 extension Element {
 
+  /// Element properties are not localized
+  
   func value(forNamedProterty name: String) -> String? {
     return self.property(named: name)?.value
   }

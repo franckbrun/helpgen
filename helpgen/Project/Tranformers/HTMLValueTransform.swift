@@ -56,8 +56,10 @@ class HTMLValueTransform: ValueTransformable {
       return try video(with: element)
     case .separator:
       return try separator(with: element)
-    default:
-      return nil
+    case .note:
+      return try note(with: element)
+//    default:
+//      return nil
     }
   }
   
@@ -184,6 +186,20 @@ class HTMLValueTransform: ValueTransformable {
   func separator(with element: Element) throws -> String {
     let separator = SwiftSoup.Element(Tag("hr"), "")
     return try separator.outerHtml()
+  }
+  
+  func note(with element: Element) throws -> String {
+    let attributes = SwiftSoup.Attributes()
+    
+    if let typeValue = element.value(forNamedProterty: "type") {
+      try attributes.put("class", typeValue)
+    }
+    
+    let div = SwiftSoup.Element(Tag("div"), "", attributes)
+    let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
+    try div.text(joinedValues)
+
+    return try div.outerHtml()
   }
   
   // MARK: Utilities
