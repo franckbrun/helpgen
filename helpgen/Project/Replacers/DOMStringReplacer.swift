@@ -33,8 +33,6 @@ class DOMStringReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransfo
     let doc = try SwiftSoup.parse(sourceStr)
     let elements = try doc.getAllElements()
     
-    hasChanges = try addMeta(in: doc)
-    
     for element in elements {
       if let attributes = element.getAttributes() {
         for attr in attributes {
@@ -53,63 +51,6 @@ class DOMStringReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransfo
     }
     
     return hasChanges ? try doc.html() : nil
-  }
-  
-  func addMeta(in document: SwiftSoup.Document) throws -> Bool {
-    var hasChanges = false
-    
-    var children = [Node]()
-    
-    if let descriptionProperty = self.source.property(named: Constants.DescriptionPropertyKey) {
-      let value = descriptionProperty.value(forLanguage: self.project.currentLanguage)
-      if !value.isEmpty {
-        let attributes = SwiftSoup.Attributes()
-        try attributes.put("name", "description")
-        try attributes.put("content", value)
-        let meta = SwiftSoup.Element(Tag("meta"), "", attributes)
-        children.append(meta)
-      }
-    }
-    
-    if let keywordsProperty = self.source.property(named: Constants.KeywordsPropertyKey) {
-      let value = keywordsProperty.value(forLanguage: self.project.currentLanguage)
-      if !value.isEmpty {
-        let attributes = SwiftSoup.Attributes()
-        try attributes.put("name", "KEYWORDS")
-        try attributes.put("content", value)
-        let meta = SwiftSoup.Element(Tag("meta"), "", attributes)
-        children.append(meta)
-      }
-    }
-
-    if let robotsProperty = self.source.property(named: Constants.RobotsPropertyKey) {
-      let value = robotsProperty.value(forLanguage: self.project.currentLanguage)
-      if !value.isEmpty {
-        let attributes = SwiftSoup.Attributes()
-        try attributes.put("name", "ROBOTS")
-        try attributes.put("content", value)
-        let meta = SwiftSoup.Element(Tag("meta"), "", attributes)
-        children.append(meta)
-      }
-    }
-
-    if let appleTitleProperty = self.source.property(named: Constants.AppleTitlePropertyKey) {
-      let value = appleTitleProperty.value(forLanguage: self.project.currentLanguage)
-      if !value.isEmpty {
-        let attributes = SwiftSoup.Attributes()
-        try attributes.put("name", "AppleTitle")
-        try attributes.put("content", value)
-        let meta = SwiftSoup.Element(Tag("meta"), "", attributes)
-        children.append(meta)
-      }
-    }
-
-    if children.count > 0 {
-      try document.head()?.insertChildren(0, children)
-      hasChanges = true
-    }
-    
-    return hasChanges
   }
   
 }

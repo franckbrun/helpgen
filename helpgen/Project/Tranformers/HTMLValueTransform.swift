@@ -80,28 +80,9 @@ class HTMLValueTransform: ValueTransformable {
     }
     
     if let sizeValue = element.value(forNamedProterty: "size") {
-      var width = ""
-      var height = ""
-      if sizeValue.contains("x") {
-        let components = sizeValue.split(separator: "x")
-        if components.count != 2 {
-          throw HTMLValueTransformError.malformedValue(element)
-        }
-        width = String(components[0])
-        height = String(components[1])
-      } else {
-        width = sizeValue
-        height = sizeValue
-      }
-      
-      if width.hasValidDigit() {
-        try attributes.put("width", width)
-      }
-      if height.hasValidDigit() {
-        try attributes.put("height", width)
-      }
+      try appendSizeAttributes(from: sizeValue, in: attributes)
     }
-    
+        
     let img = SwiftSoup.Element(Tag("img"), "", attributes)
     return try img.outerHtml()
   }
@@ -191,6 +172,10 @@ class HTMLValueTransform: ValueTransformable {
       try sourceAttributes.put("type", type)
     }
     
+    if let sizeValue = element.value(forNamedProterty: "size") {
+      try appendSizeAttributes(from: sizeValue, in: videoAttributes)
+    }
+    
     let video = SwiftSoup.Element(Tag("video"), "", videoAttributes)
     try video.appendChild(SwiftSoup.Element(Tag("source"), "", sourceAttributes))
     return try video.outerHtml()
@@ -225,6 +210,29 @@ class HTMLValueTransform: ValueTransformable {
     return tag
   }
 
+  private func appendSizeAttributes(from sizeValue: String, in attributes: SwiftSoup.Attributes) throws {
+    var width = ""
+    var height = ""
+    if sizeValue.contains("x") {
+      let components = sizeValue.split(separator: "x")
+      if components.count != 2 {
+        throw HTMLValueTransformError.malformedValue(sizeValue)
+      }
+      width = String(components[0])
+      height = String(components[1])
+    } else {
+      width = sizeValue
+      height = sizeValue
+    }
+    
+    if width.hasValidDigit() {
+      try attributes.put("width", width)
+    }
+    if height.hasValidDigit() {
+      try attributes.put("height", width)
+    }
+  }
+  
   // MARK: - Transform actions
   
   func transform(action: Action) throws -> String? {

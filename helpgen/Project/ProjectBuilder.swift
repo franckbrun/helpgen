@@ -146,7 +146,7 @@ extension ProjectBuilder {
     for helpSourceFile in self.project.helpSourceFiles {
       if let outputProperty = helpSourceFile.property(named: Constants.OutputKey) {
         if let output = Bool(outputProperty.value(forLanguage: self.project.currentLanguage)), !output {
-          logi("no output file '\(helpSourceFile.filePath.string)'")
+          logi("no output for file '\(helpSourceFile.filePath.string)'")
           continue
         }
       }

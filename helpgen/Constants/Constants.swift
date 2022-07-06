@@ -22,7 +22,8 @@ struct Constants {
   static let ExplicitPropertyKey = "explicit"
   static let OutputKey = "output"
   static let OutputFilenameKey = "filename"
-
+  static let StyleSheetPropertyKey = "stylesheet"
+  
   static let HelpFileExtension = "help"
   static let LanguageProjectExtension = "lproj"
   
