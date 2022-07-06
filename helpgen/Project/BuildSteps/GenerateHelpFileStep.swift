@@ -61,6 +61,7 @@ class GenerateHelpFileStep<S: StorageWrapper>: BuildStep {
 
     if !filename.isEmpty, let filenameComponent = FilePath.Component(filename) {
       rootFilePath.append(filenameComponent)
+      rootFilePath.extension = "html"
       return rootFilePath
     } else {
       throw GenericError.internalError
