@@ -15,6 +15,7 @@ struct ElementFeatures: OptionSet, Equatable {
 
 enum ElementType: String, CaseIterable {
   case text
+  case title
   case image
   case anchor
   case link
@@ -24,10 +25,10 @@ enum ElementType: String, CaseIterable {
   case note
 }
 
-struct Element {
+struct Element: NameIdentifiable {
   let type: ElementType
   let features: ElementFeatures
-  let name: String?
+  var name: String?
   var values: [Value]?
   var properties: [Property]?
 }

@@ -44,6 +44,8 @@ class HTMLValueTransform: ValueTransformable {
     switch element.type {
     case .text:
       return try paragraphTag(with: element)
+    case .title:
+      return try title(with: element)
     case .image:
       return try imageTag(with: element)
     case .anchor:
@@ -64,16 +66,43 @@ class HTMLValueTransform: ValueTransformable {
   }
   
   func paragraphTag(with element: Element) throws -> String {
-    var tag = "p"
-    if let headingValue = element.value(forNamedProterty: "heading") {
-      tag = findTag(for: headingValue)
-    }
-    let p = SwiftSoup.Element(Tag(tag), "")
-    let joinsedValue = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
-    try p.text(joinsedValue)
+    let attributes = SwiftSoup.Attributes()
+    let tag = findTag(for: element.value(forNamedProterty: "heading"))
+    
+    try appendId(from: element, in: attributes)
+
+    let p = SwiftSoup.Element(Tag(tag), "", attributes)
+    let joinedValue = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
+    try p.text(joinedValue)
     return try p.outerHtml()
   }
     
+  func title(with element: Element) throws -> String {
+    let divAttributes = SwiftSoup.Attributes()
+
+    try appendId(from: element, in: divAttributes)
+
+    let div = SwiftSoup.Element(Tag("div"), "", divAttributes)
+    
+    if let imagesrcProperty = element.property(named: "image") {
+      let imageAttributes = SwiftSoup.Attributes()
+      try imageAttributes.put("src", imagesrcProperty.value)
+      try appendSize(from: element, in: imageAttributes)
+      let image = SwiftSoup.Element(Tag("img"), "", imageAttributes)
+      try div.appendChild(image)
+    }
+
+    let joinedValue = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
+    if !joinedValue.isEmpty {
+      let tag = findTag(for: element.value(forNamedProterty: "heading"))
+      let text = SwiftSoup.Element(Tag(tag), "")
+      try text.text(joinedValue)
+      try div.appendChild(text)
+    }
+    
+    return try div.outerHtml()
+  }
+  
   func imageTag(with element: Element) throws -> String {
     let attributes = SwiftSoup.Attributes()
     
@@ -81,10 +110,9 @@ class HTMLValueTransform: ValueTransformable {
       try attributes.put("src", sourceProperty.value)
     }
     
-    if let sizeValue = element.value(forNamedProterty: "size") {
-      try appendSizeAttributes(from: sizeValue, in: attributes)
-    }
-        
+    try appendSize(from: element, in: attributes)
+    try appendId(from: element, in: attributes)
+            
     let img = SwiftSoup.Element(Tag("img"), "", attributes)
     return try img.outerHtml()
   }
@@ -174,9 +202,7 @@ class HTMLValueTransform: ValueTransformable {
       try sourceAttributes.put("type", type)
     }
     
-    if let sizeValue = element.value(forNamedProterty: "size") {
-      try appendSizeAttributes(from: sizeValue, in: videoAttributes)
-    }
+    try appendSize(from: element, in: videoAttributes)
     
     let video = SwiftSoup.Element(Tag("video"), "", videoAttributes)
     try video.appendChild(SwiftSoup.Element(Tag("source"), "", sourceAttributes))
@@ -204,8 +230,12 @@ class HTMLValueTransform: ValueTransformable {
   
   // MARK: Utilities
   
-  private func findTag(for headingValue: String) -> String {
+  private func findTag(for headingValue: String?) -> String {
     var tag = "p"
+    
+    guard let headingValue = headingValue, !headingValue.isEmpty else {
+      return tag
+    }
     
     lazy var headingValues: [([String], String)] = [
       (["title1", "t1"], "h1"),
@@ -226,26 +256,51 @@ class HTMLValueTransform: ValueTransformable {
     return tag
   }
 
-  private func appendSizeAttributes(from sizeValue: String, in attributes: SwiftSoup.Attributes) throws {
+  private func appendSize<S: PropertyQueryable>(from source: S, in attributes: SwiftSoup.Attributes) throws {
     var width = ""
     var height = ""
-    if sizeValue.contains("x") {
-      let components = sizeValue.split(separator: "x")
-      if components.count != 2 {
-        throw HTMLValueTransformError.malformedValue(sizeValue)
-      }
-      width = String(components[0])
-      height = String(components[1])
-    } else {
-      width = sizeValue
-      height = sizeValue
-    }
     
-    if width.hasValidDigit() {
-      try attributes.put("width", width)
+    if let sizeProperty = source.property(named: "size") {
+      let sizeValue = sizeProperty.value
+      if sizeValue.contains("x") {
+        let components = sizeValue.split(separator: "x")
+        if components.count != 2 {
+          throw HTMLValueTransformError.malformedValue(sizeValue)
+        }
+        width = String(components[0])
+        height = String(components[1])
+      } else {
+        width = sizeValue
+        height = sizeValue
+      }
+      
+      if width.hasValidDigit() {
+        try attributes.put("width", width)
+      }
+      if height.hasValidDigit() {
+        try attributes.put("height", width)
+      }
+    } else {
+      if let widthProperty = source.property(named: "width") {
+        width = widthProperty.value
+      }
+      if let heightProperty = source.property(named: "height") {
+        height = heightProperty.value
+      }
     }
-    if height.hasValidDigit() {
-      try attributes.put("height", width)
+  }
+  
+  private func appendId<S: PropertyQueryable & NameIdentifiable>(from source: S, in attributes: SwiftSoup.Attributes) throws {
+    var id = ""
+    if let name = source.name {
+      id = name
+    } else if let idProperty = source.property(named: "id") {
+      id = idProperty.value
+    } else if let nameProperty = source.property(named: "name") {
+      id = nameProperty.value
+    }
+    if !id.isEmpty {
+      try attributes.put("id", id)
     }
   }
   

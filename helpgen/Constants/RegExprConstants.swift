@@ -14,7 +14,7 @@ struct RegExprConstant {
   static let propertyNameKey = "propertyName"
   static let propertyValueKey = "propertyValue"
 
-  static let elementQueryRegExpr = "(?<elementType>elements|element|text|image)(?::(?<properties>.*))*"
+  static let elementQueryRegExpr = "(?<elementType>[a-z]+)(?::(?<properties>.*))*"
   static let ElementTypeKey = "elementType"
   static let PropertiesNameKey = "properties"
   

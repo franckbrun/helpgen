@@ -145,6 +145,7 @@
 		D5B015A728732CB700F719AF /* InfoPlistConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B015A628732CB700F719AF /* InfoPlistConstants.swift */; };
 		D5B18E5828742F74002AB97C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E5728742F74002AB97C /* Action.swift */; };
 		D5B18E5A28743123002AB97C /* ActionsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E5928743123002AB97C /* ActionsReplacer.swift */; };
+		D5B18E792875D941002AB97C /* NameIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E782875D941002AB97C /* NameIdentifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -245,6 +246,8 @@
 		D5B015A628732CB700F719AF /* InfoPlistConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlistConstants.swift; sourceTree = "<group>"; };
 		D5B18E5728742F74002AB97C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D5B18E5928743123002AB97C /* ActionsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsReplacer.swift; sourceTree = "<group>"; };
+		D5B18E782875D941002AB97C /* NameIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameIdentifiable.swift; sourceTree = "<group>"; };
+		D5B18E7A2875DA0F002AB97C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +464,7 @@
 				D50EB1ED286605C900B075AA /* SourceFile.swift */,
 				D50EB1F128660F2100B075AA /* PropertyQueryable.swift */,
 				D50EB23828670C1F00B075AA /* ElementQueryable.swift */,
+				D5B18E782875D941002AB97C /* NameIdentifiable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -727,6 +731,7 @@
 				D50EB2532868901E00B075AA /* ArrayExtension.swift in Sources */,
 				D50EB22B2867056100B075AA /* CreateCommand.swift in Sources */,
 				D50EB1C02864D26100B075AA /* ExprNode.swift in Sources */,
+				D5B18E792875D941002AB97C /* NameIdentifiable.swift in Sources */,
 				D50EB2142866E6F800B075AA /* StringReplacable.swift in Sources */,
 				D50EB2242866FF7000B075AA /* Constants.swift in Sources */,
 				D50EB25928698AE600B075AA /* ValueTransformable.swift in Sources */,
