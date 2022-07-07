@@ -32,7 +32,7 @@ struct HelpBookPList: Codable {
     case bundleInfoDictionaryVersion = "CFBundleInfoDictionaryVersion"
     case bundleName = "CFBundleName"
     case bundleShortVersionString = "CFBundleShortVersionString"
-    case bundleVersion = "CFbundleVersion"
+    case bundleVersion = "CFBundleVersion"
     case bundlePackageType = "CFBundlePackageType"
     case bundleSignature = "CFBundleSignature"
     case bookIconPath = "HPDBookIconPath"
