@@ -18,7 +18,7 @@ Apologies for the current version of the documentation. It is quickly written by
 
 _Work in progress_
 
-## helpgen commands
+# Commands
 
 `helgen` is a command line tool, written in Swift.
 
@@ -29,15 +29,15 @@ Dependencies are :
 
 Type `helpgen --help` to print informations.
 
-### Create command
+## Create command
 
 `helpgen create` can be used to create an empty, non functionnal, Help Book.
 
-### Build command
+## Build command
 
 `helpgen build` is used to create a valid Help Book from helpsource files.
 
-### Index command
+## Index command
 
 `helphen index` will be used, one day, to index Help Book Package.
 
@@ -49,7 +49,7 @@ _Work in progress_
 
 `helpgen` parse all the `helpsource` files in the input folder and build a Help Book Package. For each langages a folder `lproj` is crated in the `Recources` folder and each `helpsource` file is "merged" whith a template (only HTML template for now) to create an HTML page.
 
-# Sample project hirarchy
+## Sample project hirarchy
 
 <pre>
 + Help Source Folder
@@ -120,7 +120,7 @@ output: false
 	         | another.html
 ```
 
-# `helpsource` Files
+## `helpsource` Files
 
 `helpsource` files are used to generate the Help Book. Each file will be used to create an HTML help page (unless `page.output: false`).
 
@@ -518,7 +518,7 @@ Without `lang:` property the element will be used in all language.
 
 ## Assets
 
-The project property `project.assetsFolder` give the common assets source folder (all files and (non epmty) folders are copied in the `assets` folder). This property can be localized to give 
+The project property `project.assetsFolder` give the common assets source folder. All files and folders - except empty ones - are copied in the `assets` folder of the Help Package. This property can be localized to give specific assets source folder for a language.
 
 ## Xcode integration 
 
