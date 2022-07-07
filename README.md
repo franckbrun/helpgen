@@ -51,7 +51,7 @@ _Work in progress_
 
 ## Sample project hirarchy
 
-<pre>
+```
 + Help Source Folder
    | <project_name>.helpsource
    | index.helpsource
@@ -61,7 +61,7 @@ _Work in progress_
       | image.png
       + css
          | main.css 
-</pre>
+```
 
 By convention, the file `<project_name>.helpsource` contains important properties for the project and should not output file.
 
