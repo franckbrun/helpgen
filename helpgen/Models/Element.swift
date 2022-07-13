@@ -16,13 +16,14 @@ struct ElementFeatures: OptionSet, Equatable {
 enum ElementType: String, CaseIterable {
   case text
   case title
+  case note
+  case list
   case image
   case anchor
   case link
   case helplink
   case video
   case separator
-  case note
 }
 
 struct Element: NameIdentifiable {

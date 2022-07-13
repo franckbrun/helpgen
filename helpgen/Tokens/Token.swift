@@ -10,15 +10,12 @@ import Foundation
 enum TokenType {
   case whiteSpace
   case propertiesSection
-  case property// property: value
+  case property
   case propertyLocalization
-//  case variable(String) // variable=value
   case value
-  case element /// /p /i
-//  case identifier
+  case element
   case colon
   case equal
-//  case slashOperator
   case comment
   case other
   case end

@@ -46,6 +46,10 @@ class HTMLValueTransform: ValueTransformable {
       return try paragraphTag(with: element)
     case .title:
       return try title(with: element)
+    case .note:
+      return try note(with: element)
+    case .list:
+      return try list(with: element)
     case .image:
       return try imageTag(with: element)
     case .anchor:
@@ -58,8 +62,6 @@ class HTMLValueTransform: ValueTransformable {
       return try video(with: element)
     case .separator:
       return try separator(with: element)
-    case .note:
-      return try note(with: element)
 //    default:
 //      return nil
     }
@@ -103,6 +105,22 @@ class HTMLValueTransform: ValueTransformable {
     return try div.outerHtml()
   }
   
+  func list(with element: Element) throws -> String {
+    let ulAttributes = SwiftSoup.Attributes()
+    try appendId(from: element, in: ulAttributes)
+    
+    let ul = SwiftSoup.Element(Tag("ul"), "", ulAttributes)
+    if let values = element.values {
+      for value in values {
+        let li = SwiftSoup.Element(Tag("li"), "", ulAttributes)
+        try li.text(value.value)
+        try ul.appendChild(li)
+      }
+    }
+    
+    return try ul.outerHtml()
+  }
+  
   func imageTag(with element: Element) throws -> String {
     let attributes = SwiftSoup.Attributes()
     
@@ -137,7 +155,7 @@ class HTMLValueTransform: ValueTransformable {
     
     if let bundleId = element.value(forNamedProterty: "open_app") {
       href = "x-help-action://openApp?bundleId=\(bundleId)"
-    } else if let prefPaneId = element.value(forNamedProterty: "open_pref_pane") {
+    } else if let prefPaneId = element.value(forNamedProterty: "open_prefpane") {
       href = "x-help-action://openPrefPane?bundleId=\(prefPaneId)"
     } else if let hrefValue = element.value(forNamedProterty: "href") {
       href = hrefValue
@@ -217,10 +235,8 @@ class HTMLValueTransform: ValueTransformable {
   func note(with element: Element) throws -> String {
     let attributes = SwiftSoup.Attributes()
     
-    if let typeValue = element.value(forNamedProterty: "type") {
-      try attributes.put("class", typeValue)
-    }
-    
+    try appendId(from: element, in: attributes)
+        
     let div = SwiftSoup.Element(Tag("div"), "", attributes)
     let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
     try div.text(joinedValues)
@@ -274,10 +290,10 @@ class HTMLValueTransform: ValueTransformable {
         height = sizeValue
       }
       
-      if width.hasValidDigit() {
+      if !width.isEmpty {
         try attributes.put("width", width)
       }
-      if height.hasValidDigit() {
+      if !height.isEmpty {
         try attributes.put("height", width)
       }
     } else {
