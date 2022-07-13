@@ -500,7 +500,7 @@ if the `type` property is not defined, the `class` attribute is not inserted.
 ### Properties localization
 
 All properties, except elemnt's properties, can be localized. To localize a property simple insert after the property value (after a white space or a line feed) :
-`@<locale>:<new value>`
+`@<language>:<new value>`
 
 ```
 ---
@@ -527,6 +527,12 @@ Without `lang:` property the element will be used in all language.
 ## Assets
 
 The project property `project.assetsFolder` give the common assets source folder. All files and folders - except empty ones - are copied in the `assets` folder of the Help Package. This property can be localized to give specific assets source folder for a language.
+
+```
+project.assetsFolder: _assets
+  @fr: _assets/_fr
+  @en: _assets/_en
+```
 
 ## Xcode integration 
 
