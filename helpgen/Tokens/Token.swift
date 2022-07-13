@@ -17,6 +17,7 @@ enum TokenType {
   case colon
   case equal
   case comment
+  case macro
   case other
   case end
 }
@@ -88,4 +89,9 @@ extension Token {
   static func comment(_ value: String) -> Token {
     return Token(.comment, value: value, element: "# \(value)")
   }
+  
+  static func macro(_ value: String) -> Token {
+    return Token(.comment, value: value, element: "!\(value)")
+  }
+
 }

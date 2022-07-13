@@ -32,7 +32,8 @@ class HelpSourceCompiler {
   func compile() throws -> HelpSourceObject {
     let contents = try String(contentsOfFile: helpSourceFile.filePath.string)
     let lexer = HelpSourceLexer(options: [.discardWhiteSpace, .discardComments])
-    let tokens = lexer.tokenise(input: contents)
+    var tokens = lexer.tokenise(input: contents)
+    tokens = try HelpSourceMacroProcessor(tokens, basePath: self.helpSourceFile.filePath.removingLastComponent()).processMacro()
     let parser = HelpSourceParser(tokens)
     let node = try parser.parse()
     return try compile(node: node)

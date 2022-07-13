@@ -41,9 +41,16 @@ class Lexer {
       }    
     }
     
-    tokens.append(Token.end())
+    let endToken = Token.end()
+    if canAppend(token: endToken) {
+      tokens.append(endToken)
+    }
     
     return tokens
+  }
+  
+  func canAppend(token: Token) -> Bool {
+    return true
   }
   
   func found(token: Token) {

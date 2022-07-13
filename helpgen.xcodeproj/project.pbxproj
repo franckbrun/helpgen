@@ -136,6 +136,11 @@
 		D50EB28B286DC01700B075AA /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB28A286DC01700B075AA /* Value.swift */; };
 		D50EB297286E4DEF00B075AA /* PropertyLocalizationTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */; };
 		D535AA4F286F6341008BAA6A /* EraserReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535AA4E286F6341008BAA6A /* EraserReplacer.swift */; };
+		D5459B42287EAE1B00D97A54 /* MacroTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5459B41287EAE1B00D97A54 /* MacroTokenGenerator.swift */; };
+		D5459B44287EB4BD00D97A54 /* HelpSourceMacroProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5459B43287EB4BD00D97A54 /* HelpSourceMacroProcessor.swift */; };
+		D5459B46287EB87500D97A54 /* CommonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5459B45287EB87500D97A54 /* CommonParser.swift */; };
+		D5459B48287EB90000D97A54 /* MacroNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5459B47287EB90000D97A54 /* MacroNode.swift */; };
+		D5459B4A287EBE7B00D97A54 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5459B49287EBE7B00D97A54 /* Macro.swift */; };
 		D5565C8C28707BBA00F8430A /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5565C8B28707BBA00F8430A /* StorageHelper.swift */; };
 		D5565C8F2870852200F8430A /* OptionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5565C8E2870852200F8430A /* OptionsHelper.swift */; };
 		D5B0157C2871D5FB00F719AF /* HelpSourceCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B0157B2871D5FB00F719AF /* HelpSourceCompiler.swift */; };
@@ -237,6 +242,11 @@
 		D50EB296286E4CDE00B075AA /* PropertyLocalizationTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLocalizationTokenGenerator.swift; sourceTree = "<group>"; };
 		D535AA4E286F6341008BAA6A /* EraserReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserReplacer.swift; sourceTree = "<group>"; };
 		D535AA52286F6BF9008BAA6A /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		D5459B41287EAE1B00D97A54 /* MacroTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTokenGenerator.swift; sourceTree = "<group>"; };
+		D5459B43287EB4BD00D97A54 /* HelpSourceMacroProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceMacroProcessor.swift; sourceTree = "<group>"; };
+		D5459B45287EB87500D97A54 /* CommonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonParser.swift; sourceTree = "<group>"; };
+		D5459B47287EB90000D97A54 /* MacroNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroNode.swift; sourceTree = "<group>"; };
+		D5459B49287EBE7B00D97A54 /* Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		D5565C8B28707BBA00F8430A /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
 		D5565C8E2870852200F8430A /* OptionsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsHelper.swift; sourceTree = "<group>"; };
 		D5B0157B2871D5FB00F719AF /* HelpSourceCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSourceCompiler.swift; sourceTree = "<group>"; };
@@ -348,6 +358,7 @@
 				D50EB1B228649CEE00B075AA /* ValueTokenGenerator.swift */,
 				D50EB286286D9D9600B075AA /* RawStringValueTokenGenerator.swift */,
 				D50EB288286D9DAD00B075AA /* QuotedStringValueTokenGenerator.swift */,
+				D5459B41287EAE1B00D97A54 /* MacroTokenGenerator.swift */,
 				D50EB1B62864A0DF00B075AA /* OperatorTokenGenerator.swift */,
 			);
 			path = TokenGenerators;
@@ -358,6 +369,8 @@
 			children = (
 				D50EB1BE2864D24800B075AA /* Nodes */,
 				D50EB1BC2864CE2500B075AA /* Parser.swift */,
+				D5459B45287EB87500D97A54 /* CommonParser.swift */,
+				D5459B43287EB4BD00D97A54 /* HelpSourceMacroProcessor.swift */,
 				D50EB19728648C8800B075AA /* HelpSourceParser.swift */,
 			);
 			path = Parsers;
@@ -383,6 +396,7 @@
 				D5B015802871D7C500F719AF /* PropertyLocalisationNode.swift */,
 				D50EB1C32864D3A000B075AA /* ElementNode.swift */,
 				D50EB26128698FC900B075AA /* ValueNode.swift */,
+				D5459B47287EB90000D97A54 /* MacroNode.swift */,
 				D50EB1D02865DA0D00B075AA /* HelpSourceNode.swift */,
 			);
 			path = Nodes;
@@ -455,6 +469,7 @@
 				D50EB25A28698BC700B075AA /* Element.swift */,
 				D50EB17E286454F000B075AA /* Project.swift */,
 				D5B18E5728742F74002AB97C /* Action.swift */,
+				D5459B49287EBE7B00D97A54 /* Macro.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -718,6 +733,7 @@
 				D5B0157F2871D67100F719AF /* HelpSourceObject.swift in Sources */,
 				D50EB1E02865FB4300B075AA /* GenerateHelpFileStep.swift in Sources */,
 				D50EB21A2866E9E000B075AA /* RegExprMatchable.swift in Sources */,
+				D5459B48287EB90000D97A54 /* MacroNode.swift in Sources */,
 				D50EB27C286B2A6400B075AA /* CommentTokenGenerator.swift in Sources */,
 				D50EB265286990BC00B075AA /* HTMLValueTransform.swift in Sources */,
 				D50EB2202866F1DC00B075AA /* NSTextCheckingResultExtension.swift in Sources */,
@@ -736,6 +752,7 @@
 				D50EB2142866E6F800B075AA /* StringReplacable.swift in Sources */,
 				D50EB2242866FF7000B075AA /* Constants.swift in Sources */,
 				D50EB25928698AE600B075AA /* ValueTransformable.swift in Sources */,
+				D5459B46287EB87500D97A54 /* CommonParser.swift in Sources */,
 				D50EB1EC2866035100B075AA /* HTMLHelpGenerator.swift in Sources */,
 				D535AA4F286F6341008BAA6A /* EraserReplacer.swift in Sources */,
 				D50EB1E72865FF8F00B075AA /* Generatable.swift in Sources */,
@@ -744,6 +761,7 @@
 				D50EB24D286884AE00B075AA /* StorageWrapper.swift in Sources */,
 				D50EB18528645EF800B075AA /* HelpSourceLexer.swift in Sources */,
 				D50EB17B2864540700B075AA /* Lexer.swift in Sources */,
+				D5459B42287EAE1B00D97A54 /* MacroTokenGenerator.swift in Sources */,
 				D50EB24A28684D9A00B075AA /* ElementsReplacer.swift in Sources */,
 				D50EB18E286465E600B075AA /* Logger.swift in Sources */,
 				D50EB1B72864A0DF00B075AA /* OperatorTokenGenerator.swift in Sources */,
@@ -774,6 +792,7 @@
 				D50EB24F2868854600B075AA /* FileSystemWrapper.swift in Sources */,
 				D5B015A5287328C900F719AF /* CreatePlistStringsFileBuildStep.swift in Sources */,
 				D50EB289286D9DAD00B075AA /* QuotedStringValueTokenGenerator.swift in Sources */,
+				D5459B4A287EBE7B00D97A54 /* Macro.swift in Sources */,
 				D50EB26E2869D75200B075AA /* ProjectBuilder.swift in Sources */,
 				D50EB2172866E76300B075AA /* GenericError.swift in Sources */,
 				D50EB229286702F000B075AA /* StringReplacers.swift in Sources */,
@@ -791,6 +810,7 @@
 				D50EB1BD2864CE2500B075AA /* Parser.swift in Sources */,
 				D50EB23D2867444600B075AA /* CopyAssetsBuildStep.swift in Sources */,
 				D50EB1952864754C00B075AA /* PropertiesSectionTokenGenerator.swift in Sources */,
+				D5459B44287EB4BD00D97A54 /* HelpSourceMacroProcessor.swift in Sources */,
 				D50EB19128646B3400B075AA /* WhiteSpacesListTokenGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

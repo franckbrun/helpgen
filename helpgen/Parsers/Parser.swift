@@ -8,6 +8,7 @@
 import Foundation
 
 enum ParserError: Error {
+  case indexOutOfRange
   case unexpectedToken(Token)
   case unexpectedEnd
 }
@@ -15,6 +16,8 @@ enum ParserError: Error {
 extension ParserError: LocalizedError {
   public var errorDescription: String? {
     switch self {
+    case .indexOutOfRange:
+      return "index out of range"
     case .unexpectedToken(let token):
       return "unexpected token \(token)"
     case .unexpectedEnd:
@@ -25,7 +28,7 @@ extension ParserError: LocalizedError {
 
 class Parser {
   
-  let tokens: [Token]
+  var tokens: [Token]
   var index = 0
   
   init(_  tokens: [Token]) {
@@ -38,8 +41,16 @@ class Parser {
       throw ParserError.unexpectedEnd
     }
     index += 1
-    let token = self.tokens[index]
-    return token
+    return self.tokens[index]
+  }
+  
+  @discardableResult
+  func prevToken(_ number: Int = 1) throws -> Token {
+    if index - number < 0 {
+      throw ParserError.indexOutOfRange
+    }
+    index -= number
+    return self.tokens[index]
   }
   
   func peekToken() throws -> Token {
@@ -47,6 +58,16 @@ class Parser {
       throw ParserError.unexpectedEnd
     }
     return self.tokens[index]
+  }
+  
+  func removeToken(_ number: Int = 1) throws {
+    for _ in 0..<number {
+      tokens.remove(at: self.index)
+    }
+  }
+  
+  func insertTokens(_ tokens: [Token]) throws {
+    self.tokens.insert(contentsOf: tokens, at: self.index)
   }
   
   @discardableResult
@@ -57,4 +78,5 @@ class Parser {
     }
     return currentToken
   }
+  
 }
