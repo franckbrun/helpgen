@@ -147,7 +147,7 @@ An `helpsource` file has two sections:
 
 ### Sample file
 
-<pre>
+```
 ---
 title: "Title"
 @fr: "Titre"
@@ -168,8 +168,7 @@ This is a multiline comment
 /image lang:en src="assets/hello.png"
 
 /image src="../assets/hello.png"
-
-</pre>
+```
   
 ### Properties section
 
