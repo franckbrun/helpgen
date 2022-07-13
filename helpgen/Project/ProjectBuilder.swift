@@ -65,6 +65,8 @@ extension ProjectBuilder {
       return
     }
 
+    let validHelpsourceFileExtensions = HelpSourceFile.validExtensions()
+    
     for case let fileURL as URL in enumerator {
       guard let resourceValues = try? fileURL.resourceValues(forKeys: resourceKeys),
             let isDirectory = resourceValues.isDirectory,
@@ -78,7 +80,12 @@ extension ProjectBuilder {
           enumerator.skipDescendants()
         }
       } else {
-        project.helpSourceFiles.append(HelpSourceFile(path: self.project.inputFolder.appending(name)))
+        guard let ext = FilePath(name).extension else {
+          continue
+        }
+        if validHelpsourceFileExtensions.contains(ext) {
+          project.helpSourceFiles.append(HelpSourceFile(path: self.project.inputFolder.appending(name)))
+        }
       }
     }
   }

@@ -22,6 +22,10 @@ class HelpSourceFile: SourceFile {
     return self.filePath.lastComponent?.string
   }
   
+  static func validExtensions() -> [String] {
+    return ["helpsource", "hs"]
+  }
+  
   init(path: FilePath) {
     self.filePath = path
     self.fileType = FileType.fileType(for: path)
