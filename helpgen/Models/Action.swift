@@ -9,7 +9,9 @@ import Foundation
 
 enum ActionType: String {
   case link
-  case open
+  case openApp = "open_app"
+  case openPrefPane = "open_prefpane"
+  case style
 }
 
 struct Action {

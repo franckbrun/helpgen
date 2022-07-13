@@ -26,7 +26,7 @@ extension ActionsReplacerError: LocalizedError {
 class ActionsReplacer<S: PropertyQueryable & ElementQueryable, T: ValueTransformable>: PropertiesReplacer<S, T> {
   
   override var searchRegExpr: String {
-    #"(@(?<action>link|open_app|open_prefpane)\[(?<params>.*)\]\((?<value>.*)\))"#
+    #"(@(?<action>link|openApp|openPrefPane|style)\[(?<params>.*)\]\((?<value>.*)\))"#
   }
   
   override func value(for match: NSTextCheckingResult, in str: String) throws -> String? {

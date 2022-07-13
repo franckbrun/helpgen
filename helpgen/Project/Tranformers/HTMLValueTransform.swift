@@ -310,8 +310,12 @@ class HTMLValueTransform: ValueTransformable {
     switch action.type {
     case .link:
       return try link(with: action)
-    case .open:
+    case .openApp:
       return nil
+    case .openPrefPane:
+      return nil
+    case .style:
+      return try style(with: action)
     }
   }
 
@@ -355,6 +359,22 @@ class HTMLValueTransform: ValueTransformable {
     try a.text(action.text)
     
     return try a.outerHtml()
+  }
+  
+  func style(with action: Action) throws -> String {
+    let spanAttributes = SwiftSoup.Attributes()
+
+    let properties = Property.parseList(from: action.params)
+    if !properties.isEmpty {
+      if let nameProperty = properties.find(propertyName: Constants.NamePropertyKey) {
+        try spanAttributes.put("id", nameProperty.value)
+      }
+    }
+    
+    let span = SwiftSoup.Element(Tag("span"), "", spanAttributes)
+    try span.text(action.text)
+    
+    return try span.outerHtml()
   }
   
 }
