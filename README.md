@@ -47,7 +47,7 @@ _Work in progress_
 
 # How it works
 
-`helpgen` parse all the `helpsource` files in the input folder and build a Help Book Package. For each langages a folder `lproj` is crated in the `Recources` folder and each `helpsource` file is "merged" whith a template (only HTML template for now) to create an HTML page.
+`helpgen` parse all the `helpsource` files in the input folder and build a Help Book Package. For each langages a `lproj` folder is created in the `Recources` folder. Each `helpsource` file is "merged" whith a template (only HTML template for now) to create an HTML page.
 
 ## Sample project hirarchy
 
@@ -114,7 +114,7 @@ output: false
 	         | index.html
 	         | other.html
 	         | another.html
-	      +- en.lprog
+	      +- fr.lprog
 	         | index.html
 	         | other.html
 	         | another.html
@@ -124,7 +124,7 @@ output: false
 
 `helpsource` files are used to generate the Help Book. Each file will be used to create an HTML help page (unless `page.output: false`).
 
-When help shoulbe generated for multiple language only elements for the corresponding langage are used to generate the output. All localized information should be placed in a single `helpsource` file.
+When help shoul be generated for multiple language only elements for the corresponding langage are used to generate the output. All localized information should be placed in a single `helpsource` file.
 
 ```
 ---
@@ -135,11 +135,12 @@ title: "Page Title"
 /text name=intro lang:en "This text is used in English Help"
 /text name=intro lang:fr "This text is used in French Help"
 /text name=intro "This text is used in All language for this page"
+
 ```
 
-## Anatomy of a `helpsource` file
+## Anatomy of an `helpsource` file
 
-A `helpsource` file has two sections:
+An `helpsource` file has two sections:
 
 - a properties section were all properties are defined.
 - an elements section which contains all text, image, anchors and other things that should be included in the output file.
@@ -160,6 +161,14 @@ title: "Title"
 /*
 This is a multiline comment
 */
+
+/text name=intro lang:fr "This text is used in English Help"
+
+/image lang:fr src="assets/hello.png"
+/image lang:en src="assets/hello.png"
+
+/image src="../assets/hello.png"
+
 </pre>
   
 ### Properties section
@@ -195,7 +204,7 @@ Property syntax: `[project|page]<property name>:<property value>`
 | project.bookCSIndexPath| HPDBookCSIndexPath |
 | project.bookTitle | HPDBookTitle |
 
-See [Apple Help Book Documentation](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/ProvidingUserAssitAppleHelp/authoring_help/authoring_help_book.html#//apple_ref/doc/uid/TP30000903-CH206-SW22) and [About Info.plist Keys and Values] (https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html)
+See [Apple Help Book Documentation](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/ProvidingUserAssitAppleHelp/authoring_help/authoring_help_book.html#//apple_ref/doc/uid/TP30000903-CH206-SW22) and [About Info.plist Keys and Values](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html)
 
 * Custom properties
 
