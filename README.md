@@ -14,6 +14,11 @@ Apologies for the current version of the documentation. It is quickly written by
 
 - [Apple Documentation](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/ProvidingUserAssitAppleHelp/user_help_intro/user_assistance_intro.html#//apple_ref/doc/uid/TP30000903)
 
+## More to come
+
+[ ] Use markdown
+_Work in progress_
+
 ## Why ?
 
 _Work in progress_
@@ -361,7 +366,7 @@ Add a title section. A title contains an image and a text.
 
 ```
 /anchor
-	anchor_name:<name>
+	anchor_name:<name> | name:<name>
 	[lang:<langauge>]
 ```
 
@@ -425,11 +430,12 @@ Action syntaxt:
 
 | Name | Action | Parameters |
 |---|---|---|
-| link | Specify a link to an external URL | URL |
+| link | Link (2) | URL |
 | (1)open_app | Open an application | Bundle Identifier of the application |
 | (1)open_prefpane | Open a specific Preferences Pane | Bundle Identifier of the preference pane |
 
 (1) Will be implemented soon
+(2) Parameters could be `name:<anchor name on same page>` or `anchor_name=<Apple anchor name>[,bookID=<Help book identifier>]` or a valid URL
 
 * Sample
 
@@ -488,7 +494,10 @@ if the `type` property is not defined, the `class` attribute is not inserted.
 
 * anchor
 
-`/anchor` is inserted as `<a name="<anchor name>"></a>`
+`/anchor` 
+
+  * `anchor_name` is inserted as `<a name="<name>"></a>`
+  * `name` is inserted as `<a id="<name>"></a>`
 
 * separator
 

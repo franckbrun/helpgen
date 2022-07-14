@@ -62,8 +62,6 @@ class HTMLValueTransform: ValueTransformable {
       return try video(with: element)
     case .separator:
       return try separator(with: element)
-//    default:
-//      return nil
     }
   }
   
@@ -138,10 +136,16 @@ class HTMLValueTransform: ValueTransformable {
   func anchor(with element: Element) throws -> String {
     let attributes = SwiftSoup.Attributes()
     
-    if let nameProperty = element.property(named: "anchor_name") {
-      try attributes.put("name", nameProperty.value)
+    if let anchroNameProperty = element.property(named: "anchor_name") {
+      try attributes.put("name", anchroNameProperty.value)
+    } else {
+      try appendId(from: element, in: attributes)
     }
 
+    if attributes.size() == 0 {
+      throw HTMLValueTransformError.malformedValue(element)
+    }
+    
     let a = SwiftSoup.Element(Tag("a"), "", attributes)
     
     let joinedValues = element.values?.compactMap({$0.value}).joined(separator: " ") ?? ""
@@ -339,26 +343,32 @@ class HTMLValueTransform: ValueTransformable {
     var href = ""
     let properties = Property.parseList(from: action.params)
     if properties.count > 0 {
-      var anchor_name = ""
-      var book_id = ""
       
-      if let nameProperty = properties.find(propertyName: "anchor_name") {
-        anchor_name = nameProperty.value
-      }
-      
-      if let bookIdProperty = properties.find(propertyName: "book_id") {
-        book_id = bookIdProperty.value
+      if let nameProperty = properties.find(propertyName: "name") {
+        href = "#\(nameProperty.value)"
       } else {
-        if let bundleIdentifierProperty = project.property(named: Constants.ProjectBundleIdentifierPropertyKey) {
-          book_id = bundleIdentifierProperty.value
+        var anchor_name = ""
+        var book_id = ""
+        
+        if let nameProperty = properties.find(propertyName: "anchor_name") {
+          anchor_name = nameProperty.value
         }
+        
+        if let bookIdProperty = properties.find(propertyName: "book_id") {
+          book_id = bookIdProperty.value
+        } else {
+          if let bundleIdentifierProperty = project.property(named: Constants.ProjectBundleIdentifierPropertyKey) {
+            book_id = bundleIdentifierProperty.value
+          }
+        }
+        
+        if anchor_name.isEmpty {
+          throw HTMLValueTransformError.malformedValue(action)
+        }
+        
+        href = "help:anchor=\(anchor_name) bookID=\(book_id)"
       }
       
-      if anchor_name.isEmpty {
-        throw HTMLValueTransformError.malformedValue(action)
-      }
-      
-      href = "help:anchor=\(anchor_name) bookID=\(book_id)"
     } else {
       guard let url = URL(string: action.params) else {
         throw HTMLValueTransformError.malformedValue(action)
