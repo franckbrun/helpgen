@@ -151,6 +151,8 @@
 		D5B18E5828742F74002AB97C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E5728742F74002AB97C /* Action.swift */; };
 		D5B18E5A28743123002AB97C /* ActionsReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E5928743123002AB97C /* ActionsReplacer.swift */; };
 		D5B18E792875D941002AB97C /* NameIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B18E782875D941002AB97C /* NameIdentifiable.swift */; };
+		D5FC566528801EA80096373F /* TemplateLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC566428801EA80096373F /* TemplateLexer.swift */; };
+		D5FC5667288047310096373F /* ParenthesisTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC5666288047310096373F /* ParenthesisTokenGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -258,6 +260,8 @@
 		D5B18E5928743123002AB97C /* ActionsReplacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsReplacer.swift; sourceTree = "<group>"; };
 		D5B18E782875D941002AB97C /* NameIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameIdentifiable.swift; sourceTree = "<group>"; };
 		D5B18E7A2875DA0F002AB97C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D5FC566428801EA80096373F /* TemplateLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLexer.swift; sourceTree = "<group>"; };
+		D5FC5666288047310096373F /* ParenthesisTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParenthesisTokenGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +334,7 @@
 			children = (
 				D50EB17A2864540700B075AA /* Lexer.swift */,
 				D50EB18428645EF800B075AA /* HelpSourceLexer.swift */,
+				D5FC566428801EA80096373F /* TemplateLexer.swift */,
 			);
 			path = Lexers;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 				D50EB288286D9DAD00B075AA /* QuotedStringValueTokenGenerator.swift */,
 				D5459B41287EAE1B00D97A54 /* MacroTokenGenerator.swift */,
 				D50EB1B62864A0DF00B075AA /* OperatorTokenGenerator.swift */,
+				D5FC5666288047310096373F /* ParenthesisTokenGenerator.swift */,
 			);
 			path = TokenGenerators;
 			sourceTree = "<group>";
@@ -743,6 +749,7 @@
 				D50EB1B328649CEE00B075AA /* ValueTokenGenerator.swift in Sources */,
 				D5565C8C28707BBA00F8430A /* StorageHelper.swift in Sources */,
 				D50EB1C42864D3A000B075AA /* ElementNode.swift in Sources */,
+				D5FC566528801EA80096373F /* TemplateLexer.swift in Sources */,
 				D50EB26C2869BC0F00B075AA /* CommonOptions.swift in Sources */,
 				D50EB2222866FE9F00B075AA /* DOMStringReplacer.swift in Sources */,
 				D50EB2532868901E00B075AA /* ArrayExtension.swift in Sources */,
@@ -792,6 +799,7 @@
 				D50EB24F2868854600B075AA /* FileSystemWrapper.swift in Sources */,
 				D5B015A5287328C900F719AF /* CreatePlistStringsFileBuildStep.swift in Sources */,
 				D50EB289286D9DAD00B075AA /* QuotedStringValueTokenGenerator.swift in Sources */,
+				D5FC5667288047310096373F /* ParenthesisTokenGenerator.swift in Sources */,
 				D5459B4A287EBE7B00D97A54 /* Macro.swift in Sources */,
 				D50EB26E2869D75200B075AA /* ProjectBuilder.swift in Sources */,
 				D50EB2172866E76300B075AA /* GenericError.swift in Sources */,

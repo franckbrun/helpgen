@@ -65,7 +65,7 @@ class HelpSourceMacroProcessor: CommonParser {
   private func tokens(from file: FilePath) throws -> [Token] {
     let contents = try String(contentsOfFile: file.string)
     let lexer = HelpSourceLexer(options: [.discardWhiteSpace, .discardComments, .noEndToken])
-    let tokens = lexer.tokenise(input: contents)
+    let tokens = try lexer.tokenise(input: contents)
     return tokens
   }
   

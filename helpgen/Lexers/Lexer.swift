@@ -11,7 +11,7 @@ class Lexer {
 
   var tokenGenerators = [TokenGenerator]()
   
-  func tokenise(input: String) -> [Token] {
+  func tokenise(input: String) throws -> [Token] {
     var tokens = [Token]()
     var content = input
     
@@ -19,7 +19,7 @@ class Lexer {
       var match = false
       
       for tokenGenerator in self.tokenGenerators {
-        if let tokenInfo = tokenGenerator.tokenise(str: content) {
+        if let tokenInfo = try tokenGenerator.tokenise(str: content) {
           if !tokenInfo.isDiscardable {
             tokens.append(tokenInfo)
           }

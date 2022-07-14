@@ -14,11 +14,12 @@ enum TokenType {
   case propertyLocalization
   case value
   case element
-  case colon
-  case equal
   case comment
   case macro
   case other
+  case identifier
+  case `operator`
+  case parenthesis
   case end
 }
 
@@ -75,11 +76,11 @@ extension Token {
   }
 
   static func equal() -> Token {
-    return Token(.equal, element: "=")
+    return Token(.operator, element: "=")
   }
 
   static func colon() -> Token {
-    return Token(.colon, element: ":")
+    return Token(.operator, element: ":")
   }
 
   static func end() -> Token {

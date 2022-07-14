@@ -17,7 +17,7 @@ class TokenGenerator: RegExprMatchable {
     self.discardable = discardable
   }
   
-  func tokenise(str: String) -> Token? {
+  func tokenise(str: String) throws -> Token? {
     return nil
   }
 
