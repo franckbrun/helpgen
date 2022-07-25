@@ -17,8 +17,10 @@ struct HelpGen: ParsableCommand {
     defaultSubcommand: BuildCommand.self)
   
   @Flag(name:[.short, .long], help: "Verbose")
-  var verbose = false {
-    didSet {
+  var verbose = false
+  
+  func validate() throws {
+    if verbose {
       Logger.currentLevel = .verbose
     }
   }
