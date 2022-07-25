@@ -56,20 +56,24 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--help"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "create -p test -l en -l fr -i &quot;/Users/franckb/Documents/Dev/MoxAdventu/Current projets/Simpura/Simpura/Help/Source&quot;"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "build -p test -l &quot;en fr&quot; -l es -i &quot;/Users/franckb/Documents/Dev/MoxAdventu/Current projets/Simpura/Simpura/Help/Source&quot;"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-o /Users/franckb/work"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--overwrite"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

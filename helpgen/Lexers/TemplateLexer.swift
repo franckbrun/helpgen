@@ -17,15 +17,15 @@ class TemplateLexer: Lexer {
   let regExprCache = RegExprCache.shared
   
   override func tokenise(input: String) throws -> [Token] {
-    var tokens = [Token]()
+    let tokens = [Token]()
     
-    if let matches = regExprCache.matches(expression: self.expression, str: input), matches.count > 0 {
-      for match in matches {
-        
-      }
-    } else {
-      logd("no macros found")
-    }
+//    if let matches = regExprCache.matches(expression: self.expression, str: input), matches.count > 0 {
+//      for match in matches {
+//        
+//      }
+//    } else {
+//      logd("no macros found")
+//    }
     
     return tokens
   }

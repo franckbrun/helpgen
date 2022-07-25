@@ -262,6 +262,7 @@
 		D5B18E7A2875DA0F002AB97C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D5FC566428801EA80096373F /* TemplateLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLexer.swift; sourceTree = "<group>"; };
 		D5FC5666288047310096373F /* ParenthesisTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParenthesisTokenGenerator.swift; sourceTree = "<group>"; };
+		D5FC566828806E2A0096373F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +289,7 @@
 		D50EB15C286450BB00B075AA = {
 			isa = PBXGroup;
 			children = (
+				D5FC566828806E2A0096373F /* LICENSE */,
 				D5B18E7A2875DA0F002AB97C /* README.md */,
 				D535AA52286F6BF9008BAA6A /* TODO.md */,
 				D50EB167286450BB00B075AA /* helpgen */,
@@ -317,12 +319,12 @@
 				D50EB20E2866E43C00B075AA /* Utils */,
 				D50EB1D62865F1F400B075AA /* Logger */,
 				D50EB1EF28660CC500B075AA /* Models */,
-				D50EB1D72865F24000B075AA /* Project */,
 				D50EB1D52865F1CA00B075AA /* Tokens */,
 				D50EB18628645F1D00B075AA /* Lexers */,
 				D50EB19628648C7300B075AA /* Parsers */,
 				D50EB295286E479100B075AA /* Solvers */,
 				D50EB2682869BA1500B075AA /* PropertyWrappers */,
+				D50EB1D72865F24000B075AA /* Project */,
 				D50EB1872864600700B075AA /* Commands */,
 				D50EB168286450BB00B075AA /* HelpGen.swift */,
 			);

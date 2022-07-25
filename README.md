@@ -444,6 +444,20 @@ Action syntaxt:
 "You can @open_app[com.moxadventu.com](open an application) or @open_prefpane[com.apple.preferences.AppleIDPrefPane](open a prefs pane)
 ```
 
+## Directives
+
+### include
+
+_Work in progress_
+
+```
+---
+---
+
+!include <filename>
+
+```
+
 ## Element formatting
 
 ### HTML output

@@ -26,6 +26,13 @@ class GenerateHelpFileStep<S: StorageWrapper>: BuildStep {
   }
   
   func exec() throws {
+    if let pageLangProperty = helpSourceFile.property(named: Constants.LanguagePropertyKey) {
+      let languages = pageLangProperty.value.split(separator: ",").map { String($0) } 
+      guard languages.contains(self.project.currentLanguage) else {
+        logd("file '\(helpSourceFile.filePath.string)' only for '\(pageLangProperty.value)'")
+        return
+      }
+    }
     let valueTransformer = HTMLValueTransform(project: self.project)
     let generator = HTMLHelpGenerator(project: self.project, sourceFile: self.helpSourceFile, valueTransformer: valueTransformer)
     if let contents = try generator.generate() as? String {

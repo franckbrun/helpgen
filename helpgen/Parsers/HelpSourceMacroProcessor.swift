@@ -45,6 +45,10 @@ class HelpSourceMacroProcessor: CommonParser {
       default:
         break
       }
+      token = try peekToken()
+      if token == Token.end() {
+        break
+      }
       token = try nextToken()
     }
     
